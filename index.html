@@ -1,14 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- METADATOS DEL DOCUMENTO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Certificados del Bachillerato General</title>
-
-    <!-- ESTILOS CSS ORGANIZADOS POR SECCIONES -->
+    <title>Consulta Certificados Bachillerato</title>
     <style>
-        /* RESET Y CONFIGURACIONES GENERALES */
         * {
             margin: 0;
             padding: 0;
@@ -16,326 +12,328 @@
             font-family: Arial, sans-serif;
         }
 
-
-        /* === SECCIÓN DE ENCABEZADOS Y NAVEGACIÓN === */
+        /* Header */
         header {
             background-color: #720026;
-            padding: 10px 20px;
+            padding: 1rem 1.5rem;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
         }
 
-        .logo-gob {
-            height: 40px; /* Altura fija para mantener proporción del logo */
-        }
-
-        .nav-top {
+        .logo-container {
             display: flex;
-            gap: 20px;
             align-items: center;
+            gap: 0.8rem;
         }
 
-        .nav-top a, 
-        .nav-main a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
+        .logo-mexico {
+            height: 50px;
+            width: auto;
         }
 
-        .search-icon {
+        .header-text h2 {
             color: white;
-            font-size: 18px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .header-text p {
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .menu-icon {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        .sub-header {
-            background-color: #5A001E;
-            padding: 8px 20px;
+        /* Línea divisoria */
+        .divider {
+            height: 4px;
+            background-color: #720026;
+            margin-bottom: 3rem;
         }
 
-        .nav-main {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-            justify-content: center; /* Mejora alineación en móviles */
-        }
-
-
-        /* === SECCIÓN DE BANNER PRINCIPAL === */
-        .banner {
-            width: 100%;
-            height: 100px;
-            /* RUTA ABSOLUTA RELATIVA A LA RAÍZ DEL REPOSITORIO */
-            background: url('/assets/images/banner-felipe.png') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-            text-shadow: 1px 1px 3px #000;
-        }
-
-
-        /* === SECCIÓN DE CONTENIDO PRINCIPAL === */
+        /* Contenido principal */
         main {
-            padding: 30px 20px;
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 0 1.5rem;
+            margin-bottom: 4rem;
         }
 
-        h1 {
+        .title-section h1 {
+            font-size: 2.5rem;
+            color: #333333;
             text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
-            color: #333;
+            line-height: 1.4;
+            margin-bottom: 3rem;
         }
 
-        /* SUBSECCIÓN: FORMULARIO DE BÚSQUEDA */
-        .form-section {
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto; /* Centra el formulario */
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
+        .form-section label {
+            font-size: 1.2rem;
+            color: #333333;
+            font-weight: bold;
             display: block;
-            font-size: 16px;
-            margin-bottom: 5px;
-            color: #333;
+            margin-bottom: 0.8rem;
         }
 
-        input[type="text"] {
+        .form-section input {
             width: 100%;
-            max-width: 400px;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #cccccc;
+            border-radius: 0;
+            margin-bottom: 0.5rem;
         }
 
-        .small-text {
-            font-size: 12px;
-            color: #666;
-            margin-top: 5px;
+        .form-section input::placeholder {
+            color: #999999;
         }
 
-        .btn {
-            background-color: #720026;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
+        .form-section input:invalid {
+            border-color: #dc3545;
+        }
+
+        .help-text {
+            font-size: 0.9rem;
+            color: #666666;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .error-text {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: -0.3rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .search-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            color: #720026;
+            background-color: white;
+            border: 2px solid #720026;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .btn:hover {
-            background-color: #5A001E;
-        }
-
-        /* SUBSECCIÓN: RESULTADOS DE VALIDACIÓN */
-        .result-section {
-            margin-top: 40px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-            border-bottom: 2px solid #720026;
-            padding-bottom: 10px;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        h3 {
-            font-size: 20px;
-            margin-bottom: 25px;
-            color: #333;
-            text-align: center;
-        }
-
-        .info-list {
-            list-style: none;
-            display: grid;
-            gap: 12px;
-            font-size: 16px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .info-list li strong {
-            color: #222;
-            min-width: 220px;
-            display: inline-block;
-        }
-
-
-        /* === SECCIÓN DE PIE DE PÁGINA === */
-        footer {
+        .search-btn:hover {
             background-color: #720026;
             color: white;
-            padding: 25px 20px;
-            margin-top: 40px;
         }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: white;
+            color: #720026;
+        }
+
+        /* Sección de resultados */
+        .result-section {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border: 2px solid #720026;
+            display: none;
+        }
+
+        .result-section h3 {
+            color: #720026;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #720026;
+        }
+
+        .certificate-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .footer-section h4 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid white;
-            padding-bottom: 5px;
+        .info-item {
+            padding: 0.5rem;
         }
 
-        .footer-section ul {
-            list-style: none;
+        .info-item span {
+            font-weight: bold;
+            color: #333;
         }
 
-        .footer-section ul li {
-            margin-bottom: 8px;
+        .loading-text {
+            text-align: center;
+            color: #720026;
+            font-size: 1rem;
+            display: none;
         }
 
-        .footer-section ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .social-icons a {
-            color: white;
-            font-size: 20px;
-            margin-right: 15px;
-            text-decoration: none;
-        }
-
-        .footer-logo {
-            height: 50px; /* Altura ajustada para el logo del pie */
-            margin-bottom: 10px;
+        /* Ajuste para móviles */
+        @media (max-width: 600px) {
+            .title-section h1 {
+                font-size: 1.8rem;
+            }
+            .certificate-info {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-
 <body>
-    <!-- === ENCABEZADO PRINCIPAL === -->
     <header>
-        <!-- RUTA ABSOLUTA RELATIVA A LA RAÍZ DEL REPOSITORIO -->
-        <img src="/assets/images/logo-gobierno.png" alt="Logo Oficial del Gobierno de México" class="logo-gob">
-        <div class="nav-top">
-            <a href="#">Trámites</a>
-            <a href="#">Gobierno</a>
-            <span class="search-icon"</span>
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_de_los_Estados_Unidos_Mexicanos.svg/1200px-Escudo_de_los_Estados_Unidos_Mexicanos.svg.png" alt="Escudo de México" class="logo-mexico">
+            <div class="header-text">
+                <h2>Gobierno de</h2>
+                <p>México</p>
+            </div>
         </div>
+        <div class="menu-icon">☰</div>
     </header>
 
-    <!-- === SUBENCABEZADO CON NAVEGACIÓN PRINCIPAL === -->
-    <div class="sub-header">
-        <nav class="nav-main">
-            <a href="#">Inicio</a>
-            <a href="#">¿Quiénes somos?</a>
-            <a href="#">Base legal</a>
-            <a href="#">Contacto</a>
-            <a href="#">Validación</a>
-        </nav>
-    </div>
+    <div class="divider"></div>
 
-    <!-- === BANNER DE IDENTIDAD INSTITUCIONAL === -->
-    <div class="banner">
-        <span></span>
-    </div>
-
-    <!-- === CONTENIDO PRINCIPAL DE LA PÁGINA === -->
     <main>
-        <h1>Consulta de certificados del bachillerato general</h1>
-
-        <!-- FORMULARIO DE BÚSQUEDA POR FOLIO -->
-        <section class="form-section">
-            <div class="form-group">
-                <label for="folio">Número de Folio:</label>
-                <input type="text" id="folio" name="folio" value="BENITO CAMELA " required>
-                <p class="small-text">El número de folio se encuentra en la parte inferior del certificado.</p>
-            </div>
-            <button class="btn">Buscar Certificado</button>
+        <section class="title-section">
+            <h1>Consulta de<br>certificados del<br>bachillerato<br>general</h1>
         </section>
 
-        <!-- RESULTADOS DE LA CONSULTA -->
-        <section class="result-section">
-            <h2>Resultado de la Validación</h2>
-            <h3>Información de certificados emitidos. Estudiantes de Bachillerato Certificados</h3>
-            
-            <ul class="info-list">
-                <li><strong>Nombre:</strong> 
-JORGE LUIS LOPEZ CRUZ </li>
-                <li><strong>Número de Matrícula:</strong> 1501R850623</li>
-                <li><strong>Institución Educativa Emisora:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
-                <li><strong>Plantel de Servicio Educativo:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
-                <li><strong>Plan de Estudios:</strong> BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA</li>
-                <li><strong>Promedio:</strong> 8.8</li>
-                <li><strong>Créditos Obtenidos:</strong> 176</li>
-                <li><strong>Estatus:</strong> REGISTRADO</li>
-                <li><strong>Folio:</strong> CBG3760391153</li>
-                <li><strong>Fecha de Timbrado:</strong> 2025-03-11 14:29:35</li>
-                <li><strong>Correo Electrónico de Contacto:</strong> controlescolar.estatal@sems.sidgbe.gob.mx</li>
-            </ul>
+        <section class="form-section">
+            <label for="folio">Número de Folio:</label>
+            <input type="text" id="folio" placeholder="Ingrese el número de folio del certificado" pattern="[A-Z0-9]{10,15}" title="El folio debe tener entre 10 y 15 caracteres (letras mayúsculas y números)">
+            <span class="error-text" id="folioError">* El folio es obligatorio y debe tener entre 10 y 15 caracteres (letras mayúsculas y números)</span>
+            <span class="help-text">El número de folio se encuentra en la parte inferior del certificado.</span>
+            <div class="loading-text" id="loading">Buscando certificado... Por favor espere</div>
+            <button class="search-btn" id="searchBtn">Buscar Certificado</button>
+        </section>
+
+        <!-- Sección para mostrar resultados -->
+        <section class="result-section" id="resultSection">
+            <h3>Información del Certificado</h3>
+            <div class="certificate-info" id="certificateData">
+                <!-- Aquí se cargarán los datos -->
+            </div>
+            <button class="search-btn" id="newSearchBtn">Realizar Nueva Búsqueda</button>
         </section>
     </main>
 
-    <!-- === PIE DE PÁGINA INSTITUCIONAL === -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <!-- RUTA ABSOLUTA RELATIVA A LA RAÍZ DEL REPOSITORIO -->
-                <img src="/assets/images/logo-gobierno.png" alt="Logo Oficial del Gobierno de México" class="footer-logo">
-            </div>
+    <script>
+        // Elementos del DOM
+        const folioInput = document.getElementById('folio');
+        const folioError = document.getElementById('folioError');
+        const searchBtn = document.getElementById('searchBtn');
+        const loadingText = document.getElementById('loading');
+        const resultSection = document.getElementById('resultSection');
+        const certificateData = document.getElementById('certificateData');
+        const newSearchBtn = document.getElementById('newSearchBtn');
 
-            <div class="footer-section">
-                <h4>Enlaces</h4>
-                <ul>
-                    <li><a href="#">Participa</a></li>
-                    <li><a href="#">Marco Jurídico</a></li>
-                    <li><a href="#">Plataforma Nacional de Transparencia</a></li>
-                    <li><a href="#">Transparencia para el pueblo</a></li>
-                    <li><a href="#">Alerta</a></li>
-                </ul>
-            </div>
+        // Datos de ejemplo (en un proyecto real, esto vendría de una API o base de datos)
+        const certificadosDB = [
+            {
+                folio: 'BACH202400001',
+                nombre: 'MARÍA ELENA GONZÁLEZ RAMÍREZ',
+                curp: 'GORM850115HDFLRN01',
+                fechaNacimiento: '15/01/1985',
+                escuela: 'COLEGIO NACIONAL DE BACHILLERES PLANTEL 05',
+                municipio: 'CIUDAD DE MÉXICO',
+                estado: 'CIUDAD DE MÉXICO',
+                fechaEmision: '20/06/2024',
+                estadoCertificado: 'VÁLIDO'
+            },
+            {
+                folio: 'BACH202400002',
+                nombre: 'JUAN CARLOS PÉREZ LÓPEZ',
+                curp: 'PELJ900520MDFRRL02',
+                fechaNacimiento: '20/05/1990',
+                escuela: 'PREPARATORIA FEDERAL MIGUEL HIDALGO',
+                municipio: 'GUADALAJARA',
+                estado: 'JALISCO',
+                fechaEmision: '15/07/2024',
+                estadoCertificado: 'VÁLIDO'
+            },
+            {
+                folio: 'BACH202300150',
+                nombre: 'ANA SOFÍA LÓPEZ CASTILLO',
+                curp: 'LOCA981203HDFZSN03',
+                fechaNacimiento: '03/12/1998',
+                escuela: 'COLEGIO DE BACHILLERES DEL ESTADO DE MÉXICO PLANTEL 22',
+                municipio: 'TOLUCA',
+                estado: 'ESTADO DE MÉXICO',
+                fechaEmision: '05/12/2023',
+                estadoCertificado: 'VÁLIDO'
+            }
+        ];
 
-            <div class="footer-section">
-                <h4>¿Qué es gob.mx?</h4>
-                <p>Es el portal único de trámites, información y participación ciudadana. <a href="#">Leer más</a></p>
-                <ul>
-                    <li><a href="#">Portal de datos abiertos</a></li>
-                    <li><a href="#">Declaración de accesibilidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                </ul>
-            </div>
+        // Validación del campo folio
+        folioInput.addEventListener('input', () => {
+            if (!folioInput.validity.valid) {
+                folioError.style.display = 'block';
+                searchBtn.disabled = true;
+            } else {
+                folioError.style.display = 'none';
+                searchBtn.disabled = false;
+            }
+        });
 
-            <div class="footer-section">
-                <h4>Denuncia contra servidores públicos</h4>
-                <h4>Síguenos en</h4>
-                <div class="social-icons">
-                    <a href="#"></a>
-                    <a href="#">𝕏</a>
-                    <a href="#"></a>
-                    <a href="#"></a>
-                </div>
-                <p> 079 - Comunicate, estamos para ayudarte</p>
-            </div>
-        </div>
-    </footer>
+        // Función para buscar el certificado
+        searchBtn.addEventListener('click', () => {
+            const folio = folioInput.value.trim();
+            
+            // Mostrar mensaje de carga
+            loadingText.style.display = 'block';
+            searchBtn.style.display = 'none';
+            resultSection.style.display = 'none';
+
+            // Simular tiempo de consulta a servidor (1.5 segundos)
+            setTimeout(() => {
+                const certificado = certificadosDB.find(cert => cert.folio === folio);
+                
+                // Ocultar mensaje de carga
+                loadingText.style.display = 'none';
+                searchBtn.style.display = 'block';
+
+                if (certificado) {
+                    // Mostrar datos del certificado
+                    certificateData.innerHTML = `
+                        <div class="info-item"><span>Folio:</span> ${certificado.folio}</div>
+                        <div class="info-item"><span>Nombre del Titular:</span> ${certificado.nombre}</div>
+                        <div class="info-item"><span>CURP:</span> ${certificado.curp}</div>
+                        <div class="info-item"><span>Fecha de Nacimiento:</span> ${certificado.fechaNacimiento}</div>
+                        <div class="info-item"><span>Escuela:</span> ${certificado.escuela}</div>
+                        <div class="info-item"><span>Municipio:</span> ${certificado.municipio}</div>
+                        <div class="info-item"><span>Estado:</span> ${certificado.estado}</div>
+                        <div class="info-item"><span>Fecha de Emisión:</span> ${certificado.fechaEmision}</div>
+                        <div class="info-item"><span>Estado del Certificado:</span> ${certificado.estadoCertificado}</div>
+                    `;
+                    resultSection.style.display = 'block';
+                } else {
+                    // Mostrar mensaje de error si no se encuentra
+                    certificateData.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; color: #dc3545; font-weight: bold;">
+                            No se encontró ningún certificado con el folio ingresado
+                        </div>
+                    `;
+                    resultSection.style.display = 'block';
+                }
+            }, 1500);
+        });
+
+        // Botón para nueva búsqueda
+        newSearchBtn.addEventListener('click', () => {
+            folioInput.value = '';
+            resultSection.style.display = 'none';
+            folioError.style.display = 'none';
+            searchBtn.disabled = true;
+        });
+    </script>
 </body>
 </html>

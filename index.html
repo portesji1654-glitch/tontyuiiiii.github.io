@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- METADATOS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Certificados del Bachillerato General</title>
+
+    <!-- ESTILOS CSS -->
     <style>
+        /* RESET Y ESTILOS GENERALES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
+
+
+        /* ENCABEZADOS Y NAVEGACIÓN */
         header {
             background-color: #720026;
             padding: 10px 20px;
@@ -18,35 +25,46 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .logo-gob {
             height: 40px;
         }
+
         .nav-top {
             display: flex;
             gap: 20px;
+            align-items: center;
         }
-        .nav-top a, .nav-main a {
+
+        .nav-top a, 
+        .nav-main a {
             color: white;
             text-decoration: none;
             font-size: 14px;
         }
+
         .search-icon {
             color: white;
             font-size: 18px;
+            cursor: pointer;
         }
+
         .sub-header {
             background-color: #5A001E;
             padding: 8px 20px;
         }
+
         .nav-main {
             display: flex;
             gap: 25px;
-            flex-wrap: wrap; /* Añadido para que se ajuste en móviles */
+            flex-wrap: wrap;
         }
+
+
+        /* BANNER PRINCIPAL */
         .banner {
             width: 100%;
             height: 100px;
-            /* ADAPTACIÓN: Ruta a tu imagen en el repositorio */
             background: url('./assets/images/banner-felipe.png') no-repeat center center;
             background-size: cover;
             display: flex;
@@ -54,31 +72,40 @@
             justify-content: center;
             color: white;
             font-size: 18px;
-            text-shadow: 1px 1px 3px #000; /* Añadido para que el texto se lea mejor */
+            text-shadow: 1px 1px 3px #000;
         }
+
+
+        /* CONTENIDO PRINCIPAL */
         main {
             padding: 30px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
+
         h1 {
             text-align: center;
             font-size: 28px;
             margin-bottom: 30px;
             color: #333;
         }
+
+        /* SECCIÓN DE FORMULARIO */
         .form-section {
             margin-bottom: 40px;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         label {
             display: block;
             font-size: 16px;
             margin-bottom: 5px;
             color: #333;
         }
+
         input[type="text"] {
             width: 100%;
             max-width: 400px;
@@ -87,11 +114,13 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
         .small-text {
             font-size: 12px;
             color: #666;
             margin-top: 5px;
         }
+
         .btn {
             background-color: #720026;
             color: white;
@@ -100,10 +129,18 @@
             border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
+
+        .btn:hover {
+            background-color: #5A001E;
+        }
+
+        /* SECCIÓN DE RESULTADOS */
         .result-section {
             margin-top: 40px;
         }
+
         h2 {
             text-align: center;
             font-size: 24px;
@@ -115,32 +152,38 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         h3 {
             font-size: 20px;
             margin-bottom: 25px;
             color: #333;
-            text-align: center; /* Añadido para centrar */
+            text-align: center;
         }
+
         .info-list {
             list-style: none;
             display: grid;
             gap: 12px;
             font-size: 16px;
             max-width: 800px;
-            margin-left: auto;
-            margin-right: auto; /* Añadido para centrar */
+            margin: 0 auto;
         }
+
         .info-list li strong {
             color: #222;
             min-width: 220px;
             display: inline-block;
         }
+
+
+        /* PIE DE PÁGINA */
         footer {
             background-color: #720026;
             color: white;
             padding: 25px 20px;
             margin-top: 40px;
         }
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -148,38 +191,45 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+
         .footer-section h4 {
             font-size: 18px;
             margin-bottom: 15px;
             border-bottom: 1px solid white;
             padding-bottom: 5px;
         }
+
         .footer-section ul {
             list-style: none;
         }
+
         .footer-section ul li {
             margin-bottom: 8px;
         }
+
         .footer-section ul li a {
             color: white;
             text-decoration: none;
         }
+
         .social-icons a {
             color: white;
             font-size: 20px;
             margin-right: 15px;
             text-decoration: none;
         }
+
         .footer-logo {
             height: 50px;
             margin-bottom: 10px;
         }
     </style>
 </head>
+
 <body>
+    <!-- ENCABEZADO PRINCIPAL -->
     <header>
-        <!-- ADAPTACIÓN: Ruta a tu imagen de logo en el repositorio -->
-        <img src="./assets/images/logo-gobierno.png" alt="Gobierno de México" class="logo-gob">
+        <img src="./assets/images/logo-gobierno.png" alt="Logo Gobierno de México" class="logo-gob">
         <div class="nav-top">
             <a href="#">Trámites</a>
             <a href="#">Gobierno</a>
@@ -187,6 +237,7 @@
         </div>
     </header>
 
+    <!-- SUBENCABEZADO CON NAVEGACIÓN PRINCIPAL -->
     <div class="sub-header">
         <nav class="nav-main">
             <a href="#">Inicio</a>
@@ -197,28 +248,32 @@
         </nav>
     </div>
 
+    <!-- BANNER -->
     <div class="banner">
-        <span></span>
+        <span>GOBIERNO DE MÉXICO - Felipe Carrillo Puerto</span>
     </div>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
         <h1>Consulta de certificados del bachillerato general</h1>
 
+        <!-- SECCIÓN FORMULARIO DE BÚSQUEDA -->
         <section class="form-section">
             <div class="form-group">
                 <label for="folio">Número de Folio:</label>
-                <input type="text" id="folio" name="folio" value="CAROLINA ">
+                <input type="text" id="folio" name="folio" value="CBG3760391153" required>
                 <p class="small-text">El número de folio se encuentra en la parte inferior del certificado.</p>
             </div>
             <button class="btn">Buscar Certificado</button>
         </section>
 
+        <!-- SECCIÓN RESULTADOS DE VALIDACIÓN -->
         <section class="result-section">
             <h2>Resultado de la Validación</h2>
             <h3>Información de certificados emitidos. Estudiantes de Bachillerato Certificados</h3>
             
             <ul class="info-list">
-                <li><strong>Nombre:</strong> benito camela </li>
+                <li><strong>Nombre:</strong> CYNTHIA CLEMENTE PEREZ</li>
                 <li><strong>Número de Matrícula:</strong> 1501R850623</li>
                 <li><strong>Institución Educativa Emisora:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
                 <li><strong>Plantel de Servicio Educativo:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
@@ -233,11 +288,11 @@
         </section>
     </main>
 
+    <!-- PIE DE PÁGINA -->
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <!-- ADAPTACIÓN: Ruta a tu imagen de logo en el repositorio -->
-                <img src="./assets/images/logo-gobierno.png" alt="Gobierno de México" class="footer-logo">
+                <img src="./assets/images/logo-gobierno.png" alt="Logo Gobierno de México" class="footer-logo">
             </div>
 
             <div class="footer-section">

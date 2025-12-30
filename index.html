@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- METADATOS -->
+    <!-- METADATOS DEL DOCUMENTO -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Certificados del Bachillerato General</title>
 
-    <!-- ESTILOS CSS -->
+    <!-- ESTILOS CSS ORGANIZADOS POR SECCIONES -->
     <style>
-        /* RESET Y ESTILOS GENERALES */
+        /* RESET Y CONFIGURACIONES GENERALES */
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +17,7 @@
         }
 
 
-        /* ENCABEZADOS Y NAVEGACIÓN */
+        /* === SECCIÓN DE ENCABEZADOS Y NAVEGACIÓN === */
         header {
             background-color: #720026;
             padding: 10px 20px;
@@ -27,7 +27,7 @@
         }
 
         .logo-gob {
-            height: 40px;
+            height: 40px; /* Altura fija para mantener proporción del logo */
         }
 
         .nav-top {
@@ -58,14 +58,16 @@
             display: flex;
             gap: 25px;
             flex-wrap: wrap;
+            justify-content: center; /* Mejora alineación en móviles */
         }
 
 
-        /* BANNER PRINCIPAL */
+        /* === SECCIÓN DE BANNER PRINCIPAL === */
         .banner {
             width: 100%;
             height: 100px;
-            background: url('./assets/images/banner-felipe.png') no-repeat center center;
+            /* RUTA ABSOLUTA RELATIVA A LA RAÍZ DEL REPOSITORIO */
+            background: url('/assets/images/banner-felipe.png') no-repeat center center;
             background-size: cover;
             display: flex;
             align-items: center;
@@ -76,7 +78,7 @@
         }
 
 
-        /* CONTENIDO PRINCIPAL */
+        /* === SECCIÓN DE CONTENIDO PRINCIPAL === */
         main {
             padding: 30px 20px;
             max-width: 1200px;
@@ -90,9 +92,12 @@
             color: #333;
         }
 
-        /* SECCIÓN DE FORMULARIO */
+        /* SUBSECCIÓN: FORMULARIO DE BÚSQUEDA */
         .form-section {
             margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto; /* Centra el formulario */
         }
 
         .form-group {
@@ -136,7 +141,7 @@
             background-color: #5A001E;
         }
 
-        /* SECCIÓN DE RESULTADOS */
+        /* SUBSECCIÓN: RESULTADOS DE VALIDACIÓN */
         .result-section {
             margin-top: 40px;
         }
@@ -176,7 +181,7 @@
         }
 
 
-        /* PIE DE PÁGINA */
+        /* === SECCIÓN DE PIE DE PÁGINA === */
         footer {
             background-color: #720026;
             color: white;
@@ -220,24 +225,25 @@
         }
 
         .footer-logo {
-            height: 50px;
+            height: 50px; /* Altura ajustada para el logo del pie */
             margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
-    <!-- ENCABEZADO PRINCIPAL -->
+    <!-- === ENCABEZADO PRINCIPAL === -->
     <header>
-        <img src="./assets/images/logo-gobierno.png" alt="Logo Gobierno de México" class="logo-gob">
+        <!-- RUTA ABSOLUTA RELATIVA A LA RAÍZ DEL REPOSITORIO -->
+        <img src="/assets/images/logo-gobierno.png" alt="Logo Oficial del Gobierno de México" class="logo-gob">
         <div class="nav-top">
             <a href="#">Trámites</a>
             <a href="#">Gobierno</a>
-            <span class="search-icon">🔍</span>
+            <span class="search-icon"</span>
         </div>
     </header>
 
-    <!-- SUBENCABEZADO CON NAVEGACIÓN PRINCIPAL -->
+    <!-- === SUBENCABEZADO CON NAVEGACIÓN PRINCIPAL === -->
     <div class="sub-header">
         <nav class="nav-main">
             <a href="#">Inicio</a>
@@ -248,32 +254,33 @@
         </nav>
     </div>
 
-    <!-- BANNER -->
+    <!-- === BANNER DE IDENTIDAD INSTITUCIONAL === -->
     <div class="banner">
-        <span>GOBIERNO DE MÉXICO - Felipe Carrillo Puerto</span>
+        <span></span>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- === CONTENIDO PRINCIPAL DE LA PÁGINA === -->
     <main>
         <h1>Consulta de certificados del bachillerato general</h1>
 
-        <!-- SECCIÓN FORMULARIO DE BÚSQUEDA -->
+        <!-- FORMULARIO DE BÚSQUEDA POR FOLIO -->
         <section class="form-section">
             <div class="form-group">
                 <label for="folio">Número de Folio:</label>
-                <input type="text" id="folio" name="folio" value="CBG3760391153" required>
+                <input type="text" id="folio" name="folio" value="BENITO CAMELA " required>
                 <p class="small-text">El número de folio se encuentra en la parte inferior del certificado.</p>
             </div>
             <button class="btn">Buscar Certificado</button>
         </section>
 
-        <!-- SECCIÓN RESULTADOS DE VALIDACIÓN -->
+        <!-- RESULTADOS DE LA CONSULTA -->
         <section class="result-section">
             <h2>Resultado de la Validación</h2>
             <h3>Información de certificados emitidos. Estudiantes de Bachillerato Certificados</h3>
             
             <ul class="info-list">
-                <li><strong>Nombre:</strong> CYNTHIA CLEMENTE PEREZ</li>
+                <li><strong>Nombre:</strong> 
+JORGE LUIS LOPEZ CRUZ </li>
                 <li><strong>Número de Matrícula:</strong> 1501R850623</li>
                 <li><strong>Institución Educativa Emisora:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
                 <li><strong>Plantel de Servicio Educativo:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
@@ -288,11 +295,12 @@
         </section>
     </main>
 
-    <!-- PIE DE PÁGINA -->
+    <!-- === PIE DE PÁGINA INSTITUCIONAL === -->
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <img src="./assets/images/logo-gobierno.png" alt="Logo Gobierno de México" class="footer-logo">
+                <!-- RUTA ABSOLUTA RELATIVA A LA RAÍZ DEL REPOSITORIO -->
+                <img src="/assets/images/logo-gobierno.png" alt="Logo Oficial del Gobierno de México" class="footer-logo">
             </div>
 
             <div class="footer-section">
@@ -320,12 +328,12 @@
                 <h4>Denuncia contra servidores públicos</h4>
                 <h4>Síguenos en</h4>
                 <div class="social-icons">
-                    <a href="#">📘</a>
+                    <a href="#"></a>
                     <a href="#">𝕏</a>
-                    <a href="#">📷</a>
-                    <a href="#">▶️</a>
+                    <a href="#"></a>
+                    <a href="#"></a>
                 </div>
-                <p>☎️ 079 - Comunicate, estamos para ayudarte</p>
+                <p> 079 - Comunicate, estamos para ayudarte</p>
             </div>
         </div>
     </footer>

@@ -30,6 +30,8 @@
         .logo-mexico {
             height: 50px;
             width: auto;
+            /* Evita que se vea un espacio vacío si la imagen no carga */
+            object-fit: contain;
         }
 
         .header-text h2 {
@@ -48,6 +50,8 @@
             font-size: 1.8rem;
             font-weight: bold;
             cursor: pointer;
+            /* Alternativa si no usas la imagen del menú */
+            line-height: 1;
         }
 
         /* Línea divisoria */
@@ -191,13 +195,19 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Escudo_de_los_Estados_Unidos_Mexicanos.svg/1200px-Escudo_de_los_Estados_Unidos_Mexicanos.svg.png" alt="Escudo de México" class="logo-mexico">
+            <!-- Ruta relativa a la imagen en tu repositorio -->
+            <img src="assets/img/escudo_mexico.png" alt="Escudo de los Estados Unidos Mexicanos" class="logo-mexico" 
+                 onerror="this.style.display='none'"> <!-- Oculta la imagen si no carga -->
             <div class="header-text">
                 <h2>Gobierno de</h2>
                 <p>México</p>
             </div>
         </div>
-        <div class="menu-icon">☰</div>
+        <!-- Opcional: Usa imagen para el menú o mantén el icono de texto -->
+        <div class="menu-icon">
+            <!-- <img src="assets/img/menu_icon.svg" alt="Menú" style="height: 30px; width: auto;"> -->
+            ☰
+        </div>
     </header>
 
     <div class="divider"></div>
@@ -250,10 +260,10 @@
                 estadoCertificado: 'VÁLIDO'
             },
             {
-                folio: 'DGB33122323',
-                nombre: 'JORGE LUIS LOPEZ CRUZ',
+                folio: 'BACH202400002',
+                nombre: 'JUAN CARLOS PÉREZ LÓPEZ',
                 curp: 'PELJ900520MDFRRL02',
-                fechaNacimiento: '17/08/1990',
+                fechaNacimiento: '20/05/1990',
                 escuela: 'PREPARATORIA FEDERAL MIGUEL HIDALGO',
                 municipio: 'GUADALAJARA',
                 estado: 'JALISCO',

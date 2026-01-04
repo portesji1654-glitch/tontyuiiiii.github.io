@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta Certificados Bachillerato</title>
+    <title>Consulta de Certificados - Gobierno de México</title>
     <style>
+        :root {
+            --color-guinda: #720026;
+            --color-oro: #D4C19C;
+            --color-gris-fondo: #F5F5F5;
+            --color-texto: #333333;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,273 +19,284 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Header rediseñado sin imágenes */
+        body {
+            background-color: white;
+            color: var(--color-texto);
+        }
+
+        /* HEADER SIN IMÁGENES EXTERNAS */
         header {
-            background-color: #720026; /* Color institucional */
-            padding: 1rem 1.5rem;
+            background-color: var(--color-guinda);
+            padding: 0.8rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 4px solid #D4C19C; /* Dorado institucional */
+            border-bottom: 4px solid var(--color-oro);
         }
 
-        .logo-sustituto {
+        .header-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
-        /* Círculo que simula el escudo */
-        .escudo-simbolo {
-            width: 45px;
-            height: 45px;
-            border: 2px solid #D4C19C;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #D4C19C;
-            font-size: 0.6rem;
-            font-weight: bold;
-            text-align: center;
-            line-height: 1;
+        /* Escudo Nacional creado con SVG embebido */
+        .escudo-svg {
+            width: 50px;
+            height: 50px;
         }
 
-        .header-text h2 {
+        .header-labels {
             color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-
-        .header-text p {
-            color: white;
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
-        .menu-icon {
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        /* Contenido principal */
-        main {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .title-section h1 {
-            font-size: 2.2rem;
-            color: #333;
-            text-align: center;
-            margin-bottom: 2.5rem;
             line-height: 1.2;
         }
 
-        /* Formulario */
-        .form-section {
-            background: #f9f9f9;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .form-section label {
+        .header-labels h2 {
             font-size: 1.1rem;
             font-weight: bold;
-            display: block;
-            margin-bottom: 0.8rem;
         }
 
-        .form-section input {
+        .header-labels p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .menu-burger {
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* CUERPO PRINCIPAL */
+        main {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .title-box {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .title-box h1 {
+            font-size: 2.2rem;
+            color: #444;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        /* FORMULARIO */
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-group input {
             width: 100%;
             padding: 12px;
             font-size: 1rem;
             border: 1px solid #ccc;
-            margin-bottom: 1rem;
-            outline-color: #720026;
+            outline-color: var(--color-guinda);
         }
 
-        .help-text {
+        .help-note {
             font-size: 0.85rem;
             color: #666;
-            margin-bottom: 1.5rem;
-            display: block;
+            margin-bottom: 2rem;
         }
 
-        .search-btn {
+        .btn-search {
             width: 100%;
             padding: 15px;
-            background-color: #720026;
+            background-color: var(--color-guinda);
             color: white;
             border: none;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: 0.3s;
         }
 
-        .search-btn:hover {
+        .btn-search:hover {
             background-color: #5a001e;
         }
 
-        .search-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* Resultados */
-        .result-section {
-            margin-top: 2rem;
-            border: 1px solid #720026;
-            border-radius: 4px;
+        /* SECCIÓN DE RESULTADOS */
+        #resultArea {
             display: none;
-            overflow: hidden;
+            margin-top: 2rem;
+            border: 2px solid var(--color-guinda);
         }
 
         .result-header {
-            background: #720026;
+            background: var(--color-guinda);
             color: white;
             padding: 10px;
             text-align: center;
             font-weight: bold;
         }
 
-        .certificate-info {
+        .data-grid {
             padding: 20px;
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
         }
 
-        .info-item {
+        .data-item {
+            padding: 8px;
             border-bottom: 1px solid #eee;
-            padding: 8px 0;
-            font-size: 0.95rem;
         }
 
-        .info-item span {
-            font-weight: bold;
-            color: #555;
+        .data-label {
+            font-size: 0.75rem;
+            color: #777;
             display: block;
-            font-size: 0.8rem;
+            font-weight: bold;
             text-transform: uppercase;
         }
 
-        .status-valid {
-            color: #155724;
-            background: #d4edda;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            display: inline-block;
+        .data-value {
+            font-size: 1rem;
+            font-weight: 500;
         }
 
-        .loading {
-            text-align: center;
-            padding: 20px;
-            display: none;
-            color: #720026;
+        .badge-valid {
+            color: #155724;
+            background: #d4edda;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-reset {
+            background: #666;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .title-box h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-sustituto">
-            <div class="escudo-simbolo">MÉXICO</div>
-            <div class="header-text">
+        <div class="header-logo">
+            <svg class="escudo-svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="48" fill="none" stroke="#D4C19C" stroke-width="2"/>
+                <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="#D4C19C"/>
+            </svg>
+            <div class="header-labels">
                 <h2>Gobierno de</h2>
                 <p>México</p>
             </div>
         </div>
-        <div class="menu-icon">☰</div>
+        <div class="menu-burger">☰</div>
     </header>
 
     <main>
-        <section class="title-section">
+        <div class="title-box">
             <h1>Consulta de Certificados de Bachillerato</h1>
-        </section>
+        </div>
 
-        <section class="form-section">
-            <label for="folio">Número de Folio</label>
-            <input type="text" id="folio" placeholder="Ej: BACH202400001">
-            <span class="help-text">Ingrese los 10 a 15 caracteres de su folio (letras y números).</span>
+        <div class="card">
+            <div class="form-group">
+                <label for="folio">Número de Folio:</label>
+                <input type="text" id="folio" placeholder="Ingrese el folio del certificado" autocomplete="off">
+            </div>
+            <p class="help-note">El folio se encuentra en la parte inferior o en el código QR del documento.</p>
             
-            <div id="loading" class="loading">Consultando base de datos...</div>
-            
-            <button class="search-btn" id="searchBtn">BUSCAR</button>
-        </section>
+            <button class="btn-search" id="btnSearch">BUSCAR CERTIFICADO</button>
 
-        <section class="result-section" id="resultSection">
-            <div class="result-header">DATOS DEL CERTIFICADO</div>
-            <div class="certificate-info" id="certificateData">
+            <div id="loader" style="display:none; text-align:center; margin-top:1rem; color:var(--color-guinda)">
+                Buscando en el Registro Nacional de Validez...
+            </div>
+        </div>
+
+        <div id="resultArea">
+            <div class="result-header">DATOS REGISTRADOS</div>
+            <div class="data-grid" id="dataContent">
                 </div>
-            <button class="search-btn" style="background: #555;" onclick="resetForm()">NUEVA CONSULTA</button>
-        </section>
+            <button class="btn-search btn-reset" onclick="location.reload()">NUEVA CONSULTA</button>
+        </div>
     </main>
 
     <script>
-        const certificadosDB = [
+        // Base de datos de prueba
+        const baseDeDatos = [
             {
-                folio: 'BACH202400001',
-                nombre: 'MARÍA ELENA GONZÁLEZ RAMÍREZ',
-                curp: 'GORM850115HDFLRN01',
-                escuela: 'COLEGIO NACIONAL DE BACHILLERES PLANTEL 05',
-                estadoCertificado: 'VÁLIDO'
+                folio: "BACH202401",
+                nombre: "RODRIGO HERNÁNDEZ MEZA",
+                curp: "HEMR020512HDFRRN01",
+                escuela: "CENTRO DE ESTUDIOS TECNOLÓGICOS INDUSTRIALES 14",
+                estatus: "VÁLIDO"
             },
             {
-                folio: 'BACH202400002',
-                nombre: 'JUAN CARLOS PÉREZ LÓPEZ',
-                curp: 'PELJ900520MDFRRL02',
-                escuela: 'PREPARATORIA FEDERAL MIGUEL HIDALGO',
-                estadoCertificado: 'VÁLIDO'
+                folio: "BACH202402",
+                nombre: "VALERIA RUIZ ESPARZA",
+                curp: "RUEV030120MDFRRL05",
+                escuela: "COLEGIO DE BACHILLERES PLANTEL 02",
+                estatus: "VÁLIDO"
             }
         ];
 
-        const searchBtn = document.getElementById('searchBtn');
+        const btnSearch = document.getElementById('btnSearch');
         const folioInput = document.getElementById('folio');
+        const resultArea = document.getElementById('resultArea');
+        const dataContent = document.getElementById('dataContent');
+        const loader = document.getElementById('loader');
 
-        searchBtn.addEventListener('click', () => {
-            const folioValue = folioInput.value.trim().toUpperCase();
+        btnSearch.addEventListener('click', () => {
+            const busqueda = folioInput.value.trim().toUpperCase();
             
-            if(folioValue === "") {
-                alert("Por favor ingrese un folio");
+            if (!busqueda) {
+                alert("Por favor, ingrese un número de folio.");
                 return;
             }
 
-            document.getElementById('loading').style.display = 'block';
-            searchBtn.disabled = true;
+            // Simular carga
+            loader.style.display = "block";
+            btnSearch.disabled = true;
+            resultArea.style.display = "none";
 
             setTimeout(() => {
-                const cert = certificadosDB.find(c => c.folio === folioValue);
-                document.getElementById('loading').style.display = 'none';
-                
-                const resultSection = document.getElementById('resultSection');
-                const certData = document.getElementById('certificateData');
+                const registro = baseDeDatos.find(r => r.folio === busqueda);
+                loader.style.display = "none";
+                btnSearch.disabled = false;
 
-                if (cert) {
-                    certData.innerHTML = `
-                        <div class="info-item"><span>Nombre:</span> ${cert.nombre}</div>
-                        <div class="info-item"><span>CURP:</span> ${cert.curp}</div>
-                        <div class="info-item"><span>Institución:</span> ${cert.escuela}</div>
-                        <div class="info-item"><span>Estado:</span> <span class="status-valid">${cert.estadoCertificado}</span></div>
+                if (registro) {
+                    dataContent.innerHTML = `
+                        <div class="data-item"><span class="data-label">Nombre completo</span><div class="data-value">${registro.nombre}</div></div>
+                        <div class="data-item"><span class="data-label">CURP</span><div class="data-value">${registro.curp}</div></div>
+                        <div class="data-item"><span class="data-label">Institución</span><div class="data-value">${registro.escuela}</div></div>
+                        <div class="data-item"><span class="data-label">Folio</span><div class="data-value">${registro.folio}</div></div>
+                        <div class="data-item"><span class="data-label">Estatus del documento</span><div class="data-value"><span class="badge-valid">${registro.estatus}</span></div></div>
                     `;
                 } else {
-                    certData.innerHTML = `<div style="color:red; text-align:center">No se encontró información para el folio: ${folioValue}</div>`;
+                    dataContent.innerHTML = `<div style="grid-column: 1/-1; color:red; text-align:center; padding: 20px;">
+                        No se encontró ningún registro vinculado al folio: <strong>${busqueda}</strong>. 
+                        Verifique que los datos sean correctos.</div>`;
                 }
                 
-                resultSection.style.display = 'block';
-                searchBtn.disabled = false;
-            }, 1000);
+                resultArea.style.display = "block";
+                resultArea.scrollIntoView({ behavior: 'smooth' });
+            }, 1200);
         });
-
-        function resetForm() {
-            folioInput.value = "";
-            document.getElementById('resultSection').style.display = 'none';
-        }
     </script>
 </body>
 </html>

@@ -6,10 +6,9 @@
     <title>Consulta de Certificados - Gobierno de México</title>
     <style>
         :root {
-            --color-guinda: #720026;
-            --color-oro: #D4C19C;
-            --color-gris-fondo: #F5F5F5;
-            --color-texto: #333333;
+            --gob-guinda: #720026;
+            --gob-oro: #D4C19C;
+            --gris-claro: #f4f4f4;
         }
 
         * {
@@ -19,284 +18,184 @@
             font-family: Arial, sans-serif;
         }
 
-        body {
-            background-color: white;
-            color: var(--color-texto);
-        }
-
-        /* HEADER SIN IMÁGENES EXTERNAS */
+        /* HEADER CON LA IMAGEN QUE SUBISTE */
         header {
-            background-color: var(--color-guinda);
-            padding: 0.8rem 2rem;
+            background-color: var(--gob-guinda);
+            padding: 10px 20px;
+            border-bottom: 4px solid var(--gob-oro);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 4px solid var(--color-oro);
         }
 
-        .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* Escudo Nacional creado con SVG embebido */
-        .escudo-svg {
-            width: 50px;
-            height: 50px;
-        }
-
-        .header-labels {
-            color: white;
-            line-height: 1.2;
-        }
-
-        .header-labels h2 {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .header-labels p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .menu-burger {
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+        .logo-gobierno {
+            /* He convertido tu imagen a código para que siempre se vea */
+            height: 60px;
+            width: auto;
         }
 
         /* CUERPO PRINCIPAL */
         main {
-            max-width: 900px;
-            margin: 3rem auto;
-            padding: 0 1rem;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        .title-box {
+        .titulo-seccion {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 30px;
+            color: #333;
         }
 
-        .title-box h1 {
-            font-size: 2.2rem;
-            color: #444;
-            line-height: 1.1;
+        .titulo-seccion h1 {
+            font-size: 24px;
             text-transform: uppercase;
+            border-bottom: 2px solid var(--gob-guinda);
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
         /* FORMULARIO */
-        .card {
+        .search-container {
             background: white;
-            padding: 2.5rem;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #ccc;
+            padding: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
+        .input-group {
+            margin-bottom: 20px;
         }
 
-        .form-group label {
+        .input-group label {
             display: block;
             font-weight: bold;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #555;
         }
 
-        .form-group input {
+        .input-group input {
             width: 100%;
             padding: 12px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            outline-color: var(--color-guinda);
+            font-size: 16px;
+            border: 1px solid #aaa;
+            text-transform: uppercase;
         }
 
-        .help-note {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 2rem;
-        }
-
-        .btn-search {
+        .btn-buscar {
             width: 100%;
-            padding: 15px;
-            background-color: var(--color-guinda);
+            background-color: var(--gob-guinda);
             color: white;
+            padding: 15px;
             border: none;
-            font-size: 1.1rem;
             font-weight: bold;
+            font-size: 16px;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .btn-search:hover {
-            background-color: #5a001e;
+        .btn-buscar:hover {
+            background-color: #54001c;
         }
 
-        /* SECCIÓN DE RESULTADOS */
-        #resultArea {
+        /* RESULTADOS */
+        #resultado {
+            margin-top: 30px;
             display: none;
-            margin-top: 2rem;
-            border: 2px solid var(--color-guinda);
+            border: 1px solid var(--gob-guinda);
         }
 
-        .result-header {
-            background: var(--color-guinda);
+        .res-header {
+            background: var(--gob-guinda);
             color: white;
             padding: 10px;
+            font-weight: bold;
             text-align: center;
-            font-weight: bold;
         }
 
-        .data-grid {
+        .res-body {
             padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            line-height: 1.6;
         }
 
-        .data-item {
-            padding: 8px;
-            border-bottom: 1px solid #eee;
+        .dato-fila {
+            margin-bottom: 10px;
+            border-bottom: 1px dotted #ccc;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .data-label {
-            font-size: 0.75rem;
-            color: #777;
-            display: block;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+        .etiqueta { font-weight: bold; color: #666; }
 
-        .data-value {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .badge-valid {
+        .status-valido {
             color: #155724;
-            background: #d4edda;
-            padding: 3px 10px;
+            background-color: #d4edda;
+            padding: 2px 8px;
             border-radius: 4px;
             font-weight: bold;
-        }
-
-        .btn-reset {
-            background: #666;
-            margin-top: 1rem;
-        }
-
-        @media (max-width: 600px) {
-            .title-box h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="header-logo">
-            <svg class="escudo-svg" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="48" fill="none" stroke="#D4C19C" stroke-width="2"/>
-                <path d="M50 20 L60 40 L80 40 L65 55 L70 75 L50 60 L30 75 L35 55 L20 40 L40 40 Z" fill="#D4C19C"/>
-            </svg>
-            <div class="header-labels">
-                <h2>Gobierno de</h2>
-                <p>México</p>
+<header>
+    <img class="logo-gobierno" src="data:image/jpeg;base64,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9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8Stf6m/1X2fX/E9X/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/DS9f8QA/9k=" alt="Gobierno de México">
+</header>
+
+<main>
+    <div class="titulo-seccion">
+        <h1>Consulta de Certificados</h1>
+    </div>
+
+    <div class="search-container">
+        <div class="input-group">
+            <label for="folio">Número de Folio:</label>
+            <input type="text" id="folio" placeholder="Escriba su folio aquí" autocomplete="off">
+        </div>
+        
+        <button class="btn-buscar" id="btnSearch">BUSCAR CERTIFICADO</button>
+    </div>
+
+    <div id="resultado">
+        <div class="res-header">REGISTRO ENCONTRADO</div>
+        <div class="res-body" id="info">
             </div>
-        </div>
-        <div class="menu-burger">☰</div>
-    </header>
+        <button class="btn-buscar" style="background:#666;" onclick="location.reload()">NUEVA CONSULTA</button>
+    </div>
+</main>
 
-    <main>
-        <div class="title-box">
-            <h1>Consulta de Certificados de Bachillerato</h1>
-        </div>
+<script>
+    // Base de datos ejemplo
+    const datos = [
+        { folio: "SEP2024A", nombre: "JUAN CARLOS PÉREZ", escuela: "ESC. SECUNDARIA TÉCNICA 14", status: "VÁLIDO" },
+        { folio: "SEP2024B", nombre: "MARÍA GARCÍA LÓPEZ", escuela: "INSTITUTO BACHILLERATO SUR", status: "VÁLIDO" }
+    ];
 
-        <div class="card">
-            <div class="form-group">
-                <label for="folio">Número de Folio:</label>
-                <input type="text" id="folio" placeholder="Ingrese el folio del certificado" autocomplete="off">
-            </div>
-            <p class="help-note">El folio se encuentra en la parte inferior o en el código QR del documento.</p>
-            
-            <button class="btn-search" id="btnSearch">BUSCAR CERTIFICADO</button>
+    document.getElementById('btnSearch').addEventListener('click', function() {
+        const busqueda = document.getElementById('folio').value.trim().toUpperCase();
+        const resDiv = document.getElementById('resultado');
+        const infoDiv = document.getElementById('info');
 
-            <div id="loader" style="display:none; text-align:center; margin-top:1rem; color:var(--color-guinda)">
-                Buscando en el Registro Nacional de Validez...
-            </div>
-        </div>
+        if(busqueda === "") {
+            alert("Por favor ingrese un folio");
+            return;
+        }
 
-        <div id="resultArea">
-            <div class="result-header">DATOS REGISTRADOS</div>
-            <div class="data-grid" id="dataContent">
-                </div>
-            <button class="btn-search btn-reset" onclick="location.reload()">NUEVA CONSULTA</button>
-        </div>
-    </main>
+        const registro = datos.find(d => d.folio === busqueda);
 
-    <script>
-        // Base de datos de prueba
-        const baseDeDatos = [
-            {
-                folio: "BACH202401",
-                nombre: "RODRIGO HERNÁNDEZ MEZA",
-                curp: "HEMR020512HDFRRN01",
-                escuela: "CENTRO DE ESTUDIOS TECNOLÓGICOS INDUSTRIALES 14",
-                estatus: "VÁLIDO"
-            },
-            {
-                folio: "BACH202402",
-                nombre: "VALERIA RUIZ ESPARZA",
-                curp: "RUEV030120MDFRRL05",
-                escuela: "COLEGIO DE BACHILLERES PLANTEL 02",
-                estatus: "VÁLIDO"
-            }
-        ];
+        if(registro) {
+            infoDiv.innerHTML = `
+                <div class="dato-fila"><span class="etiqueta">Titular:</span> <span>${registro.nombre}</span></div>
+                <div class="dato-fila"><span class="etiqueta">Institución:</span> <span>${registro.escuela}</span></div>
+                <div class="dato-fila"><span class="etiqueta">Folio:</span> <span>${registro.folio}</span></div>
+                <div class="dato-fila"><span class="etiqueta">Estatus:</span> <span class="status-valido">${registro.status}</span></div>
+            `;
+        } else {
+            infoDiv.innerHTML = `<div style="color:red; text-align:center">No se encontraron registros para el folio "${busqueda}"</div>`;
+        }
 
-        const btnSearch = document.getElementById('btnSearch');
-        const folioInput = document.getElementById('folio');
-        const resultArea = document.getElementById('resultArea');
-        const dataContent = document.getElementById('dataContent');
-        const loader = document.getElementById('loader');
+        resDiv.style.display = 'block';
+    });
+</script>
 
-        btnSearch.addEventListener('click', () => {
-            const busqueda = folioInput.value.trim().toUpperCase();
-            
-            if (!busqueda) {
-                alert("Por favor, ingrese un número de folio.");
-                return;
-            }
-
-            // Simular carga
-            loader.style.display = "block";
-            btnSearch.disabled = true;
-            resultArea.style.display = "none";
-
-            setTimeout(() => {
-                const registro = baseDeDatos.find(r => r.folio === busqueda);
-                loader.style.display = "none";
-                btnSearch.disabled = false;
-
-                if (registro) {
-                    dataContent.innerHTML = `
-                        <div class="data-item"><span class="data-label">Nombre completo</span><div class="data-value">${registro.nombre}</div></div>
-                        <div class="data-item"><span class="data-label">CURP</span><div class="data-value">${registro.curp}</div></div>
-                        <div class="data-item"><span class="data-label">Institución</span><div class="data-value">${registro.escuela}</div></div>
-                        <div class="data-item"><span class="data-label">Folio</span><div class="data-value">${registro.folio}</div></div>
-                        <div class="data-item"><span class="data-label">Estatus del documento</span><div class="data-value"><span class="badge-valid">${registro.estatus}</span></div></div>
-                    `;
-                } else {
-                    dataContent.innerHTML = `<div style="grid-column: 1/-1; color:red; text-align:center; padding: 20px;">
-                        No se encontró ningún registro vinculado al folio: <strong>${busqueda}</strong>. 
-                        Verifique que los datos sean correctos.</div>`;
-                }
-                
-                resultArea.style.display = "block";
-                resultArea.scrollIntoView({ behavior: 'smooth' });
-            }, 1200);
-        });
-    </script>
 </body>
 </html>

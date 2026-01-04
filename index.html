@@ -8,109 +8,120 @@
         :root {
             --gob-guinda: #720026;
             --gob-oro: #D4C19C;
+            --texto-oscuro: #333333;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
 
-        /* HEADER CON LA IMAGEN QUE SUBISTE */
+        body {
+            background-color: #ffffff;
+        }
+
+        /* HEADER */
         header {
-            background-color: white; /* Fondo blanco para que resalte el logo */
-            padding: 15px 20px;
-            border-bottom: 4px solid var(--gob-guinda);
+            background-color: #ffffff;
+            padding: 20px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            border-bottom: 5px solid var(--gob-guinda);
         }
 
-        .logo-gobierno {
-            max-height: 80px;
-            width: auto;
+        /* Contenedor de la imagen para asegurar que se vea */
+        .logo-container {
+            text-align: center;
+            max-width: 300px;
         }
 
-        /* LÍNEA DE SEPARACIÓN ORO */
-        .sub-header {
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sub-bar {
             background-color: var(--gob-guinda);
-            height: 10px;
-            border-bottom: 3px solid var(--gob-oro);
+            height: 12px;
+            border-bottom: 4px solid var(--gob-oro);
         }
 
+        /* CONTENIDO PRINCIPAL */
         main {
-            max-width: 800px;
-            margin: 40px auto;
+            max-width: 700px;
+            margin: 50px auto;
             padding: 0 20px;
         }
 
-        .titulo-seccion {
+        .titulo-principal {
             text-align: center;
-            margin-bottom: 30px;
-            color: #333;
-        }
-
-        .titulo-seccion h1 {
+            color: var(--texto-oscuro);
+            margin-bottom: 35px;
             font-size: 22px;
-            color: var(--gob-guinda);
+            font-weight: bold;
             text-transform: uppercase;
         }
 
-        .search-container {
+        .search-box {
             background: #f9f9f9;
             border: 1px solid #ddd;
             padding: 30px;
             border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
+        label {
             display: block;
+            margin-bottom: 10px;
             font-weight: bold;
-            margin-bottom: 8px;
             color: #555;
         }
 
-        .input-group input {
+        input[type="text"] {
             width: 100%;
             padding: 12px;
             font-size: 16px;
-            border: 1px solid #aaa;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            outline-color: var(--gob-guinda);
             text-transform: uppercase;
         }
 
-        .btn-buscar {
+        .btn-enviar {
             width: 100%;
             background-color: var(--gob-guinda);
             color: white;
             padding: 15px;
             border: none;
-            font-weight: bold;
             font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
+            transition: background 0.3s;
         }
 
-        .btn-buscar:hover {
-            background-color: #54001c;
+        .btn-enviar:hover {
+            background-color: #5a001e;
         }
 
-        #resultado {
+        /* RESULTADOS */
+        #resultadoArea {
             margin-top: 30px;
             display: none;
             border: 1px solid var(--gob-guinda);
+            border-radius: 4px;
+            overflow: hidden;
         }
 
         .res-header {
             background: var(--gob-guinda);
             color: white;
-            padding: 10px;
-            font-weight: bold;
+            padding: 12px;
             text-align: center;
+            font-weight: bold;
         }
 
         .res-body {
@@ -118,84 +129,96 @@
             background: white;
         }
 
-        .dato-fila {
-            margin-bottom: 10px;
+        .dato-row {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
             border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
         }
 
-        .etiqueta { font-weight: bold; color: #666; font-size: 12px; display: block; }
-        .valor { font-size: 16px; color: #333; }
+        .dato-label {
+            font-size: 11px;
+            color: #888;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-        .status-valido {
+        .dato-valor {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #d4edda;
             color: #155724;
-            background-color: #d4edda;
-            padding: 2px 8px;
+            padding: 4px 12px;
             border-radius: 4px;
             font-weight: bold;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img class="logo-gobierno" src="https://www.gob.mx/cms/uploads/image/file/485680/escudo-mexico.png" alt="Gobierno de México">
+    <div class="logo-container">
+        <img src="https://www.gob.mx/cms/uploads/image/file/485680/escudo-mexico.png" alt="Gobierno de México">
+    </div>
 </header>
-<div class="sub-header"></div>
+<div class="sub-bar"></div>
 
 <main>
-    <div class="titulo-seccion">
-        <h1>Consulta de Certificados del Bachillerato</h1>
-    </div>
+    <h1 class="titulo-principal">Consulta de Certificados Electrónicos</h1>
 
-    <div class="search-container">
-        <div class="input-group">
-            <label for="folio">Ingrese el Número de Folio:</label>
-            <input type="text" id="folio" placeholder="Ej: BACH202401" autocomplete="off">
-        </div>
+    <div class="search-box">
+        <label for="folio">Número de Folio:</label>
+        <input type="text" id="folio" placeholder="Ejemplo: BACH2024001" maxlength="20">
         
-        <button class="btn-buscar" id="btnSearch">VERIFICAR DOCUMENTO</button>
+        <button class="btn-enviar" id="btnConsultar">BUSCAR EN EL SISTEMA</button>
     </div>
 
-    <div id="resultado">
-        <div class="res-header">DETALLES DEL REGISTRO</div>
-        <div class="res-body" id="info">
+    <div id="resultadoArea">
+        <div class="res-header">RESULTADO DE LA BÚSQUEDA</div>
+        <div class="res-body" id="resContent">
             </div>
-        <button class="btn-buscar" style="background:#666;" onclick="location.reload()">REALIZAR OTRA CONSULTA</button>
+        <button class="btn-enviar" style="background:#444;" onclick="location.reload()">NUEVA CONSULTA</button>
     </div>
 </main>
 
 <script>
-    const datos = [
-        { folio: "BACH202401", nombre: "JUAN CARLOS PÉREZ", escuela: "COLEGIO DE BACHILLERES PLANTEL 01", status: "VÁLIDO" },
-        { folio: "BACH202402", nombre: "MARÍA GARCÍA LÓPEZ", escuela: "CENTRO DE ESTUDIOS TECNOLÓGICOS", status: "VÁLIDO" }
+    // Base de datos simulada
+    const baseDatos = [
+        { folio: "BACH2024001", nombre: "CARLOS ALBERTO RUIZ", escuela: "COLEGIO DE BACHILLERES 02", estatus: "VÁLIDO" },
+        { folio: "BACH2024002", nombre: "ANA SOFÍA MENDOZA", escuela: "PREPARATORIA FEDERAL LÁZARO CÁRDENAS", estatus: "VÁLIDO" }
     ];
 
-    document.getElementById('btnSearch').addEventListener('click', function() {
-        const busqueda = document.getElementById('folio').value.trim().toUpperCase();
-        const resDiv = document.getElementById('resultado');
-        const infoDiv = document.getElementById('info');
+    document.getElementById('btnConsultar').onclick = function() {
+        const input = document.getElementById('folio').value.trim().toUpperCase();
+        const area = document.getElementById('resultadoArea');
+        const content = document.getElementById('resContent');
 
-        if(busqueda === "") {
-            alert("Por favor ingrese un folio");
+        if (!input) {
+            alert("Por favor, ingrese un folio válido.");
             return;
         }
 
-        const registro = datos.find(d => d.folio === busqueda);
+        // Buscar en la "base de datos"
+        const registro = baseDatos.find(item => item.folio === input);
 
-        if(registro) {
-            infoDiv.innerHTML = `
-                <div class="dato-fila"><span class="etiqueta">NOMBRE DEL TITULAR:</span> <span class="valor">${registro.nombre}</span></div>
-                <div class="dato-fila"><span class="etiqueta">INSTITUCIÓN EDUCATIVA:</span> <span class="valor">${registro.escuela}</span></div>
-                <div class="dato-fila"><span class="etiqueta">FOLIO DE CERTIFICADO:</span> <span class="valor">${registro.folio}</span></div>
-                <div class="dato-fila"><span class="etiqueta">ESTADO ACTUAL:</span> <span class="valor"><span class="status-valido">${registro.status}</span></span></div>
+        if (registro) {
+            content.innerHTML = `
+                <div class="dato-row"><span class="dato-label">Nombre del Alumno</span><div class="dato-valor">${registro.nombre}</div></div>
+                <div class="dato-row"><span class="dato-label">Institución</span><div class="dato-valor">${registro.escuela}</div></div>
+                <div class="dato-row"><span class="dato-label">Folio</span><div class="dato-valor">${registro.folio}</div></div>
+                <div class="dato-row"><span class="dato-label">Estatus</span><div class="dato-valor"><span class="status-badge">${registro.estatus}</span></div></div>
             `;
         } else {
-            infoDiv.innerHTML = `<div style="color:red; text-align:center; padding: 10px;">No se encontró registro con ese folio.</div>`;
+            content.innerHTML = `<div style="text-align:center; color:red; padding:10px;">El folio ingresado no se encuentra en el Registro Nacional de Validez.</div>`;
         }
 
-        resDiv.style.display = 'block';
-    });
+        area.style.display = 'block';
+        area.scrollIntoView({ behavior: 'smooth' });
+    };
 </script>
 
 </body>

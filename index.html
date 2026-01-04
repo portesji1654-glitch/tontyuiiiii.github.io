@@ -12,72 +12,82 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Header */
+        /* Header rediseñado sin imágenes */
         header {
-            background-color: #720026;
+            background-color: #720026; /* Color institucional */
             padding: 1rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border-bottom: 4px solid #D4C19C; /* Dorado institucional */
         }
 
-        .logo-container {
+        .logo-sustituto {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 12px;
         }
 
-        .logo-mexico {
-           
-            object-fit: contain;
+        /* Círculo que simula el escudo */
+        .escudo-simbolo {
+            width: 45px;
+            height: 45px;
+            border: 2px solid #D4C19C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4C19C;
+            font-size: 0.6rem;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1;
         }
 
         .header-text h2 {
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
+            letter-spacing: 0.5px;
         }
 
         .header-text p {
             color: white;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            opacity: 0.9;
         }
 
         .menu-icon {
             color: white;
             font-size: 1.8rem;
-            font-weight: bold;
             cursor: pointer;
-            /* Alternativa si no usas la imagen del menú */
-            line-height: 1;
-        }
-
-        /* Línea divisoria */
-        .divider {
-            height: 4px;
-            background-color: #720026;
-            margin-bottom: 3rem;
         }
 
         /* Contenido principal */
         main {
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 3rem auto;
             padding: 0 1.5rem;
-            margin-bottom: 4rem;
         }
 
         .title-section h1 {
-            font-size: 2.5rem;
-            color: #333333;
+            font-size: 2.2rem;
+            color: #333;
             text-align: center;
-            line-height: 1.4;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.2;
+        }
+
+        /* Formulario */
+        .form-section {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .form-section label {
-            font-size: 1.2rem;
-            color: #333333;
+            font-size: 1.1rem;
             font-weight: bold;
             display: block;
             margin-bottom: 0.8rem;
@@ -85,263 +95,190 @@
 
         .form-section input {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 12px;
             font-size: 1rem;
-            border: 1px solid #cccccc;
-            border-radius: 0;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-section input::placeholder {
-            color: #999999;
-        }
-
-        .form-section input:invalid {
-            border-color: #dc3545;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+            outline-color: #720026;
         }
 
         .help-text {
-            font-size: 0.9rem;
-            color: #666666;
-            margin-bottom: 2rem;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 1.5rem;
             display: block;
-        }
-
-        .error-text {
-            color: #dc3545;
-            font-size: 0.9rem;
-            margin-top: -0.3rem;
-            margin-bottom: 1rem;
-            display: none;
         }
 
         .search-btn {
-            display: block;
-            margin: 0 auto;
-            padding: 0.8rem 2.5rem;
-            font-size: 1.1rem;
-            color: #720026;
-            background-color: white;
-            border: 2px solid #720026;
+            width: 100%;
+            padding: 15px;
+            background-color: #720026;
+            color: white;
+            border: none;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.3s;
         }
 
         .search-btn:hover {
-            background-color: #720026;
-            color: white;
+            background-color: #5a001e;
         }
 
         .search-btn:disabled {
-            opacity: 0.6;
+            background-color: #ccc;
             cursor: not-allowed;
-            background-color: white;
-            color: #720026;
         }
 
-        /* Sección de resultados */
+        /* Resultados */
         .result-section {
-            margin-top: 3rem;
-            padding: 1.5rem;
-            border: 2px solid #720026;
+            margin-top: 2rem;
+            border: 1px solid #720026;
+            border-radius: 4px;
             display: none;
+            overflow: hidden;
         }
 
-        .result-section h3 {
-            color: #720026;
-            font-size: 1.5rem;
+        .result-header {
+            background: #720026;
+            color: white;
+            padding: 10px;
             text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid #720026;
+            font-weight: bold;
         }
 
         .certificate-info {
+            padding: 20px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
 
         .info-item {
-            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+            padding: 8px 0;
+            font-size: 0.95rem;
         }
 
         .info-item span {
             font-weight: bold;
-            color: #333;
+            color: #555;
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
 
-        .loading-text {
+        .status-valid {
+            color: #155724;
+            background: #d4edda;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .loading {
             text-align: center;
-            color: #720026;
-            font-size: 1rem;
+            padding: 20px;
             display: none;
-        }
-
-        /* Ajuste para móviles */
-        @media (max-width: 600px) {
-            .title-section h1 {
-                font-size: 1.8rem;
-            }
-            .certificate-info {
-                grid-template-columns: 1fr;
-            }
+            color: #720026;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo-container">
-            <!-- Ruta relativa a la imagen en tu repositorio -->
-            <img src="assets/img/escudo_mexico.png" alt="Escudo de los Estados Unidos Mexicanos" class="logo-mexico" 
-                 onerror="this.style.display='none'"> <!-- Oculta la imagen si no carga -->
+        <div class="logo-sustituto">
+            <div class="escudo-simbolo">MÉXICO</div>
             <div class="header-text">
                 <h2>Gobierno de</h2>
                 <p>México</p>
             </div>
         </div>
-        <!-- Opcional: Usa imagen para el menú o mantén el icono de texto -->
-        <div class="menu-icon">
-            <!-- <img src="assets/img/menu_icon.svg" alt="Menú" style="height: 30px; width: auto;"> -->
-            ☰
-        </div>
+        <div class="menu-icon">☰</div>
     </header>
-
-    <div class="divider"></div>
 
     <main>
         <section class="title-section">
-            <h1>Consulta de<br>certificados del<br>bachillerato<br>general</h1>
+            <h1>Consulta de Certificados de Bachillerato</h1>
         </section>
 
         <section class="form-section">
-            <label for="folio">Número de Folio:</label>
-            <input type="text" id="folio" placeholder="Ingrese el número de folio del certificado" pattern="[A-Z0-9]{10,15}" title="El folio debe tener entre 10 y 15 caracteres (letras mayúsculas y números)">
-            <span class="error-text" id="folioError">* El folio es obligatorio y debe tener entre 10 y 15 caracteres (letras mayúsculas y números)</span>
-            <span class="help-text">El número de folio se encuentra en la parte inferior del certificado.</span>
-            <div class="loading-text" id="loading">Buscando certificado... Por favor espere</div>
-            <button class="search-btn" id="searchBtn">Buscar Certificado</button>
+            <label for="folio">Número de Folio</label>
+            <input type="text" id="folio" placeholder="Ej: BACH202400001">
+            <span class="help-text">Ingrese los 10 a 15 caracteres de su folio (letras y números).</span>
+            
+            <div id="loading" class="loading">Consultando base de datos...</div>
+            
+            <button class="search-btn" id="searchBtn">BUSCAR</button>
         </section>
 
-        <!-- Sección para mostrar resultados -->
         <section class="result-section" id="resultSection">
-            <h3>Información del Certificado</h3>
+            <div class="result-header">DATOS DEL CERTIFICADO</div>
             <div class="certificate-info" id="certificateData">
-                <!-- Aquí se cargarán los datos -->
-            </div>
-            <button class="search-btn" id="newSearchBtn">Realizar Nueva Búsqueda</button>
+                </div>
+            <button class="search-btn" style="background: #555;" onclick="resetForm()">NUEVA CONSULTA</button>
         </section>
     </main>
 
     <script>
-        // Elementos del DOM
-        const folioInput = document.getElementById('folio');
-        const folioError = document.getElementById('folioError');
-        const searchBtn = document.getElementById('searchBtn');
-        const loadingText = document.getElementById('loading');
-        const resultSection = document.getElementById('resultSection');
-        const certificateData = document.getElementById('certificateData');
-        const newSearchBtn = document.getElementById('newSearchBtn');
-
-        // Datos de ejemplo (en un proyecto real, esto vendría de una API o base de datos)
         const certificadosDB = [
             {
                 folio: 'BACH202400001',
                 nombre: 'MARÍA ELENA GONZÁLEZ RAMÍREZ',
                 curp: 'GORM850115HDFLRN01',
-                fechaNacimiento: '15/01/1985',
                 escuela: 'COLEGIO NACIONAL DE BACHILLERES PLANTEL 05',
-                municipio: 'CIUDAD DE MÉXICO',
-                estado: 'CIUDAD DE MÉXICO',
-                fechaEmision: '20/06/2024',
                 estadoCertificado: 'VÁLIDO'
             },
             {
                 folio: 'BACH202400002',
                 nombre: 'JUAN CARLOS PÉREZ LÓPEZ',
                 curp: 'PELJ900520MDFRRL02',
-                fechaNacimiento: '20/05/1990',
                 escuela: 'PREPARATORIA FEDERAL MIGUEL HIDALGO',
-                municipio: 'GUADALAJARA',
-                estado: 'JALISCO',
-                fechaEmision: '15/07/2024',
-                estadoCertificado: 'VÁLIDO'
-            },
-            {
-                folio: 'BACH202300150',
-                nombre: 'ANA SOFÍA LÓPEZ CASTILLO',
-                curp: 'LOCA981203HDFZSN03',
-                fechaNacimiento: '03/12/1998',
-                escuela: 'COLEGIO DE BACHILLERES DEL ESTADO DE MÉXICO PLANTEL 22',
-                municipio: 'TOLUCA',
-                estado: 'ESTADO DE MÉXICO',
-                fechaEmision: '05/12/2023',
                 estadoCertificado: 'VÁLIDO'
             }
         ];
 
-        // Validación del campo folio
-        folioInput.addEventListener('input', () => {
-            if (!folioInput.validity.valid) {
-                folioError.style.display = 'block';
-                searchBtn.disabled = true;
-            } else {
-                folioError.style.display = 'none';
-                searchBtn.disabled = false;
-            }
-        });
+        const searchBtn = document.getElementById('searchBtn');
+        const folioInput = document.getElementById('folio');
 
-        // Función para buscar el certificado
         searchBtn.addEventListener('click', () => {
-            const folio = folioInput.value.trim();
+            const folioValue = folioInput.value.trim().toUpperCase();
             
-            // Mostrar mensaje de carga
-            loadingText.style.display = 'block';
-            searchBtn.style.display = 'none';
-            resultSection.style.display = 'none';
+            if(folioValue === "") {
+                alert("Por favor ingrese un folio");
+                return;
+            }
 
-            // Simular tiempo de consulta a servidor (1.5 segundos)
-            setTimeout(() => {
-                const certificado = certificadosDB.find(cert => cert.folio === folio);
-                
-                // Ocultar mensaje de carga
-                loadingText.style.display = 'none';
-                searchBtn.style.display = 'block';
-
-                if (certificado) {
-                    // Mostrar datos del certificado
-                    certificateData.innerHTML = `
-                        <div class="info-item"><span>Folio:</span> ${certificado.folio}</div>
-                        <div class="info-item"><span>Nombre del Titular:</span> ${certificado.nombre}</div>
-                        <div class="info-item"><span>CURP:</span> ${certificado.curp}</div>
-                        <div class="info-item"><span>Fecha de Nacimiento:</span> ${certificado.fechaNacimiento}</div>
-                        <div class="info-item"><span>Escuela:</span> ${certificado.escuela}</div>
-                        <div class="info-item"><span>Municipio:</span> ${certificado.municipio}</div>
-                        <div class="info-item"><span>Estado:</span> ${certificado.estado}</div>
-                        <div class="info-item"><span>Fecha de Emisión:</span> ${certificado.fechaEmision}</div>
-                        <div class="info-item"><span>Estado del Certificado:</span> ${certificado.estadoCertificado}</div>
-                    `;
-                    resultSection.style.display = 'block';
-                } else {
-                    // Mostrar mensaje de error si no se encuentra
-                    certificateData.innerHTML = `
-                        <div style="grid-column: 1 / -1; text-align: center; color: #dc3545; font-weight: bold;">
-                            No se encontró ningún certificado con el folio ingresado
-                        </div>
-                    `;
-                    resultSection.style.display = 'block';
-                }
-            }, 1500);
-        });
-
-        // Botón para nueva búsqueda
-        newSearchBtn.addEventListener('click', () => {
-            folioInput.value = '';
-            resultSection.style.display = 'none';
-            folioError.style.display = 'none';
+            document.getElementById('loading').style.display = 'block';
             searchBtn.disabled = true;
+
+            setTimeout(() => {
+                const cert = certificadosDB.find(c => c.folio === folioValue);
+                document.getElementById('loading').style.display = 'none';
+                
+                const resultSection = document.getElementById('resultSection');
+                const certData = document.getElementById('certificateData');
+
+                if (cert) {
+                    certData.innerHTML = `
+                        <div class="info-item"><span>Nombre:</span> ${cert.nombre}</div>
+                        <div class="info-item"><span>CURP:</span> ${cert.curp}</div>
+                        <div class="info-item"><span>Institución:</span> ${cert.escuela}</div>
+                        <div class="info-item"><span>Estado:</span> <span class="status-valid">${cert.estadoCertificado}</span></div>
+                    `;
+                } else {
+                    certData.innerHTML = `<div style="color:red; text-align:center">No se encontró información para el folio: ${folioValue}</div>`;
+                }
+                
+                resultSection.style.display = 'block';
+                searchBtn.disabled = false;
+            }, 1000);
         });
+
+        function resetForm() {
+            folioInput.value = "";
+            document.getElementById('resultSection').style.display = 'none';
+        }
     </script>
 </body>
 </html>

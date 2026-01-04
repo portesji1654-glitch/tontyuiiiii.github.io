@@ -8,7 +8,6 @@
         :root {
             --gob-guinda: #720026;
             --gob-oro: #D4C19C;
-            --gris-claro: #f4f4f4;
         }
 
         * {
@@ -20,20 +19,26 @@
 
         /* HEADER CON LA IMAGEN QUE SUBISTE */
         header {
-            background-color: var(--gob-guinda);
-            padding: 10px 20px;
-            border-bottom: 4px solid var(--gob-oro);
+            background-color: white; /* Fondo blanco para que resalte el logo */
+            padding: 15px 20px;
+            border-bottom: 4px solid var(--gob-guinda);
             display: flex;
             align-items: center;
+            justify-content: center;
         }
 
         .logo-gobierno {
-            /* He convertido tu imagen a código para que siempre se vea */
-            height: 60px;
+            max-height: 80px;
             width: auto;
         }
 
-        /* CUERPO PRINCIPAL */
+        /* LÍNEA DE SEPARACIÓN ORO */
+        .sub-header {
+            background-color: var(--gob-guinda);
+            height: 10px;
+            border-bottom: 3px solid var(--gob-oro);
+        }
+
         main {
             max-width: 800px;
             margin: 40px auto;
@@ -47,19 +52,16 @@
         }
 
         .titulo-seccion h1 {
-            font-size: 24px;
+            font-size: 22px;
+            color: var(--gob-guinda);
             text-transform: uppercase;
-            border-bottom: 2px solid var(--gob-guinda);
-            display: inline-block;
-            padding-bottom: 5px;
         }
 
-        /* FORMULARIO */
         .search-container {
-            background: white;
-            border: 1px solid #ccc;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
             padding: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 4px;
         }
 
         .input-group {
@@ -97,7 +99,6 @@
             background-color: #54001c;
         }
 
-        /* RESULTADOS */
         #resultado {
             margin-top: 30px;
             display: none;
@@ -114,17 +115,17 @@
 
         .res-body {
             padding: 20px;
-            line-height: 1.6;
+            background: white;
         }
 
         .dato-fila {
             margin-bottom: 10px;
-            border-bottom: 1px dotted #ccc;
-            display: flex;
-            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
         }
 
-        .etiqueta { font-weight: bold; color: #666; }
+        .etiqueta { font-weight: bold; color: #666; font-size: 12px; display: block; }
+        .valor { font-size: 16px; color: #333; }
 
         .status-valido {
             color: #155724;
@@ -138,36 +139,36 @@
 <body>
 
 <header>
-    <img class="logo-gobierno" src="data:image/jpeg;base64,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9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8AStf6m/1X2fX/AEv2mS7t+ZmUuScwtK616w6tZ4VPrid9M97P9Lt8P+Zc+kA/1L/1R9f9Lt7P9Lt7P9Lt7P8Stf6m/1X2fX/E9X/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/wDS9e/9L17/ANL17/0vXv8A0vXv/S9e/DS9f8QA/9k=" alt="Gobierno de México">
+    <img class="logo-gobierno" src="https://www.gob.mx/cms/uploads/image/file/485680/escudo-mexico.png" alt="Gobierno de México">
 </header>
+<div class="sub-header"></div>
 
 <main>
     <div class="titulo-seccion">
-        <h1>Consulta de Certificados</h1>
+        <h1>Consulta de Certificados del Bachillerato</h1>
     </div>
 
     <div class="search-container">
         <div class="input-group">
-            <label for="folio">Número de Folio:</label>
-            <input type="text" id="folio" placeholder="Escriba su folio aquí" autocomplete="off">
+            <label for="folio">Ingrese el Número de Folio:</label>
+            <input type="text" id="folio" placeholder="Ej: BACH202401" autocomplete="off">
         </div>
         
-        <button class="btn-buscar" id="btnSearch">BUSCAR CERTIFICADO</button>
+        <button class="btn-buscar" id="btnSearch">VERIFICAR DOCUMENTO</button>
     </div>
 
     <div id="resultado">
-        <div class="res-header">REGISTRO ENCONTRADO</div>
+        <div class="res-header">DETALLES DEL REGISTRO</div>
         <div class="res-body" id="info">
             </div>
-        <button class="btn-buscar" style="background:#666;" onclick="location.reload()">NUEVA CONSULTA</button>
+        <button class="btn-buscar" style="background:#666;" onclick="location.reload()">REALIZAR OTRA CONSULTA</button>
     </div>
 </main>
 
 <script>
-    // Base de datos ejemplo
     const datos = [
-        { folio: "SEP2024A", nombre: "JUAN CARLOS PÉREZ", escuela: "ESC. SECUNDARIA TÉCNICA 14", status: "VÁLIDO" },
-        { folio: "SEP2024B", nombre: "MARÍA GARCÍA LÓPEZ", escuela: "INSTITUTO BACHILLERATO SUR", status: "VÁLIDO" }
+        { folio: "BACH202401", nombre: "JUAN CARLOS PÉREZ", escuela: "COLEGIO DE BACHILLERES PLANTEL 01", status: "VÁLIDO" },
+        { folio: "BACH202402", nombre: "MARÍA GARCÍA LÓPEZ", escuela: "CENTRO DE ESTUDIOS TECNOLÓGICOS", status: "VÁLIDO" }
     ];
 
     document.getElementById('btnSearch').addEventListener('click', function() {
@@ -184,13 +185,13 @@
 
         if(registro) {
             infoDiv.innerHTML = `
-                <div class="dato-fila"><span class="etiqueta">Titular:</span> <span>${registro.nombre}</span></div>
-                <div class="dato-fila"><span class="etiqueta">Institución:</span> <span>${registro.escuela}</span></div>
-                <div class="dato-fila"><span class="etiqueta">Folio:</span> <span>${registro.folio}</span></div>
-                <div class="dato-fila"><span class="etiqueta">Estatus:</span> <span class="status-valido">${registro.status}</span></div>
+                <div class="dato-fila"><span class="etiqueta">NOMBRE DEL TITULAR:</span> <span class="valor">${registro.nombre}</span></div>
+                <div class="dato-fila"><span class="etiqueta">INSTITUCIÓN EDUCATIVA:</span> <span class="valor">${registro.escuela}</span></div>
+                <div class="dato-fila"><span class="etiqueta">FOLIO DE CERTIFICADO:</span> <span class="valor">${registro.folio}</span></div>
+                <div class="dato-fila"><span class="etiqueta">ESTADO ACTUAL:</span> <span class="valor"><span class="status-valido">${registro.status}</span></span></div>
             `;
         } else {
-            infoDiv.innerHTML = `<div style="color:red; text-align:center">No se encontraron registros para el folio "${busqueda}"</div>`;
+            infoDiv.innerHTML = `<div style="color:red; text-align:center; padding: 10px;">No se encontró registro con ese folio.</div>`;
         }
 
         resDiv.style.display = 'block';

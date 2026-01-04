@@ -8,46 +8,37 @@
         :root {
             --gob-guinda: #720026;
             --gob-oro: #D4C19C;
-            --texto: #333333;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
         }
 
-        /* HEADER PROFESIONAL */
+        /* HEADER */
         header {
-            background-color: #ffffff;
-            padding: 15px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-color: white;
+            padding: 20px;
             border-bottom: 5px solid var(--gob-guinda);
+            display: flex;
+            justify-content: center;
         }
 
-        .logo-container {
-            width: 100%;
-            max-width: 350px;
-            padding: 0 20px;
-        }
-
-        .logo-container img {
-            width: 100%;
+        .logo-gob {
+            /* URL Directa para que funcione en GitHub */
+            max-width: 300px;
             height: auto;
             display: block;
         }
 
-        .gold-bar {
+        .barra-oro {
             background-color: var(--gob-guinda);
-            width: 100%;
             height: 12px;
             border-bottom: 4px solid var(--gob-oro);
         }
 
-        /* CUERPO */
         main {
             max-width: 800px;
             margin: 40px auto;
@@ -55,14 +46,7 @@
             text-align: center;
         }
 
-        h1 {
-            color: var(--texto);
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        .card-busqueda {
+        .card {
             background: #f9f9f9;
             border: 1px solid #ddd;
             padding: 30px;
@@ -70,144 +54,67 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-align: left;
-            color: #555;
-        }
-
         input[type="text"] {
             width: 100%;
             padding: 15px;
-            font-size: 1rem;
+            margin: 20px 0;
             border: 1px solid #ccc;
-            margin-bottom: 20px;
             text-transform: uppercase;
         }
 
-        .btn-principal {
+        .btn {
             width: 100%;
             background-color: var(--gob-guinda);
             color: white;
             padding: 15px;
             border: none;
             font-weight: bold;
-            font-size: 1rem;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .btn-principal:hover {
-            background-color: #5a001e;
-        }
-
-        /* RESULTADOS */
-        #seccionResultado {
+        #resultado {
             display: none;
-            margin-top: 30px;
-            border: 1px solid var(--gob-guinda);
+            margin-top: 20px;
             text-align: left;
-        }
-
-        .res-titulo {
-            background: var(--gob-guinda);
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .res-contenido {
-            padding: 20px;
+            border: 1px solid var(--gob-guinda);
             background: white;
-        }
-
-        .dato {
-            margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .label-dato {
-            font-size: 0.75rem;
-            color: #888;
-            font-weight: bold;
-        }
-
-        .valor-dato {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .badge-valido {
-            background: #d4edda;
-            color: #155724;
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-container">
-        <img src="https://www.gob.mx/cms/uploads/image/file/485680/escudo-mexico.png" alt="Gobierno de México">
-    </div>
+    <img class="logo-gob" src="https://www.gob.mx/cms/uploads/image/file/485680/escudo-mexico.png" alt="Gobierno de México">
 </header>
-<div class="gold-bar"></div>
+<div class="barra-oro"></div>
 
 <main>
-    <h1>Consulta de Certificados de Bachillerato</h1>
-
-    <div class="card-busqueda">
-        <label for="folioInput">Número de Folio:</label>
-        <input type="text" id="folioInput" placeholder="EJEMPLO: BACH2024001" maxlength="20">
-        <button class="btn-principal" id="btnBuscar">VERIFICAR CERTIFICADO</button>
+    <h1>Consulta de Certificados</h1>
+    <div class="card">
+        <label>Número de Folio:</label>
+        <input type="text" id="folio" placeholder="EJEMPLO: BACH202401">
+        <button class="btn" onclick="buscar()">VERIFICAR</button>
     </div>
 
-    <div id="seccionResultado">
-        <div class="res-titulo">INFORMACIÓN DEL DOCUMENTO</div>
-        <div class="res-contenido" id="infoContent">
-            </div>
-        <button class="btn-principal" style="background:#444;" onclick="location.reload()">NUEVA CONSULTA</button>
+    <div id="resultado">
+        <div style="background:var(--gob-guinda); color:white; padding:10px; text-align:center;">DATOS ENCONTRADOS</div>
+        <div id="info" style="padding:20px;"></div>
     </div>
 </main>
 
 <script>
-    // Base de datos de ejemplo
-    const certificados = [
-        { folio: "BACH2024001", nombre: "JUAN PÉREZ LÓPEZ", escuela: "COLEGIO DE BACHILLERES PLANTEL 02", status: "VÁLIDO" },
-        { folio: "BACH2024002", nombre: "MARÍA GARCÍA SOSA", escuela: "CENTRO DE ESTUDIOS TÉCNICOS", status: "VÁLIDO" }
-    ];
-
-    document.getElementById('btnBuscar').onclick = function() {
-        const busqueda = document.getElementById('folioInput').value.trim().toUpperCase();
-        const resultadoArea = document.getElementById('seccionResultado');
-        const content = document.getElementById('infoContent');
-
-        if (!busqueda) {
-            alert("Por favor, ingrese un folio.");
-            return;
-        }
-
-        const encontrado = certificados.find(c => c.folio === busqueda);
-
-        if (encontrado) {
-            content.innerHTML = `
-                <div class="dato"><p class="label-dato">NOMBRE DEL TITULAR</p><p class="valor-dato">${encontrado.nombre}</p></div>
-                <div class="dato"><p class="label-dato">INSTITUCIÓN EDUCATIVA</p><p class="valor-dato">${encontrado.escuela}</p></div>
-                <div class="dato"><p class="label-dato">FOLIO</p><p class="valor-dato">${encontrado.folio}</p></div>
-                <div class="dato"><p class="label-dato">ESTADO</p><p class="valor-dato"><span class="badge-valido">${encontrado.status}</span></p></div>
-            `;
+    function buscar() {
+        const f = document.getElementById('folio').value.toUpperCase();
+        const res = document.getElementById('resultado');
+        const info = document.getElementById('info');
+        
+        if(f === "BACH202401") {
+            info.innerHTML = "<strong>Nombre:</strong> JUAN PÉREZ<br><strong>Estado:</strong> VÁLIDO";
+            res.style.display = "block";
         } else {
-            content.innerHTML = `<p style="color:red; text-align:center;">No se encontró registro con el folio <strong>${busqueda}</strong>.</p>`;
+            alert("Folio no encontrado");
         }
-
-        resultadoArea.style.display = 'block';
-    };
+    }
 </script>
-
 </body>
 </html>

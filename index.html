@@ -2,81 +2,83 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Estilos Base */
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
 
+        /* Contenedor del Banner */
         .banner-container {
-            background-color: #D4C19C; /* Oro oficial */
-            /* Se utiliza una URL de respaldo del repositorio de activos de la CDMX/Gob que es más estable */
-            background-image: url('https://framework-gb.cdn.gob.mx/landing/img/felipe-carrillo-puerto.png');
+            background-color: #D4C19C; /* Color Oro oficial */
+            /* IMPORTANTE: Si esta URL falla, usa una imagen local */
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Felipe_Carrillo_Puerto_proverb.jpg/400px-Felipe_Carrillo_Puerto_proverb.jpg');
             background-size: contain;
             background-position: right center;
             background-repeat: no-repeat;
             height: 150px;
             width: 100%;
-            position: relative;
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Capa opcional para asegurar que el patrón de fondo institucional no oculte la imagen */
-        .banner-container::before {
+        /* Filtro para que la imagen se mezcle con el fondo oro */
+        .banner-container::after {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('https://framework-gb.cdn.gob.mx/landing/img/patron.png');
-            opacity: 0.2;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(212, 193, 156, 0.3); /* Capa dorada transparente */
             pointer-events: none;
         }
 
-        .logo-mexico {
+        /* Espacio para el logo izquierdo */
+        .logo-gob-container {
             padding-left: 5%;
-            z-index: 1;
+            z-index: 2;
         }
 
-        .logo-mexico img {
+        .logo-gob-container img {
             height: 80px;
+            /* Si el logo no carga, este texto se verá */
+            color: #4d0b24;
+            font-weight: bold;
         }
 
+        /* Menú Marrón/Guinda */
         .main-menu {
-            background-color: #48091d; /* Guinda oficial */
-            padding: 12px 10% 12px 0;
+            background-color: #4d0b24; /* Guinda oficial */
+            padding: 12px 5%;
             display: flex;
             justify-content: flex-end;
             gap: 25px;
             color: white;
             font-size: 14px;
-            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .main-menu span {
             cursor: pointer;
-            font-weight: 400;
-            transition: 0.3s opacity;
+            font-weight: 300;
         }
 
         .main-menu span:hover {
-            opacity: 0.7;
             text-decoration: underline;
         }
 
-        /* Ajuste para dispositivos móviles */
+        /* Responsive */
         @media (max-width: 768px) {
             .banner-container {
                 height: 100px;
-                background-size: 60%; /* Más pequeño en móvil */
+                background-size: cover; /* Para que rellene en móvil */
             }
             .main-menu {
+                gap: 10px;
+                font-size: 11px;
                 justify-content: center;
-                padding-right: 0;
-                gap: 15px;
-                font-size: 12px;
             }
         }
     </style>
@@ -84,8 +86,8 @@
 <body>
 
     <div class="banner-container">
-        <div class="logo-mexico">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-gob-mx.png" alt="Gobierno de México">
+        <div class="logo-gob-container">
+            <img src="https://www.gob.mx/cms/uploads/image/file/488329/logo-gob-mx.png" alt="Gobierno de México">
         </div>
     </div>
 
@@ -94,7 +96,7 @@
         <span>Gobierno</span>
         <span>Participa</span>
         <span>Datos</span>
-        <span><i class="search-icon">🔍</i></span>
+        <span>🔍</span>
     </nav>
 
 </body>

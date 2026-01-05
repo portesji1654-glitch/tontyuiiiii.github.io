@@ -6,47 +6,14 @@
     <title>Bachillerato Abierto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: white; }
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&display=swap');
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #ffffff; }
         .bg-gob-guinda { background-color: #621132; }
         .bg-gob-dorado { background-color: #9D843E; }
-        
-        /* Contenedor para que el logo no se deforme */
-        .logo-gob {
-            height: 80px;
-            width: auto;
-        }
     </style>
 </head>
 <body>
 
     <header class="bg-gob-guinda w-full p-4 md:px-16 flex justify-end items-center">
-        <img src="https://www.gob.mx/cms/uploads/image/file/485748/logo-gobierno-de-mexico.png" 
-             alt="Gobierno de México" 
-             class="logo-gob"
-             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Escudo_Armas_Mexico.svg/200px-Escudo_Armas_Mexico.svg.png'; this.style.filter='brightness(0) invert(1)';"
-        >
-    </header>
-
-    <div class="bg-gob-dorado w-full py-8 px-8 md:px-16 shadow-lg">
-        <h1 class="text-white text-4xl md:text-5xl font-light tracking-widest uppercase m-0">
-            Bachillerato<br class="md:hidden"> Abierto
-        </h1>
-    </div>
-
-    <main class="max-w-4xl mx-auto mt-12 p-6">
-        <div class="border-l-4 border-[#621132] pl-6 py-2 mb-10">
-            <h2 class="text-3xl font-bold text-gray-800">Recursos Digitales</h2>
-            <p class="text-gray-600 mt-2">Bienvenido al repositorio oficial de materiales de estudio.</p>
-        </div>
-
-        <div class="grid grid-cols-1 gap-4">
-            <div class="p-6 bg-gray-50 border rounded-lg flex items-center justify-between">
-                <span class="text-gray-700 font-medium">Esperando confirmación de diseño...</span>
-                <span class="text-green-600 font-bold">● Activo</span>
-            </div>
-        </div>
-    </main>
-
-</body>
-</html>
+        <div class="flex items-center">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAAB4YyS8AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkY0MzBGRTM2RDhBMTExRTg4M0I3OEY4RjhGOEY4RjhGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkY0MzBGRTM3RDhBMTExRTg4M0I3OEY4RjhGOEY4RjhGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjQzMEZFMzREOEExMTFFODgzQjdGOEY4RjhGOEY4RkkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjQzMEZFMzVEOEExMTFFODgzQjdGOEY4RjhGOEY4RkkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InciPz4766j0AAAAnFBMVEVMaXGdnp6np6f///8mJiYWFhYvLy87Ozt3d3fMzMzW1tbj4+P09PTp6enV1dU5OTmRkZG3t7e+vr6/v79hYWFzc3Ofn5+ioqKwsLBpaWlOTk4jIyN9fX2VlZWcnJyjo6NsbGxXV1dBQUETExNEREQzMzNKSko0NDRvb29GRkY8PDxPT098fHx6enpMTEyKiopiYmJLS0sXFxdvXpYfAAAAHXRSTlMAGBAcHSAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5ovS9pAAAAm5JREFUeNrs2YWSgzAMBuCUKm2hpY7u/v9XHSAsYAnMkXv33v836S8hYV8Anuc7V4uI6u0HIKm66jW9XInK4gWQTN1OInM7N68HIF3Wv9S7vVvXGxBvD68W39GbeX18Y582736/f6+37H73N0pESYooSUYpLUnSkmSkZpSUpKykYpQUpaykZpSUpaykZpSUpaykZpSUpaykZpSUpaykZpSUpaykZpSUpaykZpSUpaykZpSUX76U/1pKaSillFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKa

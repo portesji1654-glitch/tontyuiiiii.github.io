@@ -9,7 +9,8 @@
     
     <style>
         :root {
-            --rojo-gob: #B11830;
+            --negro-texto: #333333; /* Color negro suave para lectura */
+            --rojo-gob: #720026;
             --guinda-footer: #691C32;
             --oro-gob: #D4C19C;
         }
@@ -25,6 +26,8 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: var(--negro-texto);
+            background-color: #ffffff;
         }
 
         /* HEADER */
@@ -37,7 +40,7 @@
 
         .logo-header { height: 45px; }
 
-        .barra-roja {
+        .barra-superior {
             background-color: var(--rojo-gob);
             height: 10px;
             border-bottom: 3px solid var(--oro-gob);
@@ -52,186 +55,98 @@
             text-align: center;
         }
 
-        .titulos-rojos h2, .titulos-rojos h3, .titulos-rojos p {
-            color: var(--rojo-gob);
+        /* Títulos en COLOR NEGRO según tu petición */
+        .seccion-titulos h2 {
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 10px;
+            color: #000000;
         }
 
+        .seccion-titulos h3 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #000000;
+        }
+
+        .seccion-titulos p {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        /* TARJETA DE BUSQUEDA */
         .card {
-            margin-top: 30px;
+            margin-top: 40px;
             padding: 40px;
-            border: 1px solid #ddd;
+            border: 1px solid #eeeeee;
             border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             background: #fff;
         }
 
-        input {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px;
-            margin: 20px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            text-align: center;
-            font-family: inherit;
-        }
-
-        .btn {
-            background-color: var(--rojo-gob);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            cursor: pointer;
+        label {
+            display: block;
             font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 450px;
+            padding: 15px;
+            border: 1px solid #cccccc;
             border-radius: 4px;
-        }
-
-        /* FOOTER (Basado en tu imagen) */
-        footer {
-            background-color: var(--guinda-footer);
-            color: white;
-            padding: 40px 50px;
-            margin-top: 50px;
-        }
-
-        .footer-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .logo-footer {
-            height: 60px;
-            margin-bottom: 30px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 20px;
+            font-size: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: inherit;
             margin-bottom: 20px;
         }
 
-        .col h4 {
-            margin-bottom: 15px;
-            font-size: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .denuncia {
-            font-weight: bold;
-            text-decoration: underline;
-            margin-bottom: 25px;
-            display: block;
+        .btn-verificar {
+            background-color: #12322B; /* Verde institucional para el botón */
             color: white;
-        }
-
-        .social-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .social-icons i {
-            font-size: 24px;
-            margin-left: 15px;
-            cursor: pointer;
-        }
-
-        .atencion-ciudadana {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .atencion-ciudadana img {
-            height: 40px;
-        }
-
-        .atencion-ciudadana .numero {
-            font-size: 40px;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 4px;
             font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: inherit;
         }
-    </style>
-</head>
-<body>
 
-<header>
-    <img class="logo-header" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-</header>
-<div class="barra-roja"></div>
-
-<main>
-    <div class="titulos-rojos">
-        <h2>Subsecretaría de Educación Media Superior</h2>
-        <h3>Consulta de Certificado Semielectrónico</h3>
-        <p>Institución Pública Centralizada</p>
-    </div>
-
-    <div class="card">
-        <label style="font-weight: bold;">Número de Folio:</label><br>
-        <input type="text" id="folio" placeholder="INGRESE FOLIO">
-        <br>
-        <button class="btn" onclick="buscar()">VERIFICAR</button>
-    </div>
-
-    <div id="resultado" style="display:none; margin-top:20px; border:1px solid #B11830; padding:20px;">
-        <div id="info"></div>
-    </div>
-</main>
-
-<footer>
-    <div class="footer-container">
-        <img class="logo-footer" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        
-        <div class="footer-links">
-            <div class="col" style="width: 45%;">
-                <h4>Enlaces <span>v</span></h4>
-            </div>
-            <div class="col" style="width: 45%;">
-                <h4>¿Qué es gob.mx? <span>v</span></h4>
-            </div>
-        </div>
-
-        <a href="#" class="denuncia">Denuncia contra servidores públicos</a>
-
-        <div class="social-section">
-            <span>Síguenos en</span>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-x-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-youtube"></i>
-            </div>
-        </div>
-
-        <div class="atencion-ciudadana">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/flor.svg" alt="icono">
-            <span class="numero">079</span>
-            <p>Comunícate, estamos<br>para ayudarte</p>
-        </div>
-    </div>
-</footer>
-
-<script>
-    function buscar() {
-        const f = document.getElementById('folio').value.toUpperCase().trim();
-        const res = document.getElementById('resultado');
-        const info = document.getElementById('info');
-        
-        if(f === "BACH202401") {
-            info.innerHTML = "<strong>Nombre:</strong> JUAN PÉREZ LÓPEZ<br><strong>Estado:</strong> VÁLIDO";
-            res.style.display = "block";
-        } else {
-            alert("No encontrado");
+        .btn-verificar:hover {
+            background-color: var(--rojo-gob);
         }
-    }
-</script>
 
-</body>
-</html>
+        /* RESULTADOS */
+        #resultado {
+            display: none;
+            margin-top: 30px;
+            text-align: left;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .res-header {
+            background: #f4f4f4;
+            color: #000;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-data {
+            padding: 20px;
+            background: #fff;
+        }
+
+        /* FOOTER (Imagen 2) */
+        footer {
+            background-color: var(--

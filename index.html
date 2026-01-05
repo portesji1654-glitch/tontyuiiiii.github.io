@@ -8,35 +8,34 @@
         :root {
             --gob-guinda: #720026;
             --gob-oro: #D4C19C;
+            --gob-gris: #F5F5 stripes;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', Arial, sans-serif;
         }
 
-        /* HEADER */
+        /* HEADER OFICIAL */
         header {
-            background-color: white;
-            padding: 20px;
-            border-bottom: 5px solid var(--gob-guinda);
+            background-color: #0B231E; /* Verde oscuro institucional */
+            padding: 15px 50px;
             display: flex;
-            justify-content: center;
+            align-items: center;
         }
 
         .logo-gob {
-            /* URL Directa para que funcione en GitHub */
-            max-width: 300px;
-            height: auto;
-            display: block;
+            height: 45px;
+            width: auto;
         }
 
         .barra-oro {
             background-color: var(--gob-guinda);
-            height: 12px;
-            border-bottom: 4px solid var(--gob-oro);
+            height: 10px;
+            border-bottom: 3px solid var(--gob-oro);
+            width: 100%;
         }
 
         main {
@@ -46,75 +45,127 @@
             text-align: center;
         }
 
+        h1 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
         .card {
-            background: #f9f9f9;
+            background: #ffffff;
             border: 1px solid #ddd;
             padding: 30px;
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            font-weight: bold;
+            color: #545454;
+            margin-bottom: 5px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 15px;
-            margin: 20px 0;
+            padding: 12px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
             text-transform: uppercase;
         }
 
         .btn {
             width: 100%;
-            background-color: var(--gob-guinda);
+            background-color: #12322B; /* Verde botón */
             color: white;
             padding: 15px;
             border: none;
+            border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
         }
 
+        .btn:hover {
+            background-color: var(--gob-guinda);
+        }
+
+        /* RESULTADOS */
         #resultado {
             display: none;
-            margin-top: 20px;
+            margin-top: 30px;
             text-align: left;
-            border: 1px solid var(--gob-guinda);
-            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
         }
+
+        .res-header {
+            background: var(--gob-guinda);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .info-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            background: #fff;
+        }
+
+        .info-item:last-child { border-bottom: none; }
+        
+        .valido { color: #28a745; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <header>
-    <img class="logo-gob" src="https://www.gob.mx/cms/uploads/image/file/485680/escudo-mexico.png" alt="Gobierno de México">
+    <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
 </header>
 <div class="barra-oro"></div>
 
 <main>
-    <h1>Consulta de Certificados</h1>
+    <h1>Validación de Documentos Académicos</h1>
+    
     <div class="card">
-        <label>Número de Folio:</label>
-        <input type="text" id="folio" placeholder="EJEMPLO: BACH202401">
-        <button class="btn" onclick="buscar()">VERIFICAR</button>
+        <label for="folio">Número de Folio de Certificado:</label>
+        <input type="text" id="folio" placeholder="EJ: BACH202401" autocomplete="off">
+        <button class="btn" onclick="buscar()">VERIFICAR CERTIFICADO</button>
     </div>
 
     <div id="resultado">
-        <div style="background:var(--gob-guinda); color:white; padding:10px; text-align:center;">DATOS ENCONTRADOS</div>
-        <div id="info" style="padding:20px;"></div>
+        <div class="res-header">RESULTADO DE LA BÚSQUEDA</div>
+        <div id="info">
+            </div>
     </div>
 </main>
 
 <script>
     function buscar() {
-        const f = document.getElementById('folio').value.toUpperCase();
-        const res = document.getElementById('resultado');
-        const info = document.getElementById('info');
+        const folioInput = document.getElementById('folio').value.toUpperCase().trim();
+        const resDiv = document.getElementById('resultado');
+        const infoDiv = document.getElementById('info');
         
-        if(f === "BACH202401") {
-            info.innerHTML = "<strong>Nombre:</strong> JUAN PÉREZ<br><strong>Estado:</strong> VÁLIDO";
-            res.style.display = "block";
+        // Simulación de base de datos
+        if(folioInput === "BACH202401") {
+            infoDiv.innerHTML = `
+                <div class="info-item"><strong>Nombre del Titular:</strong> JUAN PÉREZ LÓPEZ</div>
+                <div class="info-item"><strong>Institución:</strong> SECRETARÍA DE EDUCACIÓN</div>
+                <div class="info-item"><strong>Estatus:</strong> <span class="valido">✓ DOCUMENTO VÁLIDO</span></div>
+                <div class="info-item"><strong>Fecha de Emisión:</strong> 15/01/2024</div>
+            `;
+            resDiv.style.display = "block";
         } else {
-            alert("Folio no encontrado");
+            resDiv.style.display = "none";
+            alert("El folio ingresado no se encuentra en el sistema. Verifique los datos.");
         }
     }
 </script>
+
 </body>
 </html>

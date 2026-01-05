@@ -12,62 +12,60 @@
             --gob-oro: #9D843E;   
             --gob-verde-oscuro: #1D4E3E; 
             --gob-gris-boton: #757575;   
-            --gob-fondo: #f4f4f4;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Lora', serif;
-            /* TAPIZ DE FONDO INTEGRADO */
-            background-color: var(--gob-fondo);
-            background-image: radial-gradient(#d1d1d1 0.7px, transparent 0.7px);
-            background-size: 11px 11px;
-            
-            color: #333;
+            margin: 0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
+            background-color: #f4f4f4;
+            /* TAPIZ OFICIAL RECREADO CON SVG */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23d8d8d8' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 233 490 150 300 300 210 200 10 335 170 567 100 650 320 880 280 830 450 999 567 795 626 769 229Z'/%3E%3Cpath d='M-169 229L99 260.9M-11 880L185 737 396 660 607 538 876 599 683 490 766 300 616 210 716 10 581 170 349 100 266 320 36 280 86 450-83 567 121 626-169 229Z'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
         }
 
-        header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; }
+        header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; z-index: 10; }
         .logo-link { text-decoration: none; display: flex; align-items: center; }
         .logo-container { height: 55px; }
-        .logo-gob { height: 100%; width: auto; border: none; }
+        .logo-gob { height: 100%; width: auto; }
         .barra-oro { background-color: var(--gob-guinda); height: 10px; border-bottom: 4px solid var(--gob-oro); }
 
-        main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; position: relative; }
 
-        .titulos-sep { margin-bottom: 30px; font-family: 'Montserrat', sans-serif; }
+        .titulos-sep { margin-bottom: 35px; font-family: 'Montserrat', sans-serif; }
         .titulos-sep h2 { font-weight: 700; font-size: 24px; color: #444; margin-bottom: 5px; }
-        .titulos-sep h3 { font-weight: 600; font-size: 20px; color: #666; margin-bottom: 10px; }
-        .titulos-sep p { font-weight: 400; color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .titulos-sep h3 { font-weight: 600; font-size: 20px; color: #555; margin-bottom: 15px; }
+        .titulos-sep p { font-weight: 400; color: #9D843E; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; border-top: 1px solid #ccc; display: inline-block; padding-top: 8px; }
 
-        /* CONTENEDOR DE BÚSQUEDA */
+        /* CONTENEDOR DE BÚSQUEDA (IDÉNTICO A TU IMAGEN) */
         .search-container {
-            background: #fff;
-            border: 1.5px solid var(--gob-oro); 
-            border-radius: 10px;
-            padding: 35px;
-            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95); /* Semi-transparente para ver el tapiz */
+            border: 2px solid var(--gob-oro); 
+            border-radius: 8px;
+            padding: 40px;
+            max-width: 780px;
             margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .search-container input[type="text"] {
             width: 100%;
-            padding: 14px 15px;
+            padding: 15px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 18px;
             margin-bottom: 25px;
             font-family: 'Montserrat', sans-serif;
-            outline: none;
+            text-align: left;
         }
 
         .button-group {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             margin-bottom: 20px;
         }
@@ -76,29 +74,27 @@
             background-color: var(--gob-verde-oscuro);
             color: white;
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 18px;
             cursor: pointer;
-            transition: 0.3s;
+            font-weight: 500;
         }
 
         .btn-restablecer {
             background-color: var(--gob-gris-boton);
             color: white;
             flex: 1;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 18px;
             cursor: pointer;
-            transition: 0.3s;
+            font-weight: 500;
         }
-
-        .btn-buscar:hover, .btn-restablecer:hover { opacity: 0.9; }
 
         .help-link {
             font-family: 'Montserrat', sans-serif;
@@ -106,21 +102,21 @@
             text-decoration: underline;
             font-size: 15px;
             cursor: pointer;
+            display: block;
+            margin-top: 10px;
         }
 
         /* RESULTADOS */
-        #resultado { display: none; margin-top: 40px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; padding-bottom: 40px; }
-        .info-item { margin-bottom: 18px; font-family: 'Montserrat', sans-serif; }
-        .info-label { font-weight: 700; color: #4D4D4D; font-size: 17px; display: block; }
-        .info-value { font-weight: 400; color: #666; font-size: 17px; text-transform: uppercase; }
+        #resultado { display: none; margin-top: 40px; text-align: left; max-width: 780px; margin-left: auto; margin-right: auto; padding: 20px; background: white; border-radius: 8px; border: 1px solid #ddd; }
+        .info-item { margin-bottom: 15px; font-family: 'Montserrat', sans-serif; border-bottom: 1px solid #f0f0f0; padding-bottom: 8px; }
+        .info-label { font-weight: 700; color: #333; font-size: 16px; display: block; }
+        .info-value { font-weight: 400; color: #666; font-size: 16px; text-transform: uppercase; }
 
         /* FOOTER */
-        footer { background-color: var(--gob-guinda); color: white; padding: 60px 50px; margin-top: auto; font-family: 'Montserrat', sans-serif; }
-        .footer-content { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
-        .footer-logo img { width: 220px; filter: brightness(0) invert(1); }
-        .footer-column h4 { font-size: 18px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .footer-column ul { list-style: none; font-size: 14px; line-height: 2; }
-        .footer-column ul li a { color: white; text-decoration: none; }
+        footer { background-color: var(--gob-guinda); color: white; padding: 50px; margin-top: auto; font-family: 'Montserrat', sans-serif; z-index: 10; }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .footer-logo img { width: 200px; filter: brightness(0) invert(1); }
+        .footer-text { font-size: 14px; opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -164,27 +160,16 @@
                 <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
             </a>
         </div>
-        <div class="footer-column">
-            <h4>Enlaces</h4>
-            <ul>
-                <li>Participa</li>
-                <li>Publicaciones Oficiales</li>
-                <li>Marco Jurídico</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>¿Qué es gob.mx?</h4>
-            <ul>
-                <li>Portal de trámites e información ciudadana.</li>
-            </ul>
+        <div class="footer-text">
+            Secretaría de Educación Pública | 2026
         </div>
     </div>
 </footer>
 
 <script>
     const baseDatos = {
-        "CBG3760391153": { nombre: "JORGE LUIS LOPEZ CRUZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
-        // Agrega aquí los demás folios siguiendo el mismo formato
+        "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
+        // Aquí puedes seguir pegando los otros 19 folios
     };
 
     function buscar() {
@@ -197,19 +182,13 @@
             detalle.innerHTML = `
                 <div class="info-item"><span class="info-label">Nombre:</span> <span class="info-value">${d.nombre}</span></div>
                 <div class="info-item"><span class="info-label">Número de Matrícula:</span> <span class="info-value">${d.matricula}</span></div>
-                <div class="info-item"><span class="info-label">Institución Educativa Emisora:</span> <span class="info-value">${d.emisor}</span></div>
-                <div class="info-item"><span class="info-label">Plantel de Servicio Educativo:</span> <span class="info-value">${d.plantel}</span></div>
-                <div class="info-item"><span class="info-label">Plan de Estudios:</span> <span class="info-value">${d.plan}</span></div>
-                <div class="info-item"><span class="info-label">Promedio:</span> <span class="info-value">${d.promedio}</span></div>
-                <div class="info-item"><span class="info-label">Créditos Obtenidos:</span> <span class="info-value">${d.creditos}</span></div>
                 <div class="info-item"><span class="info-label">Estatus:</span> <span class="info-value" style="color:#27ae60; font-weight:bold;">${d.estatus}</span></div>
                 <div class="info-item"><span class="info-label">Folio:</span> <span class="info-value">${folio}</span></div>
                 <div class="info-item"><span class="info-label">Fecha de Timbrado:</span> <span class="info-value">${d.timbrado}</span></div>
-                <div class="info-item"><span class="info-label">Correo Electrónico de Contacto:</span> <span class="info-value" style="text-transform: lowercase;">${d.correo}</span></div>
             `;
             resDiv.style.display = 'block';
         } else {
-            alert("Folio no encontrado en el sistema.");
+            alert("Folio no encontrado.");
             resDiv.style.display = 'none';
         }
     }

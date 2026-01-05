@@ -11,6 +11,7 @@
             --gob-guinda: #621132; 
             --gob-oro: #9D843E;   
             --gob-verde: #12322B;
+            --gob-gris: #545454;
         }
 
         * {
@@ -23,6 +24,9 @@
             font-family: 'Lora', serif;
             background-color: #fff;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* HEADER */
@@ -33,27 +37,19 @@
             align-items: center;
         }
 
-        /* Estilo para el enlace del logo */
         .logo-link {
             text-decoration: none;
             display: flex;
             align-items: center;
-            transition: opacity 0.2s;
-        }
-
-        .logo-link:hover {
-            opacity: 0.8; /* Efecto visual al pasar el mouse */
         }
 
         .logo-container {
             height: 60px;
-            display: block;
         }
 
         .logo-gob {
             height: 100%;
             width: auto;
-            display: block;
         }
 
         .barra-oro {
@@ -62,50 +58,36 @@
             border-bottom: 4px solid var(--gob-oro);
         }
 
+        /* CONTENIDO PRINCIPAL */
         main {
-            max-width: 800px;
+            flex: 1;
+            max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
             text-align: center;
         }
 
-        .titulos-imagen {
-            margin-bottom: 40px;
-        }
-
-        .titulos-imagen h2 {
-            font-weight: 700;
-            font-size: 28px;
-            color: #444;
-            margin-bottom: 10px;
-        }
-
-        .titulos-imagen h3 {
-            font-weight: 700;
-            font-size: 24px;
-            color: #444;
-            margin-bottom: 25px;
-        }
+        .titulos-imagen h2 { font-weight: 700; font-size: 28px; color: #444; margin-bottom: 10px; }
+        .titulos-imagen h3 { font-weight: 700; font-size: 24px; color: #444; margin-bottom: 25px; }
 
         .card {
             background: #ffffff;
             border: 1px solid #ddd;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         input[type="text"] {
             width: 100%;
             max-width: 450px;
             padding: 15px;
-            margin-top: 20px;
+            margin: 20px 0;
             border: 2px solid #ccc;
             border-radius: 4px;
             font-size: 18px;
             text-align: center;
             text-transform: uppercase;
-            font-family: inherit;
         }
 
         .btn {
@@ -117,13 +99,10 @@
             font-weight: bold;
             font-size: 18px;
             cursor: pointer;
-            margin-top: 25px;
             transition: 0.3s;
         }
 
-        .btn:hover {
-            background-color: var(--gob-guinda);
-        }
+        .btn:hover { background-color: var(--gob-guinda); }
 
         #resultado {
             display: none;
@@ -131,8 +110,160 @@
             border: 2px solid var(--gob-guinda);
             border-radius: 8px;
             overflow: hidden;
+            background: #fff;
         }
 
         .res-header {
             background: var(--gob-guinda);
-            color:
+            color: white;
+            padding: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .info-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* FOOTER ESTILO GOBIERNO */
+        footer {
+            background-color: var(--gob-guinda);
+            color: white;
+            padding: 50px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-logo img {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--gob-oro);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="https://www.llave.gob.mx/RegistroCiudadano.xhtml?client_id=202505051631526569&redirect_url=https%3A%2F%2Fwww.gob.mx%2FcallbackLlave.xhtml&state=c0C4GpnH5F-UWGOuXIijT7bqfpNXbfarUpqm_mKKFiq1_Z2DYH1EB1_i9zLqwHRP" target="_blank" class="logo-link">
+        <div class="logo-container">
+            <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+        </div>
+    </a>
+</header>
+<div class="barra-oro"></div>
+
+<main>
+    <div class="titulos-imagen">
+        <h2>Subsecretaría de Educación Media Superior</h2>
+        <h3>Consulta de Certificado Semielectrónico</h3>
+        <p style="font-weight: bold; color: #666;">Institución Pública Centralizada</p>
+    </div>
+
+    <div class="card">
+        <label style="font-weight: bold;">Número de Folio:</label><br>
+        <input type="text" id="folio" placeholder="INGRESA TU FOLIO">
+        <br>
+        <button class="btn" onclick="buscar()">VERIFICAR CERTIFICADO</button>
+    </div>
+
+    <div id="resultado">
+        <div class="res-header">Resultado de la Validación Oficial</div>
+        <div id="info"></div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+        </div>
+        
+        <div class="footer-column">
+            <h4>Enlaces</h4>
+            <ul>
+                <li><a href="#">Participa</a></li>
+                <li><a href="#">Publicaciones Oficiales</a></li>
+                <li><a href="#">Marco Jurídico</a></li>
+                <li><a href="#">Plataforma Nacional de Transparencia</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>¿Qué es gob.mx?</h4>
+            <ul>
+                <li>Es el portal único de trámites, información y participación ciudadana. <a href="#">Leer más</a></li>
+                <li><a href="#">English</a></li>
+                <li><a href="#">Temas</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h4>Síguenos en</h4>
+            <ul>
+                <li>Facebook</li>
+                <li>Twitter</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function buscar() {
+        const f = document.getElementById('folio').value.toUpperCase().trim();
+        const res = document.getElementById('resultado');
+        const info = document.getElementById('info');
+        
+        if(f === "BACH202401") {
+            info.innerHTML = `
+                <div class="info-item"><span>Nombre:</span> <strong>JUAN PÉREZ LÓPEZ</strong></div>
+                <div class="info-item"><span>Estatus:</span> <strong style="color:green;">VÁLIDO</strong></div>
+                <div class="info-item"><span>Nivel:</span> <strong>MEDIA SUPERIOR</strong></div>
+            `;
+            res.style.display = "block";
+            res.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            alert("El folio ingresado no se encuentra en el sistema.");
+            res.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

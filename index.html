@@ -23,13 +23,14 @@
             display: flex;
             flex-direction: column;
             background-color: #f4f4f4;
-            /* TAPIZ OFICIAL VISIBLE (Grecas de Gobierno) */
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0l50 50L0 100' stroke='%23e0e0e0' fill='none' stroke-width='0.5'/%3E%3Cpath d='M100 0L50 50l50 50' stroke='%23e0e0e0' fill='none' stroke-width='0.5'/%3E%3Ccircle cx='50' cy='50' r='2' fill='%23d0d0d0' opacity='0.5'/%3E%3C/svg%3E");
+            /* TAPIZ OFICIAL VISIBLE */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath d='M0 0l50 50L0 100' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3Cpath d='M100 0L50 50l50 50' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3C/svg%3E");
             background-attachment: fixed;
         }
 
         header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .logo-link { text-decoration: none; display: flex; align-items: center; }
+        .logo-link { text-decoration: none; display: flex; align-items: center; transition: 0.3s; }
+        .logo-link:hover { opacity: 0.8; }
         .logo-container { height: 50px; }
         .logo-gob { height: 100%; width: auto; }
         .barra-oro { background-color: var(--gob-guinda); height: 10px; border-bottom: 4px solid var(--gob-oro); }
@@ -41,7 +42,6 @@
         .titulos-sep h3 { font-weight: 600; font-size: 22px; color: #666; margin-bottom: 15px; }
         .titulos-sep p { font-weight: 400; color: var(--gob-oro); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; padding-top: 10px; border-top: 1px solid #ddd; display: inline-block; }
 
-        /* CONTENEDOR DE BÚSQUEDA (Estilo imagen solicitada) */
         .search-container {
             background: #ffffff;
             border: 2px solid var(--gob-oro); 
@@ -61,7 +61,6 @@
             margin-bottom: 25px;
             font-family: 'Montserrat', sans-serif;
             color: #555;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .button-group {
@@ -103,20 +102,16 @@
             text-decoration: underline;
             font-size: 15px;
             cursor: pointer;
-            display: block;
         }
 
-        /* RESULTADOS */
-        #resultado { display: none; margin-top: 40px; text-align: left; max-width: 780px; margin-left: auto; margin-right: auto; background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        #resultado { display: none; margin-top: 40px; text-align: left; max-width: 780px; margin-left: auto; margin-right: auto; background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; }
         .info-item { margin-bottom: 15px; font-family: 'Montserrat', sans-serif; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
-        .info-label { font-weight: 700; color: #333; font-size: 16px; display: block; margin-bottom: 2px; }
+        .info-label { font-weight: 700; color: #333; font-size: 16px; display: block; }
         .info-value { font-weight: 400; color: #666; font-size: 16px; text-transform: uppercase; }
 
-        /* FOOTER CORREGIDO */
         footer { background-color: var(--gob-guinda); color: white; padding: 50px 20px; margin-top: auto; font-family: 'Montserrat', sans-serif; }
-        .footer-content { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-content { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .footer-logo img { width: 220px; filter: brightness(0) invert(1); }
-        .footer-info { font-size: 14px; opacity: 0.9; text-align: right; }
     </style>
 </head>
 <body>
@@ -139,12 +134,10 @@
 
     <div class="search-container">
         <input type="text" id="folioInput" placeholder="Ingrese el folio">
-        
         <div class="button-group">
             <button class="btn-buscar" onclick="buscar()">Buscar</button>
             <button class="btn-restablecer" onclick="restablecer()">Restablecer</button>
         </div>
-        
         <span class="help-link">Ubica el folio en tu certificado</span>
     </div>
 
@@ -156,21 +149,36 @@
 <footer>
     <div class="footer-content">
         <div class="footer-logo">
-            <a href="https://www.gob.mx" target="_blank">
+            <a href="https://www.gob.mx" target="_blank" class="logo-link">
                 <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
             </a>
         </div>
-        <div class="footer-info">
-            Secretaría de Educación Pública | 2026<br>
-            Subsecretaría de Educación Media Superior
-        </div>
+        <div style="font-size: 14px; opacity: 0.8;">SEP | SEMS | 2026</div>
     </div>
 </footer>
 
 <script>
     const baseDatos = {
-        "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
-        // Agreg"CBG3760391154": { nombre: "JORGE LUIS LOPEZ CRUZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }a aquí los 19 registros adicionales
+        "CBG3760391153": { nombre: "JORGE LUIS LOPEZ CRUZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-12-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391154": { nombre: "JUAN CARLOS RAMIREZ LUNA", matricula: "1502M900412", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 4/1", plan: "BACHILLERATO GENERAL", promedio: "9.2", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 15:10:22", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391155": { nombre: "MARIA FERNANDA LOPEZ SOSA", matricula: "1503R880155", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 15:45:01", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391156": { nombre: "RICARDO MORENO DIAZ", matricula: "1504M920333", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 5/2", plan: "BACHILLERATO GENERAL", promedio: "7.9", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 09:15:44", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391157": { nombre: "ANA PAULA GARCIA SOLIS", matricula: "1505R890789", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.6", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 10:30:12", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391158": { nombre: "ROBERTO ESQUIVEL MARIN", matricula: "1506M850221", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.1", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 11:55:00", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391159": { nombre: "KARLA VENEGAS TORRES", matricula: "1507R910884", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.9", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 13:20:18", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391160": { nombre: "DIEGO ARMANDO LUNA RUIZ", matricula: "1508M870662", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 6/1", plan: "BACHILLERATO GENERAL", promedio: "7.5", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-13 08:45:55", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391161": { nombre: "SOFIA REYES PALACIOS", matricula: "1509R930112", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-13 10:05:33", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391162": { nombre: "MIGUEL ANGEL FLORES", matricula: "1510M840995", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.3", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-13 12:40:02", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391163": { nombre: "ELENA GOMEZ ESTRADA", matricula: "1511R900334", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.0", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-14 09:12:11", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391164": { nombre: "JAVIER MORALES PEÑA", matricula: "1512M920556", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "7.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-14 11:30:45", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391165": { nombre: "VALERIA SOSA CASTRO", matricula: "1513R880778", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 8/2", plan: "BACHILLERATO GENERAL", promedio: "8.7", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-14 14:15:20", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391166": { nombre: "HUGO SANCHEZ MEZA", matricula: "1514M860223", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.4", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-15 10:00:05", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391167": { nombre: "CLAUDIA RIVAS LUNA", matricula: "1515R910445", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.6", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-15 12:45:50", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391168": { nombre: "OSCAR TELLEZ URIBE", matricula: "1516M890112", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 1/1", plan: "BACHILLERATO GENERAL", promedio: "7.7", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-16 09:30:15", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391169": { nombre: "PATRICIA VEGA MAR", matricula: "1517R930889", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.1", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-16 11:20:40", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391170": { nombre: "FERNANDO DURAN O.", matricula: "1518M850667", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.4", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-17 10:15:00", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391171": { nombre: "GABRIELA SALAS K.", matricula: "1519R880332", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.9", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-17 13:50:25", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391172": { nombre: "SERGIO NAVA RUIZ", matricula: "1520M920991", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 3/2", plan: "BACHILLERATO GENERAL", promedio: "8.2", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-18 08:55:10", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
     };
 
     function buscar() {
@@ -183,13 +191,14 @@
             detalle.innerHTML = `
                 <div class="info-item"><span class="info-label">Nombre del Titular:</span> <span class="info-value">${d.nombre}</span></div>
                 <div class="info-item"><span class="info-label">Número de Matrícula:</span> <span class="info-value">${d.matricula}</span></div>
+                <div class="info-item"><span class="info-label">Plantel:</span> <span class="info-value">${d.plantel}</span></div>
                 <div class="info-item"><span class="info-label">Estatus del Certificado:</span> <span class="info-value" style="color:#27ae60; font-weight:bold;">${d.estatus}</span></div>
-                <div class="info-item"><span class="info-label">Promedio General:</span> <span class="info-value">${d.promedio}</span></div>
+                <div class="info-item"><span class="info-label">Folio:</span> <span class="info-value">${folio}</span></div>
                 <div class="info-item"><span class="info-label">Fecha de Timbrado:</span> <span class="info-value">${d.timbrado}</span></div>
             `;
             resDiv.style.display = 'block';
         } else {
-            alert("El folio no fue encontrado. Por favor, verifíquelo.");
+            alert("El folio no fue encontrado.");
             resDiv.style.display = 'none';
         }
     }

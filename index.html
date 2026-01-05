@@ -10,8 +10,8 @@
         :root {
             --gob-guinda: #621132; 
             --gob-oro: #9D843E;   
-            --gob-verde-oscuro: #1D4E3E; /* Color exacto del botón Buscar */
-            --gob-gris-boton: #757575;   /* Color exacto del botón Restablecer */
+            --gob-verde-oscuro: #1D4E3E; 
+            --gob-gris-boton: #757575;   
             --gob-fondo: #f4f4f4;
         }
 
@@ -29,7 +29,7 @@
         header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; }
         .logo-link { text-decoration: none; display: flex; align-items: center; }
         .logo-container { height: 55px; }
-        .logo-gob { height: 100%; width: auto; }
+        .logo-gob { height: 100%; width: auto; border: none; }
         .barra-oro { background-color: var(--gob-guinda); height: 10px; border-bottom: 4px solid var(--gob-oro); }
 
         main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
@@ -42,44 +42,42 @@
         /* CONTENEDOR ESTILO IMAGEN ADJUNTA */
         .search-container {
             background: #fff;
-            border: 2px solid var(--gob-oro); /* Borde dorado */
-            border-radius: 8px;
-            padding: 30px;
-            max-width: 750px;
+            border: 1.5px solid var(--gob-oro); 
+            border-radius: 10px;
+            padding: 35px;
+            max-width: 800px;
             margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .search-container input[type="text"] {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
+            padding: 14px 15px;
+            border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 18px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-family: 'Montserrat', sans-serif;
-            color: #555;
-        }
-
-        .search-container input[type="text"]::placeholder {
-            color: #ccc;
+            outline: none;
         }
 
         .button-group {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .btn-buscar {
             background-color: var(--gob-verde-oscuro);
             color: white;
             flex: 1;
-            padding: 15px;
+            padding: 12px;
             border: none;
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 18px;
+            font-weight: 400;
             cursor: pointer;
         }
 
@@ -87,11 +85,12 @@
             background-color: var(--gob-gris-boton);
             color: white;
             flex: 1;
-            padding: 15px;
+            padding: 12px;
             border: none;
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 18px;
+            font-weight: 400;
             cursor: pointer;
         }
 
@@ -99,19 +98,27 @@
             font-family: 'Montserrat', sans-serif;
             color: var(--gob-oro);
             text-decoration: underline;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
+            font-weight: 400;
         }
 
-        /* RESULTADOS */
-        #resultado { display: none; margin-top: 30px; border: 1px solid #ccc; background: #fff; text-align: left; }
-        .res-header { background: #4D4D4D; color: white; padding: 12px 20px; font-family: 'Montserrat', sans-serif; font-weight: bold; }
-        .info-item { padding: 15px 25px; border-bottom: 1px solid #eee; }
-        .info-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; color: #333; text-transform: uppercase; display: block; margin-bottom: 3px; }
-        .info-value { font-size: 16px; color: #555; }
-        .status-reg { color: #27ae60 !important; font-weight: bold; }
+        /* RESULTADOS SEGÚN IMAGEN 1 */
+        #resultado { display: none; margin-top: 40px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; padding-bottom: 40px; }
+        .info-item { margin-bottom: 18px; font-family: 'Montserrat', sans-serif; line-height: 1.4; }
+        .info-label { font-weight: 700; color: #4D4D4D; font-size: 18px; }
+        .info-value { font-weight: 400; color: #777; font-size: 18px; text-transform: uppercase; }
+        .status-reg { color: #555 !important; }
 
-        footer { background-color: var(--gob-guinda); color: white; padding: 40px; margin-top: 60px; font-family: 'Montserrat', sans-serif; text-align: center; }
+        /* FOOTER CORREGIDO */
+        footer { background-color: var(--gob-guinda); color: white; padding: 60px 50px; margin-top: auto; font-family: 'Montserrat', sans-serif; }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
+        .footer-logo { flex: 1; min-width: 250px; }
+        .footer-logo img { width: 220px; display: block; filter: brightness(0) invert(1); /* Asegura que el logo sea blanco */ }
+        .footer-column { flex: 1; min-width: 200px; }
+        .footer-column h4 { font-size: 18px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
+        .footer-column ul { list-style: none; font-size: 14px; line-height: 2; }
+        .footer-column ul li a { color: white; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -144,19 +151,38 @@
     </div>
 
     <div id="resultado">
-        <div class="res-header">Detalle del Certificado</div>
         <div id="infoDetalle"></div>
     </div>
 </main>
 
 <footer>
-    <p>Secretaría de Educación Pública | 2026</p>
+    <div class="footer-content">
+        <div class="footer-logo">
+            <a href="https://www.gob.mx" target="_blank">
+                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+            </a>
+        </div>
+        <div class="footer-column">
+            <h4>Enlaces</h4>
+            <ul>
+                <li><a href="#">Participa</a></li>
+                <li><a href="#">Publicaciones Oficiales</a></li>
+                <li><a href="#">Marco Jurídico</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>¿Qué es gob.mx?</h4>
+            <ul>
+                <li>Portal de trámites e información ciudadana.</li>
+            </ul>
+        </div>
+    </div>
 </footer>
 
 <script>
     const baseDatos = {
-        "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        // ... (el resto de tus folios funcionan igual)
+        "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
+        // Se pueden añadir los otros 19 folios aquí...
     };
 
     function buscar() {
@@ -174,14 +200,14 @@
                 <div class="info-item"><span class="info-label">Plan de Estudios:</span> <span class="info-value">${d.plan}</span></div>
                 <div class="info-item"><span class="info-label">Promedio:</span> <span class="info-value">${d.promedio}</span></div>
                 <div class="info-item"><span class="info-label">Créditos Obtenidos:</span> <span class="info-value">${d.creditos}</span></div>
-                <div class="info-item"><span class="info-label">Estatus:</span> <span class="info-value status-reg">${d.estatus}</span></div>
+                <div class="info-item"><span class="info-label">Estatus:</span> <span class="info-value">${d.estatus}</span></div>
                 <div class="info-item"><span class="info-label">Folio:</span> <span class="info-value">${folio}</span></div>
                 <div class="info-item"><span class="info-label">Fecha de Timbrado:</span> <span class="info-value">${d.timbrado}</span></div>
-                <div class="info-item"><span class="info-label">Correo Electrónico de Contacto:</span> <span class="info-value">${d.correo}</span></div>
+                <div class="info-item"><span class="info-label">Correo Electrónico de Contacto:</span> <span class="info-value" style="text-transform: lowercase;">${d.correo}</span></div>
             `;
             resDiv.style.display = 'block';
         } else {
-            alert("Folio no encontrado.");
+            alert("El folio ingresado no se encuentra en los registros oficiales.");
             resDiv.style.display = 'none';
         }
     }

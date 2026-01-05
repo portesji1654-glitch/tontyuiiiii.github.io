@@ -1,238 +1,39 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de certificados del bachillerato general</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --gob-guinda: #621132;
-            --gob-guinda-claro: #98224e;
-            --gob-oro: #D4C19C;
-            --gob-verde: #12322B;
-        }
+<style>
+    /* ... (resto del código igual) ... */
 
-        body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f9f9f9;
-        }
-
-        /* BARRA SUPERIOR NEGRA */
-        .top-nav {
-            background-color: #0c231e;
-            padding: 10px 10% 10px 15%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            font-size: 14px;
-        }
-
-        .top-nav img { height: 35px; }
-        .top-nav .links { display: flex; gap: 20px; }
-        .top-nav a { color: white; text-decoration: none; }
-
-        /* TÍTULO SUB-CABECERA */
-        .sub-header {
-            background-color: var(--gob-guinda);
-            color: white;
-            padding: 12px 15%;
-            font-size: 18px;
-            font-weight: 400;
-        }
-
-        /* BANNER FELIPE CARRILLO PUERTO */
-        .banner-container {
-            background-image: url('https://framework-gb.cdn.gob.mx/landings/assets/images/felipe-carrillo-puerto.png');
-            background-size: cover;
-            background-position: center;
-            height: 120px;
-            background-color: #D4C19C;
-            position: relative;
-        }
-
-        /* MENÚ MARRÓN */
-        .main-menu {
-            background-color: #4d0b24;
-            padding: 10px 15%;
-            display: flex;
-            justify-content: flex-end;
-            gap: 25px;
-            color: white;
-            font-size: 14px;
-        }
-
-        /* CONTENIDO PRINCIPAL */
-        main {
-            max-width: 900px;
-            margin: 60px auto;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        h1 {
-            font-family: 'Lora', serif;
-            font-size: 32px;
-            color: #444;
-            margin-bottom: 40px;
-        }
-
-        .form-group {
-            text-align: left;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .help-text {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 25px;
-        }
-
-        .btn-buscar {
-            background-color: white;
-            color: #333;
-            border: 2px solid #621132;
-            padding: 12px 30px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-buscar:hover {
-            background-color: var(--gob-guinda);
-            color: white;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: var(--gob-guinda);
-            color: white;
-            padding: 50px 15%;
-            margin-top: 100px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            text-align: left;
-            font-size: 14px;
-        }
-
-        footer h4 { margin-bottom: 20px; text-decoration: underline; }
-        footer ul { list-style: none; padding: 0; }
-        footer li { margin-bottom: 10px; }
-        footer a { color: white; text-decoration: none; }
-
-        .social-icons {
-            margin-top: 15px;
-            font-size: 20px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="top-nav">
-    <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-    <div class="links">
-        <a href="#">Trámites</a>
-        <a href="#">Gobierno</a>
-        <span>🔍</span>
-    </div>
-</div>
-
-<div class="sub-header">
-    BACHILLERATO ABIERTO
-</div>
-
-<div class="banner-container"></div>
-
-<div class="main-menu">
-    <span>Inicio</span>
-    <span>¿Quiénes somos?</span>
-    <span>Base legal</span>
-    <span>Contacto</span>
-    <span>Validación</span>
-</div>
-
-<main>
-    <h1>Consulta de certificados del bachillerato general</h1>
-
-    <div class="form-group">
-        <label for="folio">Número de Folio:</label>
-        <input type="text" id="folio" placeholder="Ingrese el número de folio del certificado">
-        <p class="help-text">El número de folio se encuentra en la parte inferior del certificado.</p>
-        
-        <div style="text-align: center;">
-            <button class="btn-buscar" onclick="buscar()">Buscar Certificado</button>
-        </div>
-    </div>
-
-    <div id="resultado" style="margin-top: 40px; display: none;">
-        <hr>
-        <h3 id="nombre-resultado" style="margin-top:20px;"></h3>
-        <p id="estatus-resultado" style="color: green; font-weight: bold;"></p>
-    </div>
-</main>
-
-<footer>
-    <div>
-        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="height: 50px;" alt="Logo">
-    </div>
-    <div>
-        <h4>Enlaces</h4>
-        <ul>
-            <li><a href="#">Participa</a></li>
-            <li><a href="#">Marco Jurídico</a></li>
-            <li><a href="#">Transparencia</a></li>
-            <li><a href="#">Alerta</a></li>
-        </ul>
-    </div>
-    <div>
-        <h4>¿Qué es gob.mx?</h4>
-        <p>Es el portal único de trámites, información y participación ciudadana. <a href="#" style="text-decoration: underline;">Leer más</a></p>
-        <br>
-        <h4>Síguenos en</h4>
-        <div class="social-icons">
-            f𝕏📷 YouTube
-        </div>
-    </div>
-</footer>
-
-<script>
-    function buscar() {
-        const folio = document.getElementById('folio').value.trim().toUpperCase();
-        const res = document.getElementById('resultado');
-        
-        if(folio === "BACH202401") {
-            res.style.display = "block";
-            document.getElementById('nombre-resultado').innerText = "JUAN PÉREZ LÓPEZ";
-            document.getElementById('estatus-resultado').innerText = "CERTIFICADO VÁLIDO";
-        } else {
-            alert("Folio no encontrado.");
-            res.style.display = "none";
-        }
+    .banner-container {
+        background-color: #D4C19C; /* Color Oro oficial */
+        background-image: url('https://framework-gb.cdn.gob.mx/landings/assets/images/felipe-carrillo-puerto.png');
+        background-size: contain;
+        background-position: center right;
+        background-repeat: no-repeat;
+        height: 150px;
+        position: relative;
+        /* Añadimos el patrón de fondo institucional */
+        background-blend-mode: multiply;
     }
-</script>
 
-</body>
-</html>
+    /* Ajuste para que el menú marrón se vea igual a la imagen */
+    .main-menu {
+        background-color: #4d0b24;
+        padding: 12px 15%;
+        display: flex;
+        justify-content: flex-end;
+        gap: 25px;
+        color: white;
+        font-size: 14px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .main-menu span {
+        cursor: pointer;
+        font-weight: 300;
+    }
+
+    .main-menu span:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="banner-container">
+    </div>

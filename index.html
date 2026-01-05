@@ -3,150 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Certificados - SEMS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <title>Consulta de Certificados - Bachillerato</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --negro-texto: #333333; /* Color negro suave para lectura */
-            --rojo-gob: #720026;
+            --guinda-header: #4c1125;
             --guinda-footer: #691C32;
             --oro-gob: #D4C19C;
         }
 
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Lora', serif;
+            font-family: 'Montserrat', sans-serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            color: var(--negro-texto);
-            background-color: #ffffff;
         }
 
-        /* HEADER */
-        header {
+        /* --- HEADERS (Imagen 3) --- */
+        .primera-barra {
             background-color: #0B231E;
-            padding: 15px 50px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .logo-header { height: 45px; }
+        .logo-gob-blanco { height: 35px; }
 
-        .barra-superior {
-            background-color: var(--rojo-gob);
-            height: 10px;
-            border-bottom: 3px solid var(--oro-gob);
+        .segunda-barra {
+            background-color: var(--guinda-header);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            border-bottom: 4px solid var(--oro-gob);
         }
 
-        /* CONTENIDO PRINCIPAL */
+        .segunda-barra h2 {
+            font-size: 20px;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .menu-icon { color: white; font-size: 24px; }
+
+        /* --- CONTENIDO (Imagen 1 y 3) --- */
         main {
             flex: 1;
-            max-width: 850px;
+            max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
             text-align: center;
         }
 
-        /* Títulos en COLOR NEGRO según tu petición */
-        .seccion-titulos h2 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #000000;
+        .titulos-principales {
+            font-family: 'Lora', serif;
+            color: #333;
+            margin-bottom: 40px;
         }
 
-        .seccion-titulos h3 {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: #000000;
-        }
+        .titulos-principales h1 { font-size: 30px; margin-bottom: 10px; }
+        .titulos-principales h2 { font-size: 26px; margin-bottom: 25px; }
+        .titulos-principales p { font-size: 22px; font-weight: bold; }
 
-        .seccion-titulos p {
-            font-size: 22px;
-            font-weight: 700;
-            color: #000000;
-        }
-
-        /* TARJETA DE BUSQUEDA */
-        .card {
-            margin-top: 40px;
-            padding: 40px;
-            border: 1px solid #eeeeee;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        .card-consulta {
             background: #fff;
-        }
-
-        label {
-            display: block;
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 15px;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
         input[type="text"] {
             width: 100%;
-            max-width: 450px;
-            padding: 15px;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            font-size: 18px;
-            text-align: center;
-            text-transform: uppercase;
-            font-family: inherit;
-            margin-bottom: 20px;
-        }
-
-        .btn-verificar {
-            background-color: #12322B; /* Verde institucional para el botón */
-            color: white;
-            padding: 15px 50px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-family: inherit;
-        }
-
-        .btn-verificar:hover {
-            background-color: var(--rojo-gob);
-        }
-
-        /* RESULTADOS */
-        #resultado {
-            display: none;
-            margin-top: 30px;
-            text-align: left;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .res-header {
-            background: #f4f4f4;
-            color: #000;
+            max-width: 400px;
             padding: 12px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
             text-align: center;
+            font-family: inherit;
+        }
+
+        .btn-enviar {
+            background-color: #12322B;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            cursor: pointer;
             font-weight: bold;
-            border-bottom: 1px solid #ddd;
+            text-transform: uppercase;
         }
 
-        .info-data {
-            padding: 20px;
-            background: #fff;
-        }
-
-        /* FOOTER (Imagen 2) */
+        /* --- FOOTER (Imagen 2) --- */
         footer {
-            background-color: var(--
+            background-color: var(--guinda-footer);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-logo { height: 50px; margin-bottom: 20px; }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 15px;
+        }
+
+        .footer-links div { font-size: 18px; cursor: pointer; }
+
+        .denuncia {
+            display: block;
+            color: white;
+            text-decoration: underline;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .social-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-row i { font-size: 20px; cursor: pointer; }
+
+        .atencion-079 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .flor-icon { height: 40px; filter: brightness(0) invert(1); }
+        .numero-079 { font-size: 45px; font-weight: bold; }
+        .atencion-texto { font-size: 14px; line-height: 1.2; }
+
+    </style>
+</head>
+<body>
+
+    <div class="primera-barra">
+        <img class="logo-gob-blanco" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gob">
+        <div class="menu-icon">☰</div>
+    </div>
+    <div class="segunda-barra">
+        <h2>BACHILLERATO ABIERTO</h2>
+        <div class="menu-icon">☰</div>
+    </div>
+
+    <main>
+        <div class="titulos-principales">
+            <h1>Subsecretaría de Educación Media Superior</h1>
+            <h2>Consulta de Certificado Semielectrónico</h2>
+            <p>Institución Pública Centralizada</p>
+        </div>
+
+        <div class="card-consulta">
+            <label>Número de Folio del Certificado:</label><br>
+            <input type="text" id="folio" placeholder="ESCRIBA SU FOLIO">
+            <br>
+            <button class="btn-enviar" onclick="buscar()">Verificar</button>
+        </div>
+
+        <div id="resultado" style="display:none; margin-top:20px; border:1px solid #ccc; padding:20px;">
+            </div>
+    </main>
+
+    <footer>
+        <div class="footer-wrap">
+            <img class="footer-logo" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gob">
+            
+            <div class="footer-links">
+                <div>Enlaces <small>v</small></div>
+                <div>¿Qué es gob.mx? <small>v</small></div>
+            </div>
+
+            <a href="#" class="denuncia">Denuncia contra servidores públicos</a>
+
+            <div class="social-row">
+                <span>Síguenos en</span>
+                <i class="fa-brands fa-facebook-f"></i>
+                <i class="fa-brands fa-x-twitter"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+
+            <div class="atencion-079">
+                <img class="flor-icon" src="https://framework-gb.cdn.gob.mx/landing/img/flor.svg" alt="flor">
+                <span class="numero-079">079</span>
+                <p class="atencion-texto">Comunícate, estamos<br>para ayudarte</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function buscar() {
+            const f = document.getElementById('folio').value;
+            if(f !== "") {
+                document.getElementById('resultado').style.display = "block";
+                document.getElementById('resultado').innerHTML = "Buscando registro para el folio: " + f;
+            }
+        }
+    </script>
+
+</body>
+</html>

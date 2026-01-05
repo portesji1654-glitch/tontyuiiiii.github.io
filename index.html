@@ -37,15 +37,15 @@
             overflow: hidden;
         }
 
-        /* Logo México (Carga segura) */
+        /* Logo México (Servidor Alternativo) */
         .logo-gob {
             height: 80px;
             z-index: 2;
         }
 
-        /* Imagen Mujer Indígena (Ruta alternativa) */
+        /* Imagen Mujer Indígena (Amajac - Servidor Alternativo) */
         .mujer-indigena {
-            height: 100%;
+            height: 140px;
             position: absolute;
             right: 0;
             bottom: 0;
@@ -106,26 +106,30 @@
             border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
         }
 
-        /* PIE DE PÁGINA */
+        /* PIE DE PÁGINA CON LOGOS ALTERNATIVOS */
         footer {
             background-color: var(--guinda-footer);
-            padding: 40px 5%;
+            padding: 30px 5%;
             margin-top: 50px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .footer-logo {
-            max-width: 100%;
-            height: 60px;
-            filter: brightness(0) invert(1); /* Convierte el logo a blanco */
+            max-width: 1000px;
+            width: 100%;
+            height: auto;
+            /* Filtro para que los logos se vean blancos sobre el fondo guinda */
+            filter: brightness(0) invert(1);
         }
 
         @media (max-width: 768px) {
             .banner-container { height: 100px; }
-            .mujer-indigena { opacity: 0.5; }
+            .mujer-indigena { height: 90px; opacity: 0.7; }
             .logo-gob { height: 50px; }
         }
     </style>
@@ -133,9 +137,9 @@
 <body>
 
     <div class="banner-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="logo-gob" alt="Logo México">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="logo-gob" alt="México">
         
-        <img src="https://www.gob.mx/cms/uploads/image/file/857321/amajac.png" class="mujer-indigena" alt="Imagen Institucional">
+        <img src="https://res.cloudinary.com/dplv9f7tq/image/upload/v1711653456/mujer-indigena-sep.png" class="mujer-indigena" alt="Imagen Institucional">
     </div>
 
     <nav class="main-menu">
@@ -155,14 +159,4 @@
         <div class="card">
             <label style="display:block; margin-bottom:15px; font-weight:bold;">CURP del Alumno</label>
             <input type="text" placeholder="INGRESA TU CURP" maxlength="18">
-            <br>
-            <button class="btn-verificar">Verificar Certificado</button>
-        </div>
-    </main>
-
-    <footer>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="footer-logo" alt="Logos SEP">
-    </footer>
-
-</body>
-</html>
+            <br

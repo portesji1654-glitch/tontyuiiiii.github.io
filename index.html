@@ -19,7 +19,11 @@
 
         body {
             font-family: 'Lora', serif;
+            /* TAPIZ DE FONDO INTEGRADO */
             background-color: var(--gob-fondo);
+            background-image: radial-gradient(#d1d1d1 0.7px, transparent 0.7px);
+            background-size: 11px 11px;
+            
             color: #333;
             display: flex;
             flex-direction: column;
@@ -39,7 +43,7 @@
         .titulos-sep h3 { font-weight: 600; font-size: 20px; color: #666; margin-bottom: 10px; }
         .titulos-sep p { font-weight: 400; color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* CONTENEDOR ESTILO IMAGEN ADJUNTA */
+        /* CONTENEDOR DE BÚSQUEDA */
         .search-container {
             background: #fff;
             border: 1.5px solid var(--gob-oro); 
@@ -47,7 +51,7 @@
             padding: 35px;
             max-width: 800px;
             margin: 0 auto;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .search-container input[type="text"] {
@@ -77,8 +81,8 @@
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 18px;
-            font-weight: 400;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         .btn-restablecer {
@@ -90,9 +94,11 @@
             border-radius: 4px;
             font-family: 'Montserrat', sans-serif;
             font-size: 18px;
-            font-weight: 400;
             cursor: pointer;
+            transition: 0.3s;
         }
+
+        .btn-buscar:hover, .btn-restablecer:hover { opacity: 0.9; }
 
         .help-link {
             font-family: 'Montserrat', sans-serif;
@@ -100,22 +106,18 @@
             text-decoration: underline;
             font-size: 15px;
             cursor: pointer;
-            font-weight: 400;
         }
 
-        /* RESULTADOS SEGÚN IMAGEN 1 */
+        /* RESULTADOS */
         #resultado { display: none; margin-top: 40px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto; padding-bottom: 40px; }
-        .info-item { margin-bottom: 18px; font-family: 'Montserrat', sans-serif; line-height: 1.4; }
-        .info-label { font-weight: 700; color: #4D4D4D; font-size: 18px; }
-        .info-value { font-weight: 400; color: #777; font-size: 18px; text-transform: uppercase; }
-        .status-reg { color: #555 !important; }
+        .info-item { margin-bottom: 18px; font-family: 'Montserrat', sans-serif; }
+        .info-label { font-weight: 700; color: #4D4D4D; font-size: 17px; display: block; }
+        .info-value { font-weight: 400; color: #666; font-size: 17px; text-transform: uppercase; }
 
-        /* FOOTER CORREGIDO */
+        /* FOOTER */
         footer { background-color: var(--gob-guinda); color: white; padding: 60px 50px; margin-top: auto; font-family: 'Montserrat', sans-serif; }
         .footer-content { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
-        .footer-logo { flex: 1; min-width: 250px; }
-        .footer-logo img { width: 220px; display: block; filter: brightness(0) invert(1); /* Asegura que el logo sea blanco */ }
-        .footer-column { flex: 1; min-width: 200px; }
+        .footer-logo img { width: 220px; filter: brightness(0) invert(1); }
         .footer-column h4 { font-size: 18px; margin-bottom: 20px; border-bottom: 2px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
         .footer-column ul { list-style: none; font-size: 14px; line-height: 2; }
         .footer-column ul li a { color: white; text-decoration: none; }
@@ -165,9 +167,9 @@
         <div class="footer-column">
             <h4>Enlaces</h4>
             <ul>
-                <li><a href="#">Participa</a></li>
-                <li><a href="#">Publicaciones Oficiales</a></li>
-                <li><a href="#">Marco Jurídico</a></li>
+                <li>Participa</li>
+                <li>Publicaciones Oficiales</li>
+                <li>Marco Jurídico</li>
             </ul>
         </div>
         <div class="footer-column">
@@ -181,8 +183,8 @@
 
 <script>
     const baseDatos = {
-        "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
-        // Se pueden añadir los otros 19 folios aquí...
+        "CBG3760391153": { nombre: "JORGE LUIS LOPEZ CRUZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
+        // Agrega aquí los demás folios siguiendo el mismo formato
     };
 
     function buscar() {
@@ -200,14 +202,14 @@
                 <div class="info-item"><span class="info-label">Plan de Estudios:</span> <span class="info-value">${d.plan}</span></div>
                 <div class="info-item"><span class="info-label">Promedio:</span> <span class="info-value">${d.promedio}</span></div>
                 <div class="info-item"><span class="info-label">Créditos Obtenidos:</span> <span class="info-value">${d.creditos}</span></div>
-                <div class="info-item"><span class="info-label">Estatus:</span> <span class="info-value">${d.estatus}</span></div>
+                <div class="info-item"><span class="info-label">Estatus:</span> <span class="info-value" style="color:#27ae60; font-weight:bold;">${d.estatus}</span></div>
                 <div class="info-item"><span class="info-label">Folio:</span> <span class="info-value">${folio}</span></div>
                 <div class="info-item"><span class="info-label">Fecha de Timbrado:</span> <span class="info-value">${d.timbrado}</span></div>
                 <div class="info-item"><span class="info-label">Correo Electrónico de Contacto:</span> <span class="info-value" style="text-transform: lowercase;">${d.correo}</span></div>
             `;
             resDiv.style.display = 'block';
         } else {
-            alert("El folio ingresado no se encuentra en los registros oficiales.");
+            alert("Folio no encontrado en el sistema.");
             resDiv.style.display = 'none';
         }
     }

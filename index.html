@@ -5,54 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Certificados - SEMS</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
             --negro-texto: #333333;
-            --rojo-gob: #720026;
-            --guinda-footer: #691C32;
             --oro-gob: #D4C19C;
             --guinda-menu: #4D0B24;
+            --verde-boton: #12322B;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Lora', serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            color: var(--negro-texto);
             background-color: #ffffff;
         }
 
-        /* HEADER / BANNER CON MUJER INDÍGENA */
+        /* BANNER SUPERIOR ORO */
         .banner-container {
             background-color: var(--oro-gob);
-            background-image: url('https://framework-gb.cdn.gob.mx/landings/assets/images/mujer-indigena.png');
-            background-size: contain;
-            background-position: right center;
-            background-repeat: no-repeat;
             height: 150px;
             width: 100%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
             padding: 0 5%;
+            position: relative;
+            overflow: hidden;
         }
 
-        .logo-header-mx {
-            height: 70px;
+        .logo-gob {
+            height: 80px;
+            z-index: 2;
+        }
+
+        /* Imagen Mujer Indígena (URL Pública que sí carga) */
+        .mujer-indigena {
+            height: 100%;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
         }
 
         /* MENÚ GUINDA */
         .main-menu {
             background-color: var(--guinda-menu);
-            padding: 12px 15%;
+            padding: 12px 10%;
             display: flex;
             justify-content: flex-end;
             gap: 25px;
@@ -61,10 +63,7 @@
             font-size: 14px;
         }
 
-        .main-menu span { cursor: pointer; font-weight: 300; }
-        .main-menu span:hover { text-decoration: underline; }
-
-        /* CONTENIDO PRINCIPAL */
+        /* CONTENIDO */
         main {
             flex: 1;
             max-width: 850px;
@@ -73,65 +72,64 @@
             text-align: center;
         }
 
-        .seccion-titulos h2 { font-size: 32px; font-weight: 700; margin-bottom: 10px; color: #000; }
-        .seccion-titulos h3 { font-size: 26px; font-weight: 700; margin-bottom: 25px; color: #000; }
-        .seccion-titulos p { font-size: 20px; font-weight: 700; color: #000; }
+        .seccion-titulos h2 { font-size: 28px; font-weight: 700; color: #000; margin-bottom: 10px; }
+        .seccion-titulos h3 { font-size: 24px; color: #000; margin-bottom: 20px; }
+        .seccion-titulos p { font-size: 18px; font-weight: 700; color: #000; }
 
         .card {
-            margin-top: 40px;
+            margin-top: 30px;
             padding: 40px;
-            border: 1px solid #eeeeee;
+            border: 1px solid #eee;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         input[type="text"] {
             width: 100%;
-            max-width: 450px;
-            padding: 15px;
-            border: 1px solid #cccccc;
+            max-width: 400px;
+            padding: 12px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 18px;
+            font-size: 16px;
             text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 20px;
         }
 
         .btn-verificar {
-            background-color: #12322B;
+            background-color: var(--verde-boton);
             color: white;
-            padding: 15px 50px;
+            padding: 15px 40px;
             border: none;
             border-radius: 4px;
             font-weight: bold;
             cursor: pointer;
-            text-transform: uppercase;
         }
 
-        /* PIE DE PÁGINA CON IMAGEN INSTITUCIONAL */
+        /* PIE DE PÁGINA (Imagen Institucional SEP/GOB) */
         footer {
             width: 100%;
-            margin-top: 50px;
+            margin-top: auto;
+            background-color: #f4f4f4;
         }
 
-        .footer-image {
+        .footer-img {
             width: 100%;
-            display: block; /* Elimina espacio inferior */
-            height: auto;
+            display: block;
         }
 
         @media (max-width: 768px) {
-            .banner-container { height: 100px; background-size: 40%; }
-            .main-menu { justify-content: center; padding: 10px; font-size: 12px; }
-            .seccion-titulos h2 { font-size: 24px; }
+            .banner-container { height: 100px; }
+            .mujer-indigena { opacity: 0.6; }
+            .logo-gob { height: 50px; }
         }
     </style>
 </head>
 <body>
 
     <div class="banner-container">
-        <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-gob-mx.png" alt="Gobierno de México" class="logo-header-mx">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_México.png/640px-Logotipo_de_México.png" class="logo-gob" alt="Logo">
+        
+        <img src="https://www.gob.mx/cms/uploads/image/file/857321/amajac.png" class="mujer-indigena" alt="Imagen Institucional">
     </div>
 
     <nav class="main-menu">
@@ -139,7 +137,6 @@
         <span>Gobierno</span>
         <span>Participa</span>
         <span>Datos</span>
-        <span><i class="fas fa-search"></i></span>
     </nav>
 
     <main>
@@ -150,16 +147,18 @@
         </div>
 
         <div class="card">
-            <label style="display:block; margin-bottom:15px; font-weight:bold;">CURP del Alumno</label>
+            <label><b>CURP del Alumno</b></label><br>
             <input type="text" placeholder="INGRESA TU CURP" maxlength="18">
             <br>
-            <button class="btn-verificar">Verificar Certificado</button>
+            <button class="btn-verificar">VERIFICAR CERTIFICADO</button>
         </div>
     </main>
 
     <footer>
-        <img src="https://framework-gb.cdn.gob.mx/landing/img/footer.png" alt="Logotipos Institucionales" class="footer-image">
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/footer.png" class="footer-img" alt="Footer Institucional" onerror="this.src='https://via.placeholder.com/1200x150/691c32/ffffff?text=Secretaria+de+Educación+Pública'">
     </footer>
 
 </body>
 </html>
+
+       

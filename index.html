@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Certificados - SEMS</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --negro-texto: #333333; /* Color negro suave para lectura */
-            --rojo-gob: #720026;
-            --guinda-footer: #691C32;
-            --oro-gob: #D4C19C;
+            --gob-guinda: #720026;
+            --gob-oro: #D4C19C;
+            --gob-verde: #12322B;
         }
 
         * {
@@ -22,12 +20,10 @@
         }
 
         body {
+            /* Aplicación de la nueva letra */
             font-family: 'Lora', serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            color: var(--negro-texto);
-            background-color: #ffffff;
+            background-color: #fff;
+            color: #333;
         }
 
         /* HEADER */
@@ -35,92 +31,98 @@
             background-color: #0B231E;
             padding: 15px 50px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
-        .logo-header { height: 45px; }
+        .logo-gob {
+            height: 45px;
+            width: auto;
+        }
 
-        .barra-superior {
-            background-color: var(--rojo-gob);
+        .barra-oro {
+            background-color: var(--gob-guinda);
             height: 10px;
-            border-bottom: 3px solid var(--oro-gob);
+            border-bottom: 3px solid var(--gob-oro);
         }
 
-        /* CONTENIDO PRINCIPAL */
         main {
-            flex: 1;
-            max-width: 850px;
+            max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
             text-align: center;
         }
 
-        /* Títulos en COLOR NEGRO según tu petición */
-        .seccion-titulos h2 {
-            font-size: 32px;
+        /* ESTILO BASADO EN TU IMAGEN */
+        .titulos-imagen {
+            margin-bottom: 40px;
+        }
+
+        .titulos-imagen h2 {
             font-weight: 700;
+            font-size: 28px;
+            color: #444;
             margin-bottom: 10px;
-            color: #000000;
+            line-height: 1.2;
         }
 
-        .seccion-titulos h3 {
-            font-size: 26px;
+        .titulos-imagen h3 {
             font-weight: 700;
+            font-size: 24px;
+            color: #444;
             margin-bottom: 25px;
-            color: #000000;
         }
 
-        .seccion-titulos p {
-            font-size: 22px;
+        .titulos-imagen p {
+            font-size: 20px;
             font-weight: 700;
-            color: #000000;
+            color: #444;
         }
 
-        /* TARJETA DE BUSQUEDA */
+        /* FORMULARIO */
         .card {
-            margin-top: 40px;
-            padding: 40px;
-            border: 1px solid #eeeeee;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            background: #fff;
         }
 
         label {
             display: block;
+            text-align: center;
             font-weight: bold;
-            font-size: 18px;
             margin-bottom: 15px;
+            font-size: 18px;
         }
 
         input[type="text"] {
             width: 100%;
-            max-width: 450px;
-            padding: 15px;
-            border: 1px solid #cccccc;
+            max-width: 400px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 18px;
+            font-size: 16px;
             text-align: center;
             text-transform: uppercase;
             font-family: inherit;
-            margin-bottom: 20px;
         }
 
-        .btn-verificar {
-            background-color: #12322B; /* Verde institucional para el botón */
+        .btn {
+            background-color: var(--gob-verde);
             color: white;
-            padding: 15px 50px;
+            padding: 15px 40px;
             border: none;
             border-radius: 4px;
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
-            text-transform: uppercase;
+            transition: 0.3s;
             font-family: inherit;
         }
 
-        .btn-verificar:hover {
-            background-color: var(--rojo-gob);
+        .btn:hover {
+            background-color: var(--gob-guinda);
         }
 
         /* RESULTADOS */
@@ -129,24 +131,70 @@
             margin-top: 30px;
             text-align: left;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .res-header {
-            background: #f4f4f4;
-            color: #000;
+            background: var(--gob-guinda);
+            color: white;
             padding: 12px;
             text-align: center;
             font-weight: bold;
-            border-bottom: 1px solid #ddd;
         }
 
-        .info-data {
-            padding: 20px;
-            background: #fff;
+        .info-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
         }
+    </style>
+</head>
+<body>
 
-        /* FOOTER (Imagen 2) */
-        footer {
-            background-color: var(--
+<header>
+    <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+</header>
+<div class="barra-oro"></div>
+
+<main>
+    <div class="titulos-imagen">
+        <h2>Subsecretaría de Educación Media Superior</h2>
+        <h3>Consulta de Certificado Semielectrónico</h3>
+        <p>Institución Pública Centralizada</p>
+    </div>
+
+    <div class="card">
+        <label>Número de Folio:</label>
+        <input type="text" id="folio" placeholder="ESCRIBE TU FOLIO AQUÍ">
+        <br>
+        <button class="btn" onclick="buscar()">VERIFICAR</button>
+    </div>
+
+    <div id="resultado">
+        <div class="res-header">DATOS DEL CERTIFICADO</div>
+        <div id="info"></div>
+    </div>
+</main>
+
+<script>
+    function buscar() {
+        const f = document.getElementById('folio').value.toUpperCase().trim();
+        const res = document.getElementById('resultado');
+        const info = document.getElementById('info');
+        
+        if(f === "BACH202401") {
+            info.innerHTML = `
+                <div class="info-item"><strong>Nombre:</strong> JUAN PÉREZ LÓPEZ</div>
+                <div class="info-item"><strong>Estatus:</strong> <span style="color:green;">VÁLIDO</span></div>
+                <div class="info-item"><strong>Nivel:</strong> MEDIA SUPERIOR</div>
+            `;
+            res.style.display = "block";
+        } else {
+            alert("Folio no registrado.");
+            res.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

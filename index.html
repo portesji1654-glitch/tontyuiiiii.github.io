@@ -6,75 +6,39 @@
     <title>Bachillerato Abierto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&display=swap');
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: #ffffff; }
-        
-        /* Colores exactos de tu foto */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+        body { margin: 0; font-family: 'Montserrat', sans-serif; }
         .bg-guinda { background-color: #621132; }
         .bg-dorado { background-color: #9D843E; }
-        
-        /* Escudo hecho con puro CSS (no es imagen) */
-        .escudo-css {
-            width: 50px;
-            height: 50px;
-            border: 2px solid #9D843E;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #9D843E;
-            font-weight: bold;
-            font-size: 20px;
-            margin-right: 12px;
-        }
     </style>
 </head>
 <body>
 
-    <header class="bg-guinda w-full p-6 md:px-16 flex justify-end items-center">
+    <header class="bg-guinda w-full p-4 md:px-16 flex justify-end items-center">
         <div class="flex items-center text-white">
-            <div class="escudo-css uppercase">Mex</div>
+            <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='none' stroke='%239D843E' stroke-width='2'/><path d='M50 20 L55 35 H70 L58 45 L62 60 L50 50 L38 60 L42 45 L30 35 H45 Z' fill='%239D843E'/></svg>" 
+                 alt="Escudo de México" 
+                 class="w-16 h-16 md:w-20 md:h-20 mr-3">
+            
             <div class="text-right leading-none">
-                <p class="text-lg font-light m-0">Gobierno de</p>
-                <p class="text-2xl md:text-3xl font-bold m-0 tracking-tighter">México</p>
+                <p class="text-lg md:text-xl font-light m-0">Gobierno de</p>
+                <p class="text-2xl md:text-4xl font-bold m-0 tracking-tighter">México</p>
             </div>
         </div>
     </header>
 
-    <div class="bg-dorado w-full py-8 px-8 md:px-16 shadow-md">
-        <h1 class="text-white text-4xl md:text-5xl font-light tracking-widest uppercase m-0 leading-tight">
-            Bachillerato<br class="md:hidden"> Abierto
+    <div class="bg-dorado w-full py-8 px-8 md:px-16 shadow-lg">
+        <h1 class="text-white text-3xl md:text-5xl font-light tracking-widest uppercase m-0">
+            Bachillerato Abierto
         </h1>
     </div>
 
     <main class="max-w-4xl mx-auto mt-12 p-6">
-        <div class="bg-white border-t-8 border-guinda shadow-2xl p-8 rounded-b-lg">
-            <h2 class="text-3xl font-bold text-gray-800 mb-2">Recursos Digitales</h2>
-            <p class="text-gray-500 text-lg mb-8">Material oficial para el estudio independiente.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex items-center p-4 bg-gray-50 border rounded-lg hover:border-dorado transition-colors cursor-pointer">
-                    <div class="bg-guinda text-white w-10 h-10 rounded flex items-center justify-center font-bold mr-4">01</div>
-                    <div>
-                        <p class="font-bold text-gray-700">De la información al conocimiento</p>
-                        <p class="text-xs text-gray-400 font-bold uppercase">Módulo Inicial</p>
-                    </div>
-                </div>
-
-                <div class="flex items-center p-4 bg-gray-50 border rounded-lg hover:border-dorado transition-colors cursor-pointer">
-                    <div class="bg-guinda text-white w-10 h-10 rounded flex items-center justify-center font-bold mr-4">02</div>
-                    <div>
-                        <p class="font-bold text-gray-700">El lenguaje en la relación del hombre</p>
-                        <p class="text-xs text-gray-400 font-bold uppercase">Comunicación</p>
-                    </div>
-                </div>
-            </div>
+        <div class="bg-white border-l-8 border-[#621132] p-8 shadow-xl rounded-r-xl">
+            <h2 class="text-2xl font-bold text-gray-800 mb-2">Repositorio de Archivos</h2>
+            <p class="text-gray-500">Todo el material oficial listo para consulta.</p>
         </div>
     </main>
-
-    <footer class="text-center py-10 text-gray-300 text-xs uppercase tracking-widest">
-        Identidad Institucional 2026
-    </footer>
 
 </body>
 </html>

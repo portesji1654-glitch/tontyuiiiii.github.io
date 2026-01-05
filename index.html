@@ -3,33 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGED - Sistema de Certificación Electrónica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --guinda: #4D0B24;
-            --guinda-claro: #722744;
-            --verde-gob: #12322B;
-            --verde-fondo: #E3F2E1;
-            --verde-texto: #4B7147;
-            --oscuro-barra: #0B231E;
-            --dorado: #D4C19C;
-        }
+    <title>Mi Repositorio - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans antialiased">
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fff;
-        }
+    <div class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="bg-[#1e1e1e] rounded-xl shadow-2xl overflow-hidden border border-gray-700">
+            <div class="flex justify-between items-center p-4 border-b border-gray-800">
+                <div class="flex items-center gap-3">
+                    <img src="https://ui-avatars.com/api/?name=User&background=random" class="w-8 h-8 rounded-full" alt="User">
+                    <span class="text-white font-medium">Hutamisr Page</span>
+                </div>
+                <div class="flex gap-4 text-gray-400">
+                    <i class="fas fa-share-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="bg-[#2d2d2d] rounded-lg p-4 font-mono text-sm text-blue-300 overflow-x-auto">
+                    <p class="text-gray-500">// Configuración del Proyecto</p>
+                    <p><span class="text-purple-400">const</span> settings = {</p>
+                    <p class="pl-4">engine: <span class="text-green-300">"v8-turbo"</span>,</p>
+                    <p class="pl-4">version: <span class="text-yellow-400">1.2.0</span>,</p>
+                    <p class="pl-4">debug: <span class="text-purple-400">true</span></p>
+                    <p>}</p>
+                    <div class="mt-4 bg-blue-600/20 p-3 rounded border border-blue-500/30 text-blue-200">
+                        Botón de Acción Especial <i class="fas fa-chevron-right ml-2"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        /* 1. BARRA SUPERIOR */
-        .top-header {
-            background-color: var(--oscuro-barra);
-            padding: 10px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            font-size:
-   
+        <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
+            <div class="flex justify-between items-center p-4 border-b">
+                <div class="flex items-center gap-3">
+                    <img src="https://ui-avatars.com/api/?name=Colah&background=0D8ABC&color=fff" class="w-8 h-8 rounded-full" alt="User">
+                    <span class="text-gray-800 font-medium">Colah Page</span>
+                </div>
+                <i class="fas fa-ellipsis-v text-gray-400"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-4 text-gray-700">Socfore Maties</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" checked class="w-4 h-4 text-blue-600">
+                            <span class="text-gray-600">Revisión de componentes</span>
+                        </div>
+                        <i class="fas fa-search text-gray-400"></i>
+                    </li>
+                    <li class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" class="w-4 h-4">
+                            <span class="text-gray-600">Actualizar documentación</span>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-xl border border-gray-200 col-span-1 md:col-span-1">
+            <div class="p-4 border-b bg-gray-50 flex justify-between items-center">
+                <span class="font-bold text-gray-700">Malans te Jood Perrngs</span>
+                <i class="fas fa-ellipsis-v text-gray-400"></i>
+            </div>
+            <div class="p-6">
+                <p class="text-gray-600 text-sm mb-4">
+                    Este es un bloque descriptivo que simula el contenido de la tercera imagen.
+                </p>
+                <div class="bg-blue-600 text-white p-3 rounded-lg text-center mb-6 shadow-md">
+                    Analizar Datos de Sistema
+                </div>
+                <div class="rounded-lg overflow-hidden border border-gray-200">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Graficos" class="w-full h-48 object-cover">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-xl border border-gray-200">
+            <div class="p-4 border-b flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <img src="https://ui-avatars.com/api/?name=Coldivsr&background=333" class="w-8 h-8 rounded-full">
+                    <span class="font-bold text-gray-800">Coldivsr Page</span>
+                </div>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="relative">
+                    <input type="text" placeholder="Buscar en el repositorio..." class="w-full p-2 pl-4 border rounded-full bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <i class="fas fa-search absolute right-4 top-3 text-gray-400"></i>
+                </div>
+                <div class="flex gap-4 p-4 bg-gray-50 rounded-lg border">
+                    <div class="w-24 h-24 bg-gray-300 rounded-md flex-shrink-0 flex items-center justify-center">
+                        <i class="fas fa-image text-gray-500 text-2xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-blue-600">Mrtats Tootie</h4>
+                        <p class="text-xs text-gray-500 mt-1 leading-relaxed">
+                            Descripción breve del elemento visual seleccionado en la interfaz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="text-center py-10 text-gray-400 text-sm">
+        &copy; 2026 Dashboard UI Layout - Tu Repositorio GitHub
+    </footer>
+
+</body>
+</html>

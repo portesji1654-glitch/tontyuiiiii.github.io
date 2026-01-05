@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Certificados - Gobierno de México</title>
+    <title>Consulta de Certificados - SEMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --gob-guinda: #720026;
             --gob-oro: #D4C19C;
-            --gob-gris: #F5F5 stripes;
+            --gob-verde: #12322B;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', Arial, sans-serif;
         }
 
-        /* HEADER OFICIAL */
+        body {
+            /* Aplicación de la nueva letra */
+            font-family: 'Lora', serif;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* HEADER */
         header {
-            background-color: #0B231E; /* Verde oscuro institucional */
+            background-color: #0B231E;
             padding: 15px 50px;
             display: flex;
-            align-items: center;
+            justify-content: flex-start;
         }
 
         .logo-gob {
@@ -35,7 +43,6 @@
             background-color: var(--gob-guinda);
             height: 10px;
             border-bottom: 3px solid var(--gob-oro);
-            width: 100%;
         }
 
         main {
@@ -45,48 +52,73 @@
             text-align: center;
         }
 
-        h1 {
-            color: #333;
-            margin-bottom: 25px;
-            font-size: 24px;
+        /* ESTILO BASADO EN TU IMAGEN */
+        .titulos-imagen {
+            margin-bottom: 40px;
         }
 
+        .titulos-imagen h2 {
+            font-weight: 700;
+            font-size: 28px;
+            color: #444;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .titulos-imagen h3 {
+            font-weight: 700;
+            font-size: 24px;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        .titulos-imagen p {
+            font-size: 20px;
+            font-weight: 700;
+            color: #444;
+        }
+
+        /* FORMULARIO */
         .card {
-            background: #ffffff;
-            border: 1px solid #ddd;
+            background: #fdfdfd;
+            border: 1px solid #eee;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         label {
             display: block;
-            text-align: left;
+            text-align: center;
             font-weight: bold;
-            color: #545454;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
+            font-size: 18px;
         }
 
         input[type="text"] {
             width: 100%;
+            max-width: 400px;
             padding: 12px;
             margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
+            text-align: center;
             text-transform: uppercase;
+            font-family: inherit;
         }
 
         .btn {
-            width: 100%;
-            background-color: #12322B; /* Verde botón */
+            background-color: var(--gob-verde);
             color: white;
-            padding: 15px;
+            padding: 15px 40px;
             border: none;
             border-radius: 4px;
             font-weight: bold;
+            font-size: 16px;
             cursor: pointer;
             transition: 0.3s;
+            font-family: inherit;
         }
 
         .btn:hover {
@@ -114,12 +146,7 @@
         .info-item {
             padding: 15px 20px;
             border-bottom: 1px solid #eee;
-            background: #fff;
         }
-
-        .info-item:last-child { border-bottom: none; }
-        
-        .valido { color: #28a745; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -130,40 +157,41 @@
 <div class="barra-oro"></div>
 
 <main>
-    <h1>Validación de Documentos Académicos</h1>
-    
+    <div class="titulos-imagen">
+        <h2>Subsecretaría de Educación Media Superior</h2>
+        <h3>Consulta de Certificado Semielectrónico</h3>
+        <p>Institución Pública Centralizada</p>
+    </div>
+
     <div class="card">
-        <label for="folio">Número de Folio de Certificado:</label>
-        <input type="text" id="folio" placeholder="EJ: BACH202401" autocomplete="off">
-        <button class="btn" onclick="buscar()">VERIFICAR CERTIFICADO</button>
+        <label>Número de Folio:</label>
+        <input type="text" id="folio" placeholder="ESCRIBE TU FOLIO AQUÍ">
+        <br>
+        <button class="btn" onclick="buscar()">VERIFICAR</button>
     </div>
 
     <div id="resultado">
-        <div class="res-header">RESULTADO DE LA BÚSQUEDA</div>
-        <div id="info">
-            </div>
+        <div class="res-header">DATOS DEL CERTIFICADO</div>
+        <div id="info"></div>
     </div>
 </main>
 
 <script>
     function buscar() {
-        const folioInput = document.getElementById('folio').value.toUpperCase().trim();
-        const resDiv = document.getElementById('resultado');
-        const infoDiv = document.getElementById('info');
+        const f = document.getElementById('folio').value.toUpperCase().trim();
+        const res = document.getElementById('resultado');
+        const info = document.getElementById('info');
         
-        // Simulación de base de datos
-        if(folioInput === "BACH202401") {
-            infoDiv.innerHTML = `
-                <div class="info-item"><strong>Nombre del Titular:</strong> JORGE LUIS LOPEZ CRUZ </div>
-                <div class="info-item"><strong>Institución:</strong> BACHILLERATO GENERAL </div>
-                <div class="info-item"><strong>Estatus:</strong> <span class="valido">✓ DOCUMENTO VÁLIDO</span></div>
-                <div class="info-item"><strong>Fecha de Emisión:</strong> 15/01/2024</div>
-                <div class="info-item"><strong>Promedio: 8.0
+        if(f === "BACH202401") {
+            info.innerHTML = `
+                <div class="info-item"><strong>Nombre:</strong> JORGE LUIS LOPEZ CRUZ </div>
+                <div class="info-item"><strong>Estatus:</strong> <span style="color:green;">VÁLIDO</span></div>
+                <div class="info-item"><strong>Nivel:</strong> MEDIA SUPERIOR</div>
             `;
-            resDiv.style.display = "block";
+            res.style.display = "block";
         } else {
-            resDiv.style.display = "none";
-            alert("El folio ingresado no se encuentra en el sistema. Verifique los datos.");
+            alert("Folio no registrado.");
+            res.style.display = "none";
         }
     }
 </script>

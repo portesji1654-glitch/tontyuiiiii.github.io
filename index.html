@@ -11,6 +11,7 @@
             --gob-guinda: #621132; 
             --gob-oro: #9D843E;   
             --gob-verde: #12322B;
+            --gob-gris: #4D4D4D;
             --gob-fondo: #f4f4f4;
         }
 
@@ -26,8 +27,6 @@
         }
 
         header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; }
-        .logo-link { text-decoration: none; display: flex; align-items: center; transition: 0.3s; }
-        .logo-link:hover { opacity: 0.8; }
         .logo-container { height: 55px; }
         .logo-gob { height: 100%; width: auto; }
         .barra-oro { background-color: var(--gob-guinda); height: 10px; border-bottom: 4px solid var(--gob-oro); }
@@ -36,36 +35,30 @@
 
         .titulos-imagen h2 { font-weight: 700; font-size: 26px; color: #444; margin-bottom: 5px; }
         .titulos-imagen h3 { font-weight: 700; font-size: 22px; color: #555; margin-bottom: 20px; }
-        .titulos-imagen p { font-weight: bold; color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .titulos-imagen p { font-weight: bold; color: #888; font-size: 0.9rem; text-transform: uppercase; }
 
         .card { background: #ffffff; border: 1px solid #ddd; padding: 40px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 30px; }
         input[type="text"] { width: 100%; max-width: 400px; padding: 15px; margin: 20px 0; border: 1px solid #ccc; border-radius: 2px; font-size: 18px; text-align: center; text-transform: uppercase; }
         .btn { background-color: var(--gob-verde); color: white; padding: 14px 40px; border: none; border-radius: 2px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
         .btn:hover { background-color: var(--gob-guinda); }
 
+        /* Estilo de la tabla de resultados */
         #resultado { display: none; margin-top: 30px; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .res-header { background: #4D4D4D; color: white; padding: 12px; font-weight: bold; text-align: left; padding-left: 20px; }
+        .res-header { background: var(--gob-gris); color: white; padding: 12px; font-weight: bold; text-align: left; padding-left: 20px; }
         .info-item { padding: 15px 25px; border-bottom: 1px solid #eee; text-align: left; display: flex; flex-direction: column; }
-        .info-label { font-size: 13px; color: #000; text-transform: none; font-weight: bold; margin-bottom: 4px; }
+        .info-label { font-size: 13px; color: #000; font-weight: bold; margin-bottom: 4px; text-transform: none; }
         .info-value { font-size: 16px; color: #444; font-weight: 400; }
         .status-reg { color: #27ae60 !important; font-weight: bold; }
 
-        footer { background-color: var(--gob-guinda); color: white; padding: 40px 50px; margin-top: 60px; }
-        .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-logo img { width: 180px; margin-bottom: 15px; }
-        .footer-column h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .footer-column ul { list-style: none; font-size: 13px; line-height: 1.8; }
-        .footer-column ul li { color: white; }
+        footer { background-color: var(--gob-guinda); color: white; padding: 40px 50px; margin-top: 60px; text-align: center; }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="#" class="logo-link">
-        <div class="logo-container">
-            <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        </div>
-    </a>
+    <div class="logo-container">
+        <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+    </div>
 </header>
 <div class="barra-oro"></div>
 
@@ -77,48 +70,24 @@
     </div>
 
     <div class="card">
-        <label style="font-weight: bold; font-size: 1.1rem;">Ingrese Folio del Certificado:</label><br>
-        <input type="text" id="folio" placeholder="EJEMPLO: CBG3760391153">
+        <label style="font-weight: bold;">Ingrese Folio del Certificado:</label><br>
+        <input type="text" id="folioInput" placeholder="EJEMPLO: CBG3760391153">
         <br>
         <button class="btn" onclick="buscar()">VERIFICAR</button>
     </div>
 
     <div id="resultado">
         <div class="res-header">Info-label</div>
-        <div id="info"></div>
+        <div id="infoDetalle"></div>
     </div>
 </main>
 
 <footer>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        </div>
-        <div class="footer-column">
-            <h4>Enlaces</h4>
-            <ul>
-                <li>Participa</li>
-                <li>Publicaciones Oficiales</li>
-                <li>Marco Jurídico</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>¿Qué es gob.mx?</h4>
-            <ul>
-                <li>Portal de trámites e información ciudadana.</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>Contacto</h4>
-            <ul>
-                <li>Ayuda</li>
-                <li>Denuncia</li>
-            </ul>
-        </div>
-    </div>
+    <p>Secretaría de Educación Pública | 2026</p>
 </footer>
 
 <script>
+    // Base de datos con los 20 folios solicitados
     const baseDatos = {
         "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
         "CBG3760391154": { nombre: "JUAN CARLOS RAMIREZ LUNA", matricula: "1502M900412", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CENTRO DE ESTUDIOS DE BACHILLERATO 4/1", plan: "BACHILLERATO GENERAL", promedio: "9.2", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 15:10:22", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
@@ -143,12 +112,14 @@
     };
 
     function buscar() {
-        const folioBuscado = document.getElementById('folio').value.trim().toUpperCase();
-        const resDiv = document.getElementById('resultado');
-        const infoDiv = document.getElementById('info');
+        // Obtenemos el folio del input con ID 'folioInput'
+        const folioInput = document.getElementById('folioInput').value.trim().toUpperCase();
+        const resContenedor = document.getElementById('resultado');
+        const infoDiv = document.getElementById('infoDetalle');
 
-        if (baseDatos[folioBuscado]) {
-            const d = baseDatos[folioBuscado];
+        if (baseDatos[folioInput]) {
+            const d = baseDatos[folioInput];
+            // Inyectamos el contenido respetando el diseño de etiquetas
             infoDiv.innerHTML = `
                 <div class="info-item"><span class="info-label">Nombre:</span> <span class="info-value">${d.nombre}</span></div>
                 <div class="info-item"><span class="info-label">Número de Matrícula:</span> <span class="info-value">${d.matricula}</span></div>
@@ -161,10 +132,11 @@
                 <div class="info-item"><span class="info-label">Fecha de Timbrado:</span> <span class="info-value">${d.timbrado}</span></div>
                 <div class="info-item"><span class="info-label">Correo Electrónico de Contacto:</span> <span class="info-value">${d.correo}</span></div>
             `;
-            resDiv.style.display = 'block';
+            // Mostramos el cuadro de resultados
+            resContenedor.style.display = 'block';
         } else {
-            alert("El folio ingresado no se encuentra en el repositorio oficial.");
-            resDiv.style.display = 'none';
+            alert("El folio no se encuentra en el registro.");
+            resContenedor.style.display = 'none';
         }
     }
 </script>

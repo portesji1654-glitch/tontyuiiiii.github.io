@@ -24,7 +24,7 @@
             background-color: #ffffff;
         }
 
-        /* BANNER SUPERIOR CON MUJER INDÍGENA */
+        /* BANNER SUPERIOR */
         .banner-container {
             background-color: var(--oro-gob);
             height: 150px;
@@ -37,13 +37,13 @@
             overflow: hidden;
         }
 
-        /* Logo Gobierno de México (URL de Wikimedia - Nunca falla) */
+        /* Logo México (Carga segura) */
         .logo-gob {
             height: 80px;
             z-index: 2;
         }
 
-        /* Imagen Mujer Indígena (Amajac) - URL de respaldo */
+        /* Imagen Mujer Indígena (Ruta alternativa) */
         .mujer-indigena {
             height: 100%;
             position: absolute;
@@ -109,27 +109,23 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* FOOTER ROBUSTO */
+        /* PIE DE PÁGINA */
         footer {
             background-color: var(--guinda-footer);
-            padding: 30px 5%;
+            padding: 40px 5%;
             margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
         }
 
         .footer-logo {
             max-width: 100%;
-            height: auto;
-            max-height: 80px;
-            /* Filtro para que el logo se vea blanco sobre el guinda */
-            filter: brightness(0) invert(1);
+            height: 60px;
+            filter: brightness(0) invert(1); /* Convierte el logo a blanco */
         }
 
         @media (max-width: 768px) {
             .banner-container { height: 100px; }
-            .mujer-indigena { opacity: 0.5; height: 100%; }
+            .mujer-indigena { opacity: 0.5; }
             .logo-gob { height: 50px; }
         }
     </style>
@@ -137,7 +133,7 @@
 <body>
 
     <div class="banner-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="logo-gob" alt="México">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="logo-gob" alt="Logo México">
         
         <img src="https://www.gob.mx/cms/uploads/image/file/857321/amajac.png" class="mujer-indigena" alt="Imagen Institucional">
     </div>
@@ -165,7 +161,7 @@
     </main>
 
     <footer>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="footer-logo" alt="Logotipos Institucionales">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="footer-logo" alt="Logos SEP">
     </footer>
 
 </body>

@@ -1,39 +1,101 @@
-<style>
-    /* ... (resto del código igual) ... */
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-    .banner-container {
-        background-color: #D4C19C; /* Color Oro oficial */
-        background-image: url('https://framework-gb.cdn.gob.mx/landings/assets/images/felipe-carrillo-puerto.png');
-        background-size: contain;
-        background-position: center right;
-        background-repeat: no-repeat;
-        height: 150px;
-        position: relative;
-        /* Añadimos el patrón de fondo institucional */
-        background-blend-mode: multiply;
-    }
+        .banner-container {
+            background-color: #D4C19C; /* Oro oficial */
+            /* Se utiliza una URL de respaldo del repositorio de activos de la CDMX/Gob que es más estable */
+            background-image: url('https://framework-gb.cdn.gob.mx/landing/img/felipe-carrillo-puerto.png');
+            background-size: contain;
+            background-position: right center;
+            background-repeat: no-repeat;
+            height: 150px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
 
-    /* Ajuste para que el menú marrón se vea igual a la imagen */
-    .main-menu {
-        background-color: #4d0b24;
-        padding: 12px 15%;
-        display: flex;
-        justify-content: flex-end;
-        gap: 25px;
-        color: white;
-        font-size: 14px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-    }
+        /* Capa opcional para asegurar que el patrón de fondo institucional no oculte la imagen */
+        .banner-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://framework-gb.cdn.gob.mx/landing/img/patron.png');
+            opacity: 0.2;
+            pointer-events: none;
+        }
 
-    .main-menu span {
-        cursor: pointer;
-        font-weight: 300;
-    }
+        .logo-mexico {
+            padding-left: 5%;
+            z-index: 1;
+        }
 
-    .main-menu span:hover {
-        text-decoration: underline;
-    }
-</style>
+        .logo-mexico img {
+            height: 80px;
+        }
 
-<div class="banner-container">
+        .main-menu {
+            background-color: #48091d; /* Guinda oficial */
+            padding: 12px 10% 12px 0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            color: white;
+            font-size: 14px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .main-menu span {
+            cursor: pointer;
+            font-weight: 400;
+            transition: 0.3s opacity;
+        }
+
+        .main-menu span:hover {
+            opacity: 0.7;
+            text-decoration: underline;
+        }
+
+        /* Ajuste para dispositivos móviles */
+        @media (max-width: 768px) {
+            .banner-container {
+                height: 100px;
+                background-size: 60%; /* Más pequeño en móvil */
+            }
+            .main-menu {
+                justify-content: center;
+                padding-right: 0;
+                gap: 15px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+        <div class="logo-mexico">
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-gob-mx.png" alt="Gobierno de México">
+        </div>
     </div>
+
+    <nav class="main-menu">
+        <span>Trámites</span>
+        <span>Gobierno</span>
+        <span>Participa</span>
+        <span>Datos</span>
+        <span><i class="search-icon">🔍</i></span>
+    </nav>
+
+</body>
+</html>

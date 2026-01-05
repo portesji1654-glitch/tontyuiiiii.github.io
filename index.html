@@ -3,43 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bachillerato Abierto - Header</title>
+    <title>Bachillerato Abierto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
         
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; }
 
-        /* Colores institucionales exactos */
+        /* Colores institucionales oficiales */
         .bg-gob-guinda { background-color: #621132; }
         .bg-gob-dorado { background-color: #9D843E; }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
-    <header class="w-full shadow-lg">
-        
-        <div class="bg-gob-guinda h-24 md:h-28 flex items-center justify-end px-6 md:px-12">
-            <img src="https://www.gob.mx/cms/uploads/image/file/485748/logo-gobierno-de-mexico.png" 
-                 alt="Gobierno de México" 
-                 class="h-16 md:h-20 object-contain">
+    <header class="w-full">
+        <div class="bg-gob-guinda px-6 py-4 md:px-16 flex justify-end items-center">
+            <div class="logo-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Escudo_Armas_Mexico.svg/1200px-Escudo_Armas_Mexico.svg.png" 
+                     alt="Escudo Nacional" 
+                     class="h-14 md:h-20 mr-4 brightness-0 invert">
+                <div class="text-right leading-tight">
+                    <p class="text-lg md:text-2xl font-semibold">Gobierno de</p>
+                    <p class="text-xl md:text-3xl font-bold">México</p>
+                </div>
+            </div>
         </div>
 
-        <div class="bg-gob-dorado py-4 px-6 md:px-12">
-            <h1 class="text-white text-3xl md:text-4xl font-light tracking-wide uppercase">
+        <div class="bg-gob-dorado py-6 px-6 md:px-16 border-t border-white/10">
+            <h1 class="text-white text-3xl md:text-5xl font-light tracking-wider uppercase">
                 Bachillerato Abierto
             </h1>
         </div>
-
     </header>
 
-    <main class="p-10 text-gray-700">
-        <h2 class="text-2xl font-bold mb-4">Bienvenido al Repositorio</h2>
-        <p>Aquí puedes agregar la descripción de tus archivos o materiales de estudio.</p>
+    <main class="max-w-6xl mx-auto p-8">
+        <div class="bg-white p-8 rounded shadow-sm border border-gray-200">
+            <h2 class="text-2xl font-bold text-[#621132] mb-6 border-b-2 border-[#9D843E] pb-2">
+                Información del Programa
+            </h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                Bienvenido al repositorio oficial del material didáctico. Aquí encontrarás los módulos y recursos necesarios para tu formación.
+            </p>
+            
+            <div class="flex flex-wrap gap-4 mt-8">
+                <button class="bg-gob-guinda text-white px-6 py-2 rounded hover:bg-opacity-90 transition">
+                    Ver Módulos
+                </button>
+                <button class="border-2 border-gob-dorado text-gob-dorado px-6 py-2 rounded hover:bg-gob-dorado hover:text-white transition font-bold">
+                    Descargar Guía
+                </button>
+            </div>
+        </div>
     </main>
 
 </body>

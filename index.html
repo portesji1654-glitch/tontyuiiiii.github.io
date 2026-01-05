@@ -3,160 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Certificados - SEMS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    <title>Sistema de Certificación Electrónica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --oro-gob: #D4C19C;
-            --guinda-menu: #4D0B24;
-            --guinda-footer: #691C32;
-            --verde-boton: #12322B;
+            --guinda: #4D0B24;
+            --verde-claro: #E3F2E1;
+            --verde-texto: #4B7147;
+            --gris-borde: #EEEEEE;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Lora', serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: #ffffff;
-        }
-
-        /* BANNER SUPERIOR */
-        .banner-container {
-            background-color: var(--oro-gob);
-            height: 150px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Logo México (Servidor Alternativo) */
-        .logo-gob {
-            height: 80px;
-            z-index: 2;
-        }
-
-        /* Imagen Mujer Indígena (Amajac - Servidor Alternativo) */
-        .mujer-indigena {
-            height: 140px;
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-        }
-
-        /* MENÚ GUINDA */
-        .main-menu {
-            background-color: var(--guinda-menu);
-            padding: 12px 10%;
-            display: flex;
-            justify-content: flex-end;
-            gap: 25px;
-            color: white;
+            margin: 0;
             font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
+            background-color: #fff;
         }
 
-        /* CONTENIDO PRINCIPAL */
-        main {
-            flex: 1;
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
-
-        .seccion-titulos h2 { font-size: 28px; font-weight: 700; color: #000; margin-bottom: 10px; }
-        .seccion-titulos h3 { font-size: 24px; color: #000; margin-bottom: 25px; }
-        .seccion-titulos p { font-size: 20px; font-weight: 700; color: #000; }
-
-        .card {
-            margin-top: 30px;
-            padding: 40px;
-            border: 1px solid #eeeeee;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            background: #fff;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            max-width: 450px;
-            padding: 15px;
-            border: 1px solid #cccccc;
-            border-radius: 4px;
-            font-size: 18px;
-            text-align: center;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .btn-verificar {
-            background-color: var(--verde-boton);
+        /* 1. BARRA SUPERIOR NEGRA/GUINDA */
+        .top-nav {
+            background-color: #0B231E; /* Color oscuro oficial */
             color: white;
-            padding: 15px 50px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        /* PIE DE PÁGINA CON LOGOS ALTERNATIVOS */
-        footer {
-            background-color: var(--guinda-footer);
-            padding: 30px 5%;
-            margin-top: 50px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            padding: 10px 10%;
+            font-size: 13px;
         }
 
-        .footer-logo {
-            max-width: 1000px;
+        .top-nav .logos-gob { height: 35px; }
+
+        .top-nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* 2. BANNER DE EDUCACIÓN (Imagen que me enviaste) */
+        .banner-educacion {
             width: 100%;
-            height: auto;
-            /* Filtro para que los logos se vean blancos sobre el fondo guinda */
-            filter: brightness(0) invert(1);
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 8px solid var(--guinda); /* Franja guinda inferior */
+            position: relative;
         }
 
-        @media (max-width: 768px) {
-            .banner-container { height: 100px; }
-            .mujer-indigena { height: 90px; opacity: 0.7; }
-            .logo-gob { height: 50px; }
+        .banner-educacion img {
+            height: 100%;
+            width: auto;
+            max-width: 1000px;
         }
-    </style>
-</head>
-<body>
 
-    <div class="banner-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Logotipo_de_M%C3%A9xico.png/640px-Logotipo_de_M%C3%A9xico.png" class="logo-gob" alt="México">
-        
-        <img src="https://res.cloudinary.com/dplv9f7tq/image/upload/v1711653456/mujer-indigena-sep.png" class="mujer-indigena" alt="Imagen Institucional">
-    </div>
-
-    <nav class="main-menu">
-        <span>Trámites</span>
-        <span>Gobierno</span>
-        <span>Participa</span>
-        <span>Datos</span>
-    </nav>
-
-    <main>
-        <div class="seccion-titulos">
-            <h2>Subsecretaría de Educación Media Superior</h2>
-            <h3>Consulta de Certificados</h3>
-            <p>Introduce tu CURP para verificar la validez del documento</p>
-        </div>
-
-        <div class="card">
-            <label style="display:block; margin-bottom:15px; font-weight:bold;">CURP del Alumno</label>
-            <input type="text" placeholder="INGRESA TU CURP" maxlength="18">
-            <br
+        /* 3. TÍTULO VERDE */
+        .titulo-sistema {
+            background-color: var(--verde-claro);
+            color: var(--verde-texto);
+            text-align: center;
+            padding: 25px;

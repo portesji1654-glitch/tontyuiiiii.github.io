@@ -26,8 +26,6 @@
         }
 
         header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; }
-        .logo-link { text-decoration: none; display: flex; align-items: center; transition: 0.3s; }
-        .logo-link:hover { opacity: 0.8; }
         .logo-container { height: 55px; }
         .logo-gob { height: 100%; width: auto; }
         .barra-oro { background-color: var(--gob-guinda); height: 10px; border-bottom: 4px solid var(--gob-oro); }
@@ -36,7 +34,6 @@
 
         .titulos-imagen h2 { font-weight: 700; font-size: 26px; color: #444; margin-bottom: 5px; }
         .titulos-imagen h3 { font-weight: 700; font-size: 22px; color: #555; margin-bottom: 20px; }
-        .titulos-imagen p { font-weight: bold; color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
         .card { background: #ffffff; border: 1px solid #ddd; padding: 40px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 30px; }
         input[type="text"] { width: 100%; max-width: 400px; padding: 15px; margin: 20px 0; border: 1px solid #ccc; border-radius: 2px; font-size: 18px; text-align: center; text-transform: uppercase; }
@@ -50,21 +47,14 @@
         .info-value { font-size: 18px; color: #333; font-weight: 700; }
 
         footer { background-color: var(--gob-guinda); color: white; padding: 40px 50px; margin-top: 60px; }
-        .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-logo img { width: 180px; margin-bottom: 15px; }
-        .footer-column h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .footer-column ul { list-style: none; font-size: 13px; line-height: 1.8; }
-        .footer-column ul li a { color: white; text-decoration: none; }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="https://www.llave.gob.mx/RegistroCiudadano.xhtml?client_id=202505051631526569&redirect_url=https%3A%2F%2Fwww.gob.mx%2FcallbackLlave.xhtml&state=c0C4GpnH5F-UWGOuXIijT7bqfpNXbfarUpqm_mKKFiq1_Z2DYH1EB1_i9zLqwHRP" target="_blank" class="logo-link">
-        <div class="logo-container">
-            <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        </div>
-    </a>
+    <div class="logo-container">
+        <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+    </div>
 </header>
 <div class="barra-oro"></div>
 
@@ -72,58 +62,75 @@
     <div class="titulos-imagen">
         <h2>Subsecretaría de Educación Media Superior</h2>
         <h3>Consulta de Certificado Semielectrónico</h3>
-        <p>Institución Pública Centralizada</p>
     </div>
 
     <div class="card">
-        <label style="font-weight: bold; font-size: 1.1rem;">Ingrese Folio del Certificado:</label><br>
-        <input type="text" id="folio" placeholder="EJEMPLO: SEMS001">
+        <label style="font-weight: bold;">Ingrese Folio del Certificado:</label><br>
+        <input type="text" id="inputFolio" placeholder="EJEMPLO: SEMS001">
         <br>
         <button class="btn" onclick="buscar()">VERIFICAR</button>
     </div>
 
     <div id="resultado">
         <div class="res-header">DATOS REGISTRADOS EN EL SISTEMA</div>
-        <div id="info"></div>
+        <div id="infoDetalle"></div>
     </div>
 </main>
 
 <footer>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        </div>
-        <div class="footer-column">
-            <h4>Enlaces</h4>
-            <ul>
-                <li>Participa</li>
-                <li>Publicaciones Oficiales</li>
-                <li>Marco Jurídico</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>¿Qué es gob.mx?</h4>
-            <ul>
-                <li>Portal de trámites e información ciudadana.</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>Contacto</h4>
-            <ul>
-                <li>Ayuda</li>
-                <li>Denuncia</li>
-            </ul>
-        </div>
-    </div>
+    <p>Secretaría de Educación Pública | 2026</p>
 </footer>
 
 <script>
     const baseDatos = {
-        "SEMS001": { nombre: "JUAN PÉREZ LÓPEZ", fecha: "15 de Enero de 2024" },
-        "SEMS002": { nombre: "MARÍA GARCÍA RODRÍGUEZ", fecha: "20 de Enero de 2024" },
-        "SEMS003": { nombre: "RICARDO HERNÁNDEZ MARTÍNEZ", fecha: "02 de Febrero de 2024" },
-        "SEMS004": { nombre: "ANA LUISA SÁNCHEZ GÓMEZ", fecha: "10 de Febrero de 2024" },
-        "SEMS005": { nombre: "CARLOS RAMÍREZ DÍAZ", fecha: "25 de Febrero de 2024" },
-        "SEMS006": { nombre: "LAURA ELENA TORRES", fecha: "05 de Marzo de 2024" },
-        "SEMS007": { nombre: "JORGE LUIS VÁZQUEZ", fecha: "12 de Marzo de 2024" },
-        "SEMS008": { nombre: "
+        "SEMS001": { nombre: "JUAN PÉREZ LÓPEZ", fecha: "15 de Enero de 2024", estatus: "ACTIVO" },
+        "SEMS002": { nombre: "MARÍA GARCÍA RODRÍGUEZ", fecha: "20 de Enero de 2024", estatus: "ACTIVO" },
+        "SEMS003": { nombre: "RICARDO HERNÁNDEZ MARTÍNEZ", fecha: "02 de Febrero de 2024", estatus: "ACTIVO" },
+        "SEMS004": { nombre: "ANA LUISA SÁNCHEZ GÓMEZ", fecha: "10 de Febrero de 2024", estatus: "ACTIVO" },
+        "SEMS005": { nombre: "CARLOS RAMÍREZ DÍAZ", fecha: "25 de Febrero de 2024", estatus: "ACTIVO" },
+        "SEMS006": { nombre: "LAURA ELENA TORRES", fecha: "05 de Marzo de 2024", estatus: "ACTIVO" },
+        "SEMS007": { nombre: "JORGE LUIS VÁZQUEZ", fecha: "12 de Marzo de 2024", estatus: "ACTIVO" },
+        "SEMS008": { nombre: "PATRICIA RIVAS MEZA", fecha: "22 de Marzo de 2024", estatus: "ACTIVO" }
+        // Puedes agregar más aquí siguiendo el formato
+    };
+
+    function buscar() {
+        // Obtenemos el valor del input, quitamos espacios y convertimos a mayúsculas
+        const folioBuscado = document.getElementById('inputFolio').value.trim().toUpperCase();
+        const contenedorResultado = document.getElementById('resultado');
+        const divInfo = document.getElementById('infoDetalle');
+
+        if (baseDatos[folioBuscado]) {
+            const persona = baseDatos[folioBuscado];
+            
+            // Construimos el HTML de los resultados
+            divInfo.innerHTML = `
+                <div class="info-item">
+                    <span class="info-label">Nombre del Titular</span>
+                    <span class="info-value">${persona.nombre}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Fecha de Emisión</span>
+                    <span class="info-value">${persona.fecha}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Estatus</span>
+                    <span class="info-value" style="color: #27ae60;">${persona.estatus}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Folio</span>
+                    <span class="info-value">${folioBuscado}</span>
+                </div>
+            `;
+            
+            // Mostramos el contenedor
+            contenedorResultado.style.display = 'block';
+        } else {
+            alert("El folio no existe en la base de datos.");
+            contenedorResultado.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>

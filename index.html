@@ -3,60 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Certificación Electrónica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Consulta de Certificados del Bachillerato General</title>
     <style>
-        :root {
-            --guinda: #4D0B24;
-            --verde-claro: #E3F2E1;
-            --verde-texto: #4B7147;
-            --gris-borde: #EEEEEE;
-        }
-
-        body {
+        * {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fff;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-
-        /* 1. BARRA SUPERIOR NEGRA/GUINDA */
-        .top-nav {
-            background-color: #0B231E; /* Color oscuro oficial */
-            color: white;
+        header {
+            background-color: #720026;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 10%;
-            font-size: 13px;
         }
-
-        .top-nav .logos-gob { height: 35px; }
-
-        .top-nav-links {
+        .logo-gob {
+            height: 40px;
+        }
+        .nav-top {
             display: flex;
             gap: 20px;
         }
-
-        /* 2. BANNER DE EDUCACIÓN (Imagen que me enviaste) */
-        .banner-educacion {
+        .nav-top a, .nav-main a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .search-icon {
+            color: white;
+            font-size: 18px;
+        }
+        .sub-header {
+            background-color: #5A001E;
+            padding: 8px 20px;
+        }
+        .nav-main {
+            display: flex;
+            gap: 25px;
+        }
+        .banner {
             width: 100%;
-            height: 150px;
+            height: 100px;
+            background: url('https://example.com/banner-felipe.jpg') no-repeat center center;
+            background-size: cover;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 8px solid var(--guinda); /* Franja guinda inferior */
-            position: relative;
+            color: white;
+            font-size: 18px;
         }
-
-        .banner-educacion img {
-            height: 100%;
-            width: auto;
-            max-width: 1000px;
+        main {
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-
-        /* 3. TÍTULO VERDE */
-        .titulo-sistema {
-            background-color: var(--verde-claro);
-            color: var(--verde-texto);
+        h1 {
             text-align: center;
-            padding: 25px;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-section {
+            margin-bottom: 40px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .btn {
+            background-color: #720026;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result-section {
+            margin-top: 40px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 2px solid #720026;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        .info-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+            font-size: 16px;
+        }
+        .info-list li strong {
+            color: #222;
+            min-width: 220px;
+            display: inline-block;
+        }
+        footer {
+            background-color: #720026;
+            color: white;
+            padding: 25px 20px;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            margin-right: 15px;
+            text-decoration: none;
+        }
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://www.gob.mx/cms/uploads/image/file/464423/Logotipo_Gobierno_de_Mexico.png" alt="Gobierno de México" class="logo-gob">
+        <div class="nav-top">
+            <a href="#">Trámites</a>
+            <a href="#">Gobierno</a>
+            <span class="search-icon">🔍</span>
+        </div>
+    </header>
+
+    <div class="sub-header">
+        <nav class="nav-main">
+            <a href="#">Inicio</a>
+            <a href="#">¿Quiénes somos?</a>
+            <a href="#">Base legal</a>
+            <a href="#">Contacto</a>
+            <a href="#">Validación</a>
+        </nav>
+    </div>
+
+    <div class="banner">
+        <span>GOBIERNO DE MÉXICO - Felipe Carrillo Puerto</span>
+    </div>
+
+    <main>
+        <h1>Consulta de certificados del bachillerato general</h1>
+
+        <section class="form-section">
+            <div class="form-group">
+                <label for="folio">Número de Folio:</label>
+                <input type="text" id="folio" name="folio" value="CBG3760391153">
+                <p class="small-text">El número de folio se encuentra en la parte inferior del certificado.</p>
+            </div>
+            <button class="btn">Buscar Certificado</button>
+        </section>
+
+        <section class="result-section">
+            <h2>Resultado de la Validación</h2>
+            <h3>Información de certificados emitidos. Estudiantes de Bachillerato Certificados</h3>
+            
+            <ul class="info-list">
+                <li><strong>Nombre:</strong> CYNTHIA CLEMENTE PEREZ</li>
+                <li><strong>Número de Matrícula:</strong> 1501R850623</li>
+                <li><strong>Institución Educativa Emisora:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
+                <li><strong>Plantel de Servicio Educativo:</strong> DIRECCIÓN GENERAL DE BACHILLERATO</li>
+                <li><strong>Plan de Estudios:</strong> BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA</li>
+                <li><strong>Promedio:</strong> 8.8</li>
+                <li><strong>Créditos Obtenidos:</strong> 176</li>
+                <li><strong>Estatus:</strong> REGISTRADO</li>
+                <li><strong>Folio:</strong> CBG3760391153</li>
+                <li><strong>Fecha de Timbrado:</strong> 2025-03-11 14:29:35</li>
+                <li><strong>Correo Electrónico de Contacto:</strong> controlescolar.estatal@sems.sidgbe.gob.mx</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <img src="https://www.gob.mx/cms/uploads/image/file/464423/Logotipo_Gobierno_de_Mexico.png" alt="Gobierno de México" class="footer-logo">
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a href="#">Participa</a></li>
+                    <li><a href="#">Marco Jurídico</a></li>
+                    <li><a href="#">Plataforma Nacional de Transparencia</a></li>
+                    <li><a href="#">Transparencia para el pueblo</a></li>
+                    <li><a href="#">Alerta</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>¿Qué es gob.mx?</h4>
+                <p>Es el portal único de trámites, información y participación ciudadana. <a href="#">Leer más</a></p>
+                <ul>
+                    <li><a href="#">Portal de datos abiertos</a></li>
+                    <li><a href="#">Declaración de accesibilidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Denuncia contra servidores públicos</h4>
+                <h4>Síguenos en</h4>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">𝕏</a>
+                    <a href="#">📷</a>
+                    <a href="#">▶️</a>
+                </div>
+                <p>☎️ 079 - Comunicate, estamos para ayudarte</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

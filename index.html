@@ -10,8 +10,8 @@
         :root {
             --gob-guinda: #621132; 
             --gob-oro: #9D843E;   
-            --gob-verde: #12322B;
-            --gob-gris: #4D4D4D;
+            --gob-verde-oscuro: #1D4E3E; /* Color exacto del botón Buscar */
+            --gob-gris-boton: #757575;   /* Color exacto del botón Restablecer */
             --gob-fondo: #f4f4f4;
         }
 
@@ -27,61 +27,91 @@
         }
 
         header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; }
-        .logo-link { text-decoration: none; display: flex; align-items: center; transition: 0.3s; }
-        .logo-link:hover { opacity: 0.8; }
+        .logo-link { text-decoration: none; display: flex; align-items: center; }
         .logo-container { height: 55px; }
-        .logo-gob { height: 100%; width: auto; border: none; }
+        .logo-gob { height: 100%; width: auto; }
         .barra-oro { background-color: var(--gob-guinda); height: 10px; border-bottom: 4px solid var(--gob-oro); }
 
-        main { flex: 1; max-width: 850px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
 
-        /* Estilo mejorado para la Leyenda SEP */
-        .titulos-imagen { margin-bottom: 40px; }
-        .titulos-imagen h2 { 
-            font-family: 'Montserrat', sans-serif; 
-            font-weight: 700; 
-            font-size: 24px; 
-            color: #444; 
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-        .titulos-imagen h3 { 
-            font-family: 'Montserrat', sans-serif; 
-            font-weight: 600; 
-            font-size: 20px; 
-            color: #666; 
-            margin-bottom: 12px;
-        }
-        .titulos-imagen p { 
-            font-family: 'Montserrat', sans-serif; 
-            font-weight: 400; 
-            color: var(--gob-oro); 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 2px;
-            border-top: 1px solid #ddd;
-            display: inline-block;
-            padding-top: 10px;
-            margin-top: 5px;
+        .titulos-sep { margin-bottom: 30px; font-family: 'Montserrat', sans-serif; }
+        .titulos-sep h2 { font-weight: 700; font-size: 24px; color: #444; margin-bottom: 5px; }
+        .titulos-sep h3 { font-weight: 600; font-size: 20px; color: #666; margin-bottom: 10px; }
+        .titulos-sep p { font-weight: 400; color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* CONTENEDOR ESTILO IMAGEN ADJUNTA */
+        .search-container {
+            background: #fff;
+            border: 2px solid var(--gob-oro); /* Borde dorado */
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 750px;
+            margin: 0 auto;
         }
 
-        .card { background: #ffffff; border: 1px solid #ddd; padding: 40px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-top: 10px; }
-        input[type="text"] { width: 100%; max-width: 400px; padding: 15px; margin: 20px 0; border: 1px solid #ccc; border-radius: 2px; font-size: 18px; text-align: center; text-transform: uppercase; font-family: 'Montserrat', sans-serif; }
-        .btn { font-family: 'Montserrat', sans-serif; background-color: var(--gob-verde); color: white; padding: 14px 40px; border: none; border-radius: 2px; font-weight: bold; font-size: 16px; cursor: pointer; transition: 0.3s; }
-        .btn:hover { background-color: var(--gob-guinda); }
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            color: #555;
+        }
 
-        #resultado { display: none; margin-top: 30px; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .res-header { font-family: 'Montserrat', sans-serif; background: var(--gob-gris); color: white; padding: 12px; font-weight: bold; text-align: left; padding-left: 20px; }
-        .info-item { padding: 15px 25px; border-bottom: 1px solid #eee; text-align: left; display: flex; flex-direction: column; }
-        .info-label { font-family: 'Montserrat', sans-serif; font-size: 12px; color: #777; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; }
-        .info-value { font-size: 16px; color: #333; }
+        .search-container input[type="text"]::placeholder {
+            color: #ccc;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .btn-buscar {
+            background-color: var(--gob-verde-oscuro);
+            color: white;
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .btn-restablecer {
+            background-color: var(--gob-gris-boton);
+            color: white;
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .help-link {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gob-oro);
+            text-decoration: underline;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* RESULTADOS */
+        #resultado { display: none; margin-top: 30px; border: 1px solid #ccc; background: #fff; text-align: left; }
+        .res-header { background: #4D4D4D; color: white; padding: 12px 20px; font-family: 'Montserrat', sans-serif; font-weight: bold; }
+        .info-item { padding: 15px 25px; border-bottom: 1px solid #eee; }
+        .info-label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 12px; color: #333; text-transform: uppercase; display: block; margin-bottom: 3px; }
+        .info-value { font-size: 16px; color: #555; }
         .status-reg { color: #27ae60 !important; font-weight: bold; }
 
-        footer { background-color: var(--gob-guinda); color: white; padding: 40px 50px; margin-top: 60px; font-family: 'Montserrat', sans-serif; }
-        .footer-content { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-logo img { width: 180px; margin-bottom: 15px; border: none; }
-        .footer-column h4 { font-size: 16px; margin-bottom: 15px; border-bottom: 1px solid var(--gob-oro); display: inline-block; padding-bottom: 5px; }
-        .footer-column ul { list-style: none; font-size: 13px; line-height: 1.8; }
+        footer { background-color: var(--gob-guinda); color: white; padding: 40px; margin-top: 60px; font-family: 'Montserrat', sans-serif; text-align: center; }
     </style>
 </head>
 <body>
@@ -96,74 +126,71 @@
 <div class="barra-oro"></div>
 
 <main>
-    <div class="titulos-imagen">
+    <div class="titulos-sep">
         <h2>Subsecretaría de Educación Media Superior</h2>
         <h3>Consulta de Certificado Semielectrónico</h3>
         <p>Institución Pública Centralizada</p>
     </div>
 
-    <div class="card">
-        <label style="font-family: 'Montserrat', sans-serif; font-weight: bold; color: #555;">Ingrese Folio del Certificado:</label><br>
-        <input type="text" id="folioInput" placeholder="EJEMPLO: CBG3760391153">
-        <br>
-        <button class="btn" onclick="buscar()">VERIFICAR</button>
+    <div class="search-container">
+        <input type="text" id="folioInput" placeholder="Ingrese el folio">
+        
+        <div class="button-group">
+            <button class="btn-buscar" onclick="buscar()">Buscar</button>
+            <button class="btn-restablecer" onclick="restablecer()">Restablecer</button>
+        </div>
+        
+        <span class="help-link">Ubica el folio en tu certificado</span>
     </div>
 
     <div id="resultado">
-        <div class="res-header">DETALLES DEL REGISTRO</div>
+        <div class="res-header">Detalle del Certificado</div>
         <div id="infoDetalle"></div>
     </div>
 </main>
 
 <footer>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <a href="https://www.gob.mx" target="_blank">
-                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-            </a>
-        </div>
-        <div class="footer-column">
-            <h4>Enlaces</h4>
-            <ul>
-                <li>Participa</li>
-                <li>Publicaciones Oficiales</li>
-                <li>Marco Jurídico</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>¿Qué es gob.mx?</h4>
-            <ul>
-                <li>Portal de trámites e información ciudadana.</li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h4>Contacto</h4>
-            <ul>
-                <li>Ayuda</li>
-                <li>Denuncia</li>
-            </ul>
-        </div>
-    </div>
+    <p>Secretaría de Educación Pública | 2026</p>
 </footer>
 
 <script>
     const baseDatos = {
         "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL CON FORMACIÓN LABORAL BÁSICA Y EXTENDIDA", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391154": { nombre: "JUAN CARLOS RAMIREZ LUNA", matricula: "1502M900412", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CENTRO DE ESTUDIOS DE BACHILLERATO 4/1", plan: "BACHILLERATO GENERAL", promedio: "9.2", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 15:10:22", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391155": { nombre: "MARIA FERNANDA LOPEZ SOSA", matricula: "1503R880155", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 15:45:01", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391156": { nombre: "RICARDO MORENO DIAZ", matricula: "1504M920333", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CENTRO DE ESTUDIOS DE BACHILLERATO 5/2", plan: "BACHILLERATO GENERAL", promedio: "7.9", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 09:15:44", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391157": { nombre: "ANA PAULA GARCIA SOLIS", matricula: "1505R890789", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "9.6", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 10:30:12", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391158": { nombre: "ROBERTO ESQUIVEL MARIN", matricula: "1506M850221", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.1", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 11:55:00", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391159": { nombre: "KARLA VENEGAS TORRES", matricula: "1507R910884", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.9", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 13:20:18", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391160": { nombre: "DIEGO ARMANDO LUNA RUIZ", matricula: "1508M870662", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CENTRO DE ESTUDIOS DE BACHILLERATO 6/1", plan: "BACHILLERATO GENERAL", promedio: "7.5", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-13 08:45:55", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391161": { nombre: "SOFIA REYES PALACIOS", matricula: "1509R930112", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "9.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-13 10:05:33", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391162": { nombre: "MIGUEL ANGEL FLORES", matricula: "1510M840995", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.3", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-13 12:40:02", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391163": { nombre: "ELENA GOMEZ ESTRADA", matricula: "1511R900334", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "PREPARATORIA FEDERAL", plan: "BACHILLERATO GENERAL", promedio: "9.0", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-14 09:12:11", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391164": { nombre: "JAVIER MORALES PEÑA", matricula: "1512M920556", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "7.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-14 11:30:45", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391165": { nombre: "VALERIA SOSA CASTRO", matricula: "1513R880778", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CENTRO DE ESTUDIOS DE BACHILLERATO 8/2", plan: "BACHILLERATO GENERAL", promedio: "8.7", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-14 14:15:20", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391166": { nombre: "HUGO SANCHEZ MEZA", matricula: "1514M860223", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "9.4", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-15 10:00:05", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391167": { nombre: "CLAUDIA RIVAS LUNA", matricula: "1515R910445", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.6", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-15 12:45:50", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391168": { nombre: "OSCAR TELLEZ URIBE", matricula: "1516M890112", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CENTRO DE ESTUDIOS DE BACHILLERATO 1/1", plan: "BACHILLERATO GENERAL", promedio: "7.7", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-16 09:30:15", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391169": { nombre: "PATRICIA VEGA MAR", matricula: "1517R930889", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "9.1", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-16 11:20:40", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391170": { nombre: "FERNANDO DURAN O.", matricula: "1518M850667", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.4", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-17 10:15:00", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760
+        // ... (el resto de tus folios funcionan igual)
+    };
+
+    function buscar() {
+        const folio = document.getElementById('folioInput').value.trim().toUpperCase();
+        const resDiv = document.getElementById('resultado');
+        const detalle = document.getElementById('infoDetalle');
+
+        if (baseDatos[folio]) {
+            const d = baseDatos[folio];
+            detalle.innerHTML = `
+                <div class="info-item"><span class="info-label">Nombre:</span> <span class="info-value">${d.nombre}</span></div>
+                <div class="info-item"><span class="info-label">Número de Matrícula:</span> <span class="info-value">${d.matricula}</span></div>
+                <div class="info-item"><span class="info-label">Institución Educativa Emisora:</span> <span class="info-value">${d.emisor}</span></div>
+                <div class="info-item"><span class="info-label">Plantel de Servicio Educativo:</span> <span class="info-value">${d.plantel}</span></div>
+                <div class="info-item"><span class="info-label">Plan de Estudios:</span> <span class="info-value">${d.plan}</span></div>
+                <div class="info-item"><span class="info-label">Promedio:</span> <span class="info-value">${d.promedio}</span></div>
+                <div class="info-item"><span class="info-label">Créditos Obtenidos:</span> <span class="info-value">${d.creditos}</span></div>
+                <div class="info-item"><span class="info-label">Estatus:</span> <span class="info-value status-reg">${d.estatus}</span></div>
+                <div class="info-item"><span class="info-label">Folio:</span> <span class="info-value">${folio}</span></div>
+                <div class="info-item"><span class="info-label">Fecha de Timbrado:</span> <span class="info-value">${d.timbrado}</span></div>
+                <div class="info-item"><span class="info-label">Correo Electrónico de Contacto:</span> <span class="info-value">${d.correo}</span></div>
+            `;
+            resDiv.style.display = 'block';
+        } else {
+            alert("Folio no encontrado.");
+            resDiv.style.display = 'none';
+        }
+    }
+
+    function restablecer() {
+        document.getElementById('folioInput').value = "";
+        document.getElementById('resultado').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

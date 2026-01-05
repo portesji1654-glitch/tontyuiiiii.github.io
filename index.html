@@ -6,35 +6,40 @@
     <title>Bachillerato Abierto</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { margin: 0; padding: 0; font-family: sans-serif; }
-        .guinda { background-color: #621132; }
-        .dorado { background-color: #9D843E; }
+        body { margin: 0; padding: 0; font-family: 'Arial', sans-serif; }
+        .bg-guinda { background-color: #621132; }
+        .bg-dorado { background-color: #9D843E; }
     </style>
 </head>
 <body>
 
-    <div class="guinda w-full p-4 flex justify-end items-center">
-        <div class="flex items-center text-white mr-4 md:mr-12">
-            <svg width="60" height="60" viewBox="0 0 100 100" class="mr-3">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="#9D843E" stroke-width="2"/>
-                <path d="M50 20 L58 38 H78 L63 50 L68 70 L50 58 L32 70 L37 50 L22 38 H42 Z" fill="#9D843E"/>
+    <div class="bg-guinda w-full p-4 md:px-16 flex justify-end items-center shadow-md">
+        <div class="flex items-center text-white">
+            <svg width="60" height="60" viewBox="0 0 100 100" class="mr-3" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                <path d="M50 15 L58 35 L80 35 L62 48 L70 70 L50 55 L30 70 L38 48 L20 35 L42 35 Z" fill="#D4AF37"/>
             </svg>
             <div class="text-right leading-none">
-                <p style="font-size: 1.2rem; font-weight: 300; margin: 0;">Gobierno de</p>
-                <p style="font-size: 2rem; font-weight: 700; margin: 0; letter-spacing: -1px;">México</p>
+                <p class="text-lg font-light m-0">Gobierno de</p>
+                <p class="text-3xl font-bold m-0 tracking-tighter">México</p>
             </div>
         </div>
     </div>
 
-    <div class="dorado w-full py-8 px-6 md:px-16 shadow-lg">
+    <div class="bg-dorado w-full py-8 px-6 md:px-16">
         <h1 class="text-white text-3xl md:text-5xl font-light tracking-widest uppercase m-0">
             Bachillerato Abierto
         </h1>
     </div>
 
-    <div class="p-10 text-center">
-        <p class="text-gray-600 text-xl">✅ El encabezado ya es funcional y no requiere descargar imágenes externas.</p>
-    </div>
+    <main class="max-w-5xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg border border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-dorado pb-2 mb-4">
+            ✅ Conexión Exitosa
+        </h2>
+        <p class="text-gray-600">
+            Si estás viendo las franjas <b>Guinda</b> y <b>Dorada</b> con el escudo arriba a la derecha, ya podemos empezar a meter tus archivos y carpetas.
+        </p>
+    </main>
 
 </body>
 </html>

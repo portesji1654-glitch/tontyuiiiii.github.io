@@ -23,30 +23,29 @@
             display: flex;
             flex-direction: column;
             background-color: #f4f4f4;
-            /* TAPIZ OFICIAL VISIBLE */
+            /* TAPIZ VISIBLE */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath d='M0 0l50 50L0 100' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3Cpath d='M100 0L50 50l50 50' stroke='%23d8d8d8' fill='none' stroke-width='1'/%3E%3C/svg%3E");
             background-attachment: fixed;
         }
 
         header { background-color: #0B231E; padding: 15px 50px; display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .logo-link { text-decoration: none; display: flex; align-items: center; transition: 0.3s; }
-        .logo-link:hover { opacity: 0.8; }
         .logo-container { height: 50px; }
         .logo-gob { height: 100%; width: auto; }
         .barra-oro { background-color: var(--gob-guinda); height: 10px; border-bottom: 4px solid var(--gob-oro); }
 
-        main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; }
+        main { flex: 1; max-width: 900px; margin: 40px auto; padding: 0 20px; text-align: center; width: 100%; }
 
         .titulos-sep { margin-bottom: 40px; font-family: 'Montserrat', sans-serif; }
-        .titulos-sep h2 { font-weight: 700; font-size: 26px; color: #444; margin-bottom: 5px; }
-        .titulos-sep h3 { font-weight: 600; font-size: 22px; color: #666; margin-bottom: 15px; }
+        .titulos-sep h2 { font-weight: 700; font-size: 24px; color: #444; margin-bottom: 5px; }
+        .titulos-sep h3 { font-weight: 600; font-size: 20px; color: #666; margin-bottom: 15px; }
         .titulos-sep p { font-weight: 400; color: var(--gob-oro); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; padding-top: 10px; border-top: 1px solid #ddd; display: inline-block; }
 
+        /* CONTENEDOR DE BÚSQUEDA */
         .search-container {
             background: #ffffff;
             border: 2px solid var(--gob-oro); 
             border-radius: 10px;
-            padding: 40px;
+            padding: 35px;
             max-width: 780px;
             margin: 0 auto;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -60,7 +59,6 @@
             font-size: 18px;
             margin-bottom: 25px;
             font-family: 'Montserrat', sans-serif;
-            color: #555;
         }
 
         .button-group {
@@ -68,12 +66,12 @@
             gap: 15px;
             justify-content: center;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
-        .btn-buscar {
-            background-color: var(--gob-verde-oscuro);
-            color: white;
+        .btn-buscar, .btn-restablecer {
             flex: 1;
+            min-width: 150px;
             padding: 14px;
             border: none;
             border-radius: 4px;
@@ -81,47 +79,50 @@
             font-size: 18px;
             cursor: pointer;
             font-weight: 600;
-        }
-
-        .btn-restablecer {
-            background-color: var(--gob-gris-boton);
             color: white;
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 4px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            cursor: pointer;
-            font-weight: 600;
         }
 
-        .help-link {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--gob-oro);
-            text-decoration: underline;
-            font-size: 15px;
-            cursor: pointer;
+        .btn-buscar { background-color: var(--gob-verde-oscuro); }
+        .btn-restablecer { background-color: var(--gob-gris-boton); }
+
+        /* SECCIÓN DE RESULTADOS MEJORADA */
+        #resultado { 
+            display: none; 
+            margin-top: 40px; 
+            text-align: left; 
+            max-width: 780px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            background: white; 
+            padding: 25px; 
+            border-radius: 8px; 
+            border: 1px solid #ddd;
+            margin-bottom: 50px; /* Espacio extra para que no pegue al footer */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        #resultado { display: none; margin-top: 40px; text-align: left; max-width: 780px; margin-left: auto; margin-right: auto; background: white; padding: 25px; border-radius: 8px; border: 1px solid #ddd; }
-        .info-item { margin-bottom: 15px; font-family: 'Montserrat', sans-serif; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
-        .info-label { font-weight: 700; color: #333; font-size: 16px; display: block; }
-        .info-value { font-weight: 400; color: #666; font-size: 16px; text-transform: uppercase; }
+        .info-item { 
+            margin-bottom: 15px; 
+            font-family: 'Montserrat', sans-serif; 
+            border-bottom: 1px solid #f0f0f0; 
+            padding-bottom: 10px;
+            word-wrap: break-word; /* Evita que el texto largo se salga */
+        }
 
-        footer { background-color: var(--gob-guinda); color: white; padding: 50px 20px; margin-top: auto; font-family: 'Montserrat', sans-serif; }
-        .footer-content { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .footer-logo img { width: 220px; filter: brightness(0) invert(1); }
+        .info-label { font-weight: 700; color: #333; font-size: 15px; display: block; margin-bottom: 4px; }
+        .info-value { font-weight: 400; color: #666; font-size: 16px; text-transform: uppercase; display: block; }
+
+        footer { background-color: var(--gob-guinda); color: white; padding: 40px 20px; margin-top: auto; font-family: 'Montserrat', sans-serif; }
+        .footer-content { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-logo img { width: 180px; filter: brightness(0) invert(1); }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="https://www.gob.mx" target="_blank" class="logo-link">
-        <div class="logo-container">
-            <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-        </div>
-    </a>
+    <div class="logo-container">
+        <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+    </div>
 </header>
 <div class="barra-oro"></div>
 
@@ -133,12 +134,12 @@
     </div>
 
     <div class="search-container">
-        <input type="text" id="folioInput" placeholder="Ingrese el folio">
+        <input type="text" id="folioInput" placeholder="Ingrese el folio (Ej: CBG3760391153)">
         <div class="button-group">
             <button class="btn-buscar" onclick="buscar()">Buscar</button>
             <button class="btn-restablecer" onclick="restablecer()">Restablecer</button>
         </div>
-        <span class="help-link">Ubica el folio en tu certificado</span>
+        <span style="font-family: 'Montserrat', sans-serif; color: var(--gob-oro); text-decoration: underline; font-size: 14px; cursor: pointer;">Ubica el folio en tu certificado</span>
     </div>
 
     <div id="resultado">
@@ -149,17 +150,15 @@
 <footer>
     <div class="footer-content">
         <div class="footer-logo">
-            <a href="https://www.gob.mx" target="_blank" class="logo-link">
-                <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-            </a>
+            <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
         </div>
-        <div style="font-size: 14px; opacity: 0.8;">SEP | SEMS | 2026</div>
+        <div style="font-size: 13px; opacity: 0.8;">SEP | SEMS | 2026</div>
     </div>
 </footer>
 
 <script>
     const baseDatos = {
-        "CBG3760391153": { nombre: "JORGE LUIS LOPEZ CRUZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-12-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
+        "CBG3760391153": { nombre: "CYNTHIA CLEMENTE PEREZ", matricula: "1501R850623", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DIRECCIÓN GENERAL DE BACHILLERATO", plan: "BACHILLERATO GENERAL", promedio: "8.8", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 14:29:35", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
         "CBG3760391154": { nombre: "JUAN CARLOS RAMIREZ LUNA", matricula: "1502M900412", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 4/1", plan: "BACHILLERATO GENERAL", promedio: "9.2", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 15:10:22", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
         "CBG3760391155": { nombre: "MARIA FERNANDA LOPEZ SOSA", matricula: "1503R880155", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.5", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-11 15:45:01", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
         "CBG3760391156": { nombre: "RICARDO MORENO DIAZ", matricula: "1504M920333", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 5/2", plan: "BACHILLERATO GENERAL", promedio: "7.9", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-12 09:15:44", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
@@ -178,7 +177,7 @@
         "CBG3760391169": { nombre: "PATRICIA VEGA MAR", matricula: "1517R930889", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.1", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-16 11:20:40", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
         "CBG3760391170": { nombre: "FERNANDO DURAN O.", matricula: "1518M850667", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "8.4", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-17 10:15:00", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
         "CBG3760391171": { nombre: "GABRIELA SALAS K.", matricula: "1519R880332", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "DGB", plan: "BACHILLERATO GENERAL", promedio: "9.9", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-17 13:50:25", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" },
-        "CBG3760391172": { nombre: "SERGIO NAVA RUIZ", matricula: "1520M920991", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "CEB 3/2", plan: "BACHILLERATO GENERAL", promedio: "8.2", creditos: "176", estatus: "REGISTRADO", timbrado: "2025-03-18 08:55:10", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
+        "CBG3760391172": { nombre: "JORGE LUIS LOPEZ CRUZ", matricula: "1520M920991", emisor: "DIRECCIÓN GENERAL DE BACHILLERATO", plantel: "PREPARATORIA ABIERTA", plan: "BACHILLERATO GENERAL", promedio: "8.2", creditos: "360", estatus: "REGISTRADO", timbrado: "2025-12-18 08:55:10", correo: "controlescolar.estatal@sems.sidgbe.gob.mx" }
     };
 
     function buscar() {
@@ -189,16 +188,24 @@
         if (baseDatos[folio]) {
             const d = baseDatos[folio];
             detalle.innerHTML = `
-                <div class="info-item"><span class="info-label">Nombre del Titular:</span> <span class="info-value">${d.nombre}</span></div>
+                <div class="info-item"><span class="info-label">Nombre:</span> <span class="info-value">${d.nombre}</span></div>
                 <div class="info-item"><span class="info-label">Número de Matrícula:</span> <span class="info-value">${d.matricula}</span></div>
                 <div class="info-item"><span class="info-label">Plantel:</span> <span class="info-value">${d.plantel}</span></div>
-                <div class="info-item"><span class="info-label">Estatus del Certificado:</span> <span class="info-value" style="color:#27ae60; font-weight:bold;">${d.estatus}</span></div>
+                <div class="info-item"><span class="info-label">Plan de Estudios:</span> <span class="info-value">${d.plan}</span></div>
+                <div class="info-item"><span class="info-label">Promedio:</span> <span class="info-value">${d.promedio}</span></div>
+                <div class="info-item"><span class="info-label">Créditos:</span> <span class="info-value">${d.creditos}</span></div>
+                <div class="info-item"><span class="info-label">Estatus:</span> <span class="info-value" style="color:#27ae60; font-weight:bold;">${d.estatus}</span></div>
                 <div class="info-item"><span class="info-label">Folio:</span> <span class="info-value">${folio}</span></div>
                 <div class="info-item"><span class="info-label">Fecha de Timbrado:</span> <span class="info-value">${d.timbrado}</span></div>
+                <div class="info-item" style="border:none;"><span class="info-label">Correo de Contacto:</span> <span class="info-value" style="text-transform:lowercase;">${d.correo}</span></div>
             `;
             resDiv.style.display = 'block';
+            
+            // DESPLAZAMIENTO AUTOMÁTICO A LOS RESULTADOS
+            resDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
         } else {
-            alert("El folio no fue encontrado.");
+            alert("El folio no se encuentra en nuestra base de datos. Verifique los dígitos.");
             resDiv.style.display = 'none';
         }
     }
@@ -206,6 +213,7 @@
     function restablecer() {
         document.getElementById('folioInput').value = "";
         document.getElementById('resultado').style.display = 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 

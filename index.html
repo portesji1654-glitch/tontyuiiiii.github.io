@@ -3,194 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consulta de Certificados - SEMS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <title>Consulta de certificados del bachillerato general</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --gob-guinda: #720026;
+            --gob-guinda: #621132;
+            --gob-guinda-claro: #98224e;
             --gob-oro: #D4C19C;
             --gob-verde: #12322B;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            /* Aplicación de la nueva letra */
-            font-family: 'Lora', serif;
-            background-color: #fff;
-            color: #333;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f9f9;
         }
 
-        /* HEADER */
-        header {
-            background-color: #0B231E;
-            padding: 15px 50px;
+        /* BARRA SUPERIOR NEGRA */
+        .top-nav {
+            background-color: #0c231e;
+            padding: 10px 10% 10px 15%;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 14px;
         }
 
-        .logo-gob {
-            height: 45px;
-            width: auto;
-        }
+        .top-nav img { height: 35px; }
+        .top-nav .links { display: flex; gap: 20px; }
+        .top-nav a { color: white; text-decoration: none; }
 
-        .barra-oro {
+        /* TÍTULO SUB-CABECERA */
+        .sub-header {
             background-color: var(--gob-guinda);
-            height: 10px;
-            border-bottom: 3px solid var(--gob-oro);
+            color: white;
+            padding: 12px 15%;
+            font-size: 18px;
+            font-weight: 400;
         }
 
+        /* BANNER FELIPE CARRILLO PUERTO */
+        .banner-container {
+            background-image: url('https://framework-gb.cdn.gob.mx/landings/assets/images/felipe-carrillo-puerto.png');
+            background-size: cover;
+            background-position: center;
+            height: 120px;
+            background-color: #D4C19C;
+            position: relative;
+        }
+
+        /* MENÚ MARRÓN */
+        .main-menu {
+            background-color: #4d0b24;
+            padding: 10px 15%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* CONTENIDO PRINCIPAL */
         main {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            max-width: 900px;
+            margin: 60px auto;
             text-align: center;
+            padding: 0 20px;
         }
 
-        /* ESTILO BASADO EN TU IMAGEN */
-        .titulos-imagen {
+        h1 {
+            font-family: 'Lora', serif;
+            font-size: 32px;
+            color: #444;
             margin-bottom: 40px;
         }
 
-        .titulos-imagen h2 {
-            font-weight: 700;
-            font-size: 28px;
-            color: #444;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-
-        .titulos-imagen h3 {
-            font-weight: 700;
-            font-size: 24px;
-            color: #444;
-            margin-bottom: 25px;
-        }
-
-        .titulos-imagen p {
-            font-size: 20px;
-            font-weight: 700;
-            color: #444;
-        }
-
-        /* FORMULARIO */
-        .card {
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        .form-group {
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         label {
             display: block;
-            text-align: center;
             font-weight: bold;
-            margin-bottom: 15px;
-            font-size: 18px;
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #333;
         }
 
         input[type="text"] {
             width: 100%;
-            max-width: 400px;
             padding: 12px;
-            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
-            text-align: center;
-            text-transform: uppercase;
-            font-family: inherit;
+            margin-bottom: 5px;
         }
 
-        .btn {
-            background-color: var(--gob-verde);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
+        .help-text {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 25px;
+        }
+
+        .btn-buscar {
+            background-color: white;
+            color: #333;
+            border: 2px solid #621132;
+            padding: 12px 30px;
             font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-family: inherit;
-        }
-
-        .btn:hover {
-            background-color: var(--gob-guinda);
-        }
-
-        /* RESULTADOS */
-        #resultado {
-            display: none;
-            margin-top: 30px;
-            text-align: left;
-            border: 1px solid #ddd;
             border-radius: 4px;
-            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .res-header {
-            background: var(--gob-guinda);
+        .btn-buscar:hover {
+            background-color: var(--gob-guinda);
             color: white;
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
         }
 
-        .info-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
+        /* FOOTER */
+        footer {
+            background-color: var(--gob-guinda);
+            color: white;
+            padding: 50px 15%;
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        footer h4 { margin-bottom: 20px; text-decoration: underline; }
+        footer ul { list-style: none; padding: 0; }
+        footer li { margin-bottom: 10px; }
+        footer a { color: white; text-decoration: none; }
+
+        .social-icons {
+            margin-top: 15px;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-</header>
-<div class="barra-oro"></div>
+<div class="top-nav">
+    <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
+    <div class="links">
+        <a href="#">Trámites</a>
+        <a href="#">Gobierno</a>
+        <span>🔍</span>
+    </div>
+</div>
+
+<div class="sub-header">
+    BACHILLERATO ABIERTO
+</div>
+
+<div class="banner-container"></div>
+
+<div class="main-menu">
+    <span>Inicio</span>
+    <span>¿Quiénes somos?</span>
+    <span>Base legal</span>
+    <span>Contacto</span>
+    <span>Validación</span>
+</div>
 
 <main>
-    <div class="titulos-imagen">
-        <h2>Subsecretaría de Educación Media Superior</h2>
-        <h3>Consulta de Certificado Semielectrónico</h3>
-        <p>Institución Pública Centralizada</p>
+    <h1>Consulta de certificados del bachillerato general</h1>
+
+    <div class="form-group">
+        <label for="folio">Número de Folio:</label>
+        <input type="text" id="folio" placeholder="Ingrese el número de folio del certificado">
+        <p class="help-text">El número de folio se encuentra en la parte inferior del certificado.</p>
+        
+        <div style="text-align: center;">
+            <button class="btn-buscar" onclick="buscar()">Buscar Certificado</button>
+        </div>
     </div>
 
-    <div class="card">
-        <label>Número de Folio:</label>
-        <input type="text" id="folio" placeholder="ESCRIBE TU FOLIO AQUÍ">
-        <br>
-        <button class="btn" onclick="buscar()">VERIFICAR</button>
-    </div>
-
-    <div id="resultado">
-        <div class="res-header">DATOS DEL CERTIFICADO</div>
-        <div id="info"></div>
+    <div id="resultado" style="margin-top: 40px; display: none;">
+        <hr>
+        <h3 id="nombre-resultado" style="margin-top:20px;"></h3>
+        <p id="estatus-resultado" style="color: green; font-weight: bold;"></p>
     </div>
 </main>
 
+<footer>
+    <div>
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" style="height: 50px;" alt="Logo">
+    </div>
+    <div>
+        <h4>Enlaces</h4>
+        <ul>
+            <li><a href="#">Participa</a></li>
+            <li><a href="#">Marco Jurídico</a></li>
+            <li><a href="#">Transparencia</a></li>
+            <li><a href="#">Alerta</a></li>
+        </ul>
+    </div>
+    <div>
+        <h4>¿Qué es gob.mx?</h4>
+        <p>Es el portal único de trámites, información y participación ciudadana. <a href="#" style="text-decoration: underline;">Leer más</a></p>
+        <br>
+        <h4>Síguenos en</h4>
+        <div class="social-icons">
+            f𝕏📷 YouTube
+        </div>
+    </div>
+</footer>
+
 <script>
     function buscar() {
-        const f = document.getElementById('folio').value.toUpperCase().trim();
+        const folio = document.getElementById('folio').value.trim().toUpperCase();
         const res = document.getElementById('resultado');
-        const info = document.getElementById('info');
         
-        if(f === "BACH202401") {
-            info.innerHTML = `
-                <div class="info-item"><strong>Nombre:</strong> JUAN PÉREZ LÓPEZ</div>
-                <div class="info-item"><strong>Estatus:</strong> <span style="color:green;">VÁLIDO</span></div>
-                <div class="info-item"><strong>Nivel:</strong> MEDIA SUPERIOR</div>
-            `;
+        if(folio === "BACH202401") {
             res.style.display = "block";
+            document.getElementById('nombre-resultado').innerText = "JUAN PÉREZ LÓPEZ";
+            document.getElementById('estatus-resultado').innerText = "CERTIFICADO VÁLIDO";
         } else {
-            alert("Folio no registrado.");
+            alert("Folio no encontrado.");
             res.style.display = "none";
         }
     }

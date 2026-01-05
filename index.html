@@ -12,6 +12,7 @@
             --guinda-header: #4c1125;
             --guinda-footer: #691C32;
             --oro-gob: #D4C19C;
+            --verde-gob: #12322B;
         }
 
         body {
@@ -21,9 +22,10 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            background-color: #f5f5f5;
         }
 
-        /* --- HEADERS (Imagen 3) --- */
+        /* --- HEADERS --- */
         .primera-barra {
             background-color: #0B231E;
             padding: 10px 20px;
@@ -45,15 +47,13 @@
         }
 
         .segunda-barra h2 {
-            font-size: 20px;
+            font-size: 18px;
             margin: 0;
             font-weight: 400;
             letter-spacing: 1px;
         }
 
-        .menu-icon { color: white; font-size: 24px; }
-
-        /* --- CONTENIDO (Imagen 1 y 3) --- */
+        /* --- CONTENIDO --- */
         main {
             flex: 1;
             max-width: 800px;
@@ -65,159 +65,19 @@
         .titulos-principales {
             font-family: 'Lora', serif;
             color: #333;
-            margin-bottom: 40px;
-        }
-
-        .titulos-principales h1 { font-size: 30px; margin-bottom: 10px; }
-        .titulos-principales h2 { font-size: 26px; margin-bottom: 25px; }
-        .titulos-principales p { font-size: 22px; font-weight: bold; }
-
-        .card-consulta {
-            background: #fff;
-            padding: 30px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px;
-            margin: 20px 0;
-            border: 1px solid #ccc;
-            text-align: center;
-            font-family: inherit;
-        }
-
-        .btn-enviar {
-            background-color: #12322B;
-            color: white;
-            padding: 12px 40px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        /* --- FOOTER (Imagen 2) --- */
-        footer {
-            background-color: var(--guinda-footer);
-            color: white;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-
-        .footer-wrap {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .footer-logo { height: 50px; margin-bottom: 20px; }
-
-        .footer-links {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 15px;
-        }
-
-        .footer-links div { font-size: 18px; cursor: pointer; }
-
-        .denuncia {
-            display: block;
-            color: white;
-            text-decoration: underline;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-
-        .social-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
             margin-bottom: 30px;
         }
 
-        .social-row i { font-size: 20px; cursor: pointer; }
+        .titulos-principales h1 { font-size: 28px; margin-bottom: 10px; }
+        .titulos-principales h2 { font-size: 24px; color: #666; font-weight: 400; }
+        .titulos-principales p { font-size: 18px; font-weight: bold; color: var(--guinda-header); }
 
-        .atencion-079 {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .card-consulta {
+            background: #fff;
+            padding: 40px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .flor-icon { height: 40px; filter: brightness(0) invert(1); }
-        .numero-079 { font-size: 45px; font-weight: bold; }
-        .atencion-texto { font-size: 14px; line-height: 1.2; }
-
-    </style>
-</head>
-<body>
-
-    <div class="primera-barra">
-        <img class="logo-gob-blanco" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gob">
-        <div class="menu-icon">☰</div>
-    </div>
-    <div class="segunda-barra">
-        <h2>BACHILLERATO ABIERTO</h2>
-        <div class="menu-icon">☰</div>
-    </div>
-
-    <main>
-        <div class="titulos-principales">
-            <h1>Subsecretaría de Educación Media Superior</h1>
-            <h2>Consulta de Certificado Semielectrónico</h2>
-            <p>Institución Pública Centralizada</p>
-        </div>
-
-        <div class="card-consulta">
-            <label>Número de Folio del Certificado:</label><br>
-            <input type="text" id="folio" placeholder="ESCRIBA SU FOLIO">
-            <br>
-            <button class="btn-enviar" onclick="buscar()">Verificar</button>
-        </div>
-
-        <div id="resultado" style="display:none; margin-top:20px; border:1px solid #ccc; padding:20px;">
-            </div>
-    </main>
-
-    <footer>
-        <div class="footer-wrap">
-            <img class="footer-logo" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gob">
-            
-            <div class="footer-links">
-                <div>Enlaces <small>v</small></div>
-                <div>¿Qué es gob.mx? <small>v</small></div>
-            </div>
-
-            <a href="#" class="denuncia">Denuncia contra servidores públicos</a>
-
-            <div class="social-row">
-                <span>Síguenos en</span>
-                <i class="fa-brands fa-facebook-f"></i>
-                <i class="fa-brands fa-x-twitter"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-youtube"></i>
-            </div>
-
-            <div class="atencion-079">
-                <img class="flor-icon" src="https://framework-gb.cdn.gob.mx/landing/img/flor.svg" alt="flor">
-                <span class="numero-079">079</span>
-                <p class="atencion-texto">Comunícate, estamos<br>para ayudarte</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        function buscar() {
-            const f = document.getElementById('folio').value;
-            if(f !== "") {
-                document.getElementById('resultado').style.display = "block";
-                document.getElementById('resultado').innerHTML = "Buscando registro para el folio: " + f;
-            }
-        }
-    </script>
-
-</body>
-</html>
+        label { font-weight: bold

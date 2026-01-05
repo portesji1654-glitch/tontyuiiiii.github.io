@@ -8,8 +8,8 @@
     
     <style>
         :root {
-            --gob-guinda: #621132; /* Guinda oficial de tu imagen */
-            --gob-oro: #9D843E;   /* Dorado oficial de tu imagen */
+            --gob-guinda: #621132; 
+            --gob-oro: #9D843E;   
             --gob-verde: #12322B;
         }
 
@@ -25,7 +25,7 @@
             color: #333;
         }
 
-        /* HEADER - Ajustado para que el logo se vea */
+        /* HEADER */
         header {
             background-color: #0B231E;
             padding: 20px 50px;
@@ -33,8 +33,20 @@
             align-items: center;
         }
 
+        /* Estilo para el enlace del logo */
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.2s;
+        }
+
+        .logo-link:hover {
+            opacity: 0.8; /* Efecto visual al pasar el mouse */
+        }
+
         .logo-container {
-            height: 60px; /* Altura fija para el logo */
+            height: 60px;
             display: block;
         }
 
@@ -75,7 +87,6 @@
             margin-bottom: 25px;
         }
 
-        /* CARD DE CONSULTA */
         .card {
             background: #ffffff;
             border: 1px solid #ddd;
@@ -114,7 +125,6 @@
             background-color: var(--gob-guinda);
         }
 
-        /* RESULTADOS */
         #resultado {
             display: none;
             margin-top: 30px;
@@ -125,70 +135,4 @@
 
         .res-header {
             background: var(--gob-guinda);
-            color: white;
-            padding: 15px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .info-item {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-            text-align: left;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <div class="logo-container">
-        <img class="logo-gob" src="https://framework-gb.cdn.gob.mx/landing/img/logoheader.svg" alt="Gobierno de México">
-    </div>
-</header>
-<div class="barra-oro"></div>
-
-<main>
-    <div class="titulos-imagen">
-        <h2>Subsecretaría de Educación Media Superior</h2>
-        <h3>Consulta de Certificado Semielectrónico</h3>
-        <p style="font-weight: bold; color: #666; font-size: 1.2rem;">Institución Pública Centralizada</p>
-    </div>
-
-    <div class="card">
-        <label style="font-weight: bold; font-size: 1.1rem; color: #333;">Número de Folio:</label><br>
-        <input type="text" id="folio" placeholder="INGRESA TU FOLIO">
-        <br>
-        <button class="btn" onclick="buscar()">VERIFICAR CERTIFICADO</button>
-    </div>
-
-    <div id="resultado">
-        <div class="res-header">Resultado de la Validación Oficial</div>
-        <div id="info" style="background: #fff;"></div>
-    </div>
-</main>
-
-<script>
-    function buscar() {
-        const f = document.getElementById('folio').value.toUpperCase().trim();
-        const res = document.getElementById('resultado');
-        const info = document.getElementById('info');
-        
-        if(f === "BACH202401") {
-            info.innerHTML = `
-                <div class="info-item"><strong>Nombre del Alumno:</strong> JUAN PÉREZ LÓPEZ</div>
-                <div class="info-item"><strong>Estatus:</strong> <span style="color:green; font-weight: 900;">DOCUMENTO VÁLIDO</span></div>
-                <div class="info-item"><strong>Nivel:</strong> BACHILLERATO GENERAL</div>
-                <div class="info-item"><strong>Fecha de Emisión:</strong> 15 DE ENERO 2024</div>
-            `;
-            res.style.display = "block";
-            res.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            alert("Error: El folio no existe en el registro centralizado de SEMS.");
-            res.style.display = "none";
-        }
-    }
-</script>
-
-</body>
-</html>
+            color:

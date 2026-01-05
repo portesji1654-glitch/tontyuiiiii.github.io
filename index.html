@@ -3,19 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Certificados - SEMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* Estilos Base */
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
+        :root {
+            --negro-texto: #333333;
+            --rojo-gob: #720026;
+            --guinda-footer: #691C32;
+            --oro-gob: #D4C19C;
+            --guinda-menu: #4D0B24;
         }
 
-        /* Contenedor del Banner */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: var(--negro-texto);
+            background-color: #ffffff;
+        }
+
+        /* HEADER / BANNER CON MUJER INDÍGENA */
         .banner-container {
-            background-color: #D4C19C; /* Color Oro oficial */
-            /* IMPORTANTE: Si esta URL falla, usa una imagen local */
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Felipe_Carrillo_Puerto_proverb.jpg/400px-Felipe_Carrillo_Puerto_proverb.jpg');
+            background-color: var(--oro-gob);
+            background-image: url('https://framework-gb.cdn.gob.mx/landings/assets/images/mujer-indigena.png');
             background-size: contain;
             background-position: right center;
             background-repeat: no-repeat;
@@ -23,72 +42,96 @@
             width: 100%;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
+            padding: 0 5%;
         }
 
-        /* Filtro para que la imagen se mezcle con el fondo oro */
-        .banner-container::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(212, 193, 156, 0.3); /* Capa dorada transparente */
-            pointer-events: none;
+        .logo-header-mx {
+            height: 70px;
         }
 
-        /* Espacio para el logo izquierdo */
-        .logo-gob-container {
-            padding-left: 5%;
-            z-index: 2;
-        }
-
-        .logo-gob-container img {
-            height: 80px;
-            /* Si el logo no carga, este texto se verá */
-            color: #4d0b24;
-            font-weight: bold;
-        }
-
-        /* Menú Marrón/Guinda */
+        /* MENÚ GUINDA */
         .main-menu {
-            background-color: #4d0b24; /* Guinda oficial */
-            padding: 12px 5%;
+            background-color: var(--guinda-menu);
+            padding: 12px 15%;
             display: flex;
             justify-content: flex-end;
             gap: 25px;
             color: white;
+            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
         }
 
-        .main-menu span {
+        .main-menu span { cursor: pointer; font-weight: 300; }
+        .main-menu span:hover { text-decoration: underline; }
+
+        /* CONTENIDO PRINCIPAL */
+        main {
+            flex: 1;
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .seccion-titulos h2 { font-size: 32px; font-weight: 700; margin-bottom: 10px; color: #000; }
+        .seccion-titulos h3 { font-size: 26px; font-weight: 700; margin-bottom: 25px; color: #000; }
+        .seccion-titulos p { font-size: 20px; font-weight: 700; color: #000; }
+
+        .card {
+            margin-top: 40px;
+            padding: 40px;
+            border: 1px solid #eeeeee;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: #fff;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 450px;
+            padding: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .btn-verificar {
+            background-color: #12322B;
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
             cursor: pointer;
-            font-weight: 300;
+            text-transform: uppercase;
         }
 
-        .main-menu span:hover {
-            text-decoration: underline;
+        /* PIE DE PÁGINA CON IMAGEN INSTITUCIONAL */
+        footer {
+            width: 100%;
+            margin-top: 50px;
         }
 
-        /* Responsive */
+        .footer-image {
+            width: 100%;
+            display: block; /* Elimina espacio inferior */
+            height: auto;
+        }
+
         @media (max-width: 768px) {
-            .banner-container {
-                height: 100px;
-                background-size: cover; /* Para que rellene en móvil */
-            }
-            .main-menu {
-                gap: 10px;
-                font-size: 11px;
-                justify-content: center;
-            }
+            .banner-container { height: 100px; background-size: 40%; }
+            .main-menu { justify-content: center; padding: 10px; font-size: 12px; }
+            .seccion-titulos h2 { font-size: 24px; }
         }
     </style>
 </head>
 <body>
 
     <div class="banner-container">
-        <div class="logo-gob-container">
-            <img src="https://www.gob.mx/cms/uploads/image/file/488329/logo-gob-mx.png" alt="Gobierno de México">
-        </div>
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/logo-gob-mx.png" alt="Gobierno de México" class="logo-header-mx">
     </div>
 
     <nav class="main-menu">
@@ -96,8 +139,27 @@
         <span>Gobierno</span>
         <span>Participa</span>
         <span>Datos</span>
-        <span>🔍</span>
+        <span><i class="fas fa-search"></i></span>
     </nav>
+
+    <main>
+        <div class="seccion-titulos">
+            <h2>Subsecretaría de Educación Media Superior</h2>
+            <h3>Consulta de Certificados</h3>
+            <p>Introduce tu CURP para verificar la validez del documento</p>
+        </div>
+
+        <div class="card">
+            <label style="display:block; margin-bottom:15px; font-weight:bold;">CURP del Alumno</label>
+            <input type="text" placeholder="INGRESA TU CURP" maxlength="18">
+            <br>
+            <button class="btn-verificar">Verificar Certificado</button>
+        </div>
+    </main>
+
+    <footer>
+        <img src="https://framework-gb.cdn.gob.mx/landing/img/footer.png" alt="Logotipos Institucionales" class="footer-image">
+    </footer>
 
 </body>
 </html>
